@@ -1,3 +1,4 @@
+using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,10 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<DataInitializer>();
+
+// Lägg till min DbContext
+builder.Services.AddDbContext<BankAppDataContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
