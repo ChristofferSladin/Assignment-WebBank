@@ -4,14 +4,7 @@
     ViewData["Title"] = "Home page";
 }
 
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
-        <h1>Welcome To Bank Of Scandinavia</h1>
-        <h2>we are here to help you with the financial parts of life</h2>
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
-    </div>
-</section><!-- End Hero -->
+
 
 <h1 class="text-white">Top 10 Customers In Each Country</h1>
 
@@ -23,11 +16,7 @@
                 <th class="text-white" scope="col">Sweden</th>
             </tr>
         </thead>
-
-
         <tbody>
-
-
             @foreach (var country in Model.Countries.Where(c => c.Country == "Sweden"))
             {
                 <tr class="d-block">
@@ -45,11 +34,7 @@
                 <th class="text-white" scope="col">Norway</th>
             </tr>
         </thead>
-
-
         <tbody>
-
-
             @foreach (var country in Model.Countries.Where(c => c.Country == "Norway"))
             {
                 <tr class="d-block">
@@ -67,11 +52,7 @@
                 <th class="text-white" scope="col">Denmark</th>
             </tr>
         </thead>
-
-
         <tbody>
-
-
             @foreach (var country in Model.Countries.Where(c => c.Country == "Denmark"))
             {
                 <tr class="d-block">
@@ -89,11 +70,7 @@
                 <th class="text-white" scope="col">Finland</th>
             </tr>
         </thead>
-
-
         <tbody>
-
-
             @foreach (var country in Model.Countries.Where(c => c.Country == "Finland"))
             {
                 <tr class="d-block">
@@ -104,5 +81,4 @@
             }
         </tbody>
     </table>
-
 </div>
