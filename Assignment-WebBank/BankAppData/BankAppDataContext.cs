@@ -9,6 +9,7 @@ namespace Assignment_WebBank.BankAppData
     {
         public BankAppDataContext()
         {
+
         }
 
         public BankAppDataContext(DbContextOptions<BankAppDataContext> options)
