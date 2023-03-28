@@ -1203,8 +1203,8 @@ section {
   font-size: 14px;
 }
 
-.contact .php-email-form input::focus,
-.contact .php-email-form textarea::focus {
+.contact .php-email-form input:focus,
+.contact .php-email-form textarea:focus {
   background-color: #cc1616;
 }
 
@@ -1381,7 +1381,7 @@ section {
   background: #fff;
   padding: 6px 10px;
   position: relative;
-  border-radius: 4;
+  border-radius: 100%;
 }
 
 #footer .footer-top .footer-newsletter form input[type=email] {
@@ -1402,7 +1402,7 @@ section {
   background: #cc1616;
   color: #fff;
   transition: 0.3s;
-  border-radius: 4;
+  border-radius: 100%;
 }
 
 #footer .footer-top .footer-newsletter form input[type=submit]:hover {
