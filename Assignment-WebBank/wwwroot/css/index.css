@@ -1,0 +1,20 @@
+﻿
+.country-title{
+    display: flex;
+    justify-content:center;
+}
+
+.boxWithFourBoxes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-of-content {
+    margin: 35px;
+}
+
+.rowWithCols{
+    display: flex;
+    justify-content: space-between;
+}

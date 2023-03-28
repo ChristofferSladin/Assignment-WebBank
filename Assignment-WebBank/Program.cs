@@ -1,5 +1,6 @@
 using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Data;
+using Assignment_WebBank.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,14 @@ builder.Services.AddTransient<DataInitializer>();
 // Lägg till min DbContext
 builder.Services.AddDbContext<BankAppDataContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Lägg till min IndexService
+builder.Services.AddTransient<IIndexService, IndexService>();
+
+// Lägg till min SupplierService
+builder.Services.AddTransient<ICustomerService, CustomerService>();
+
+
 
 var app = builder.Build();
 
