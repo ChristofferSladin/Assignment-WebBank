@@ -17,7 +17,7 @@ namespace Assignment_WebBank.Pages
             _dbContext = dbContext;
         }
 
-        public List<CountriesViewModel> Countries { get; set; } = new List<CountriesViewModel>();
+        public List<CountryModel> Countries { get; set; } = new List<CountryModel>();
 
         public void OnGet()
         {
@@ -32,14 +32,14 @@ namespace Assignment_WebBank.Pages
             Countries.AddRange(swedenAccounts);
         }
 
-        public List<CountriesViewModel> GetCustomerAccountsByCountry(string country)
+        public List<CountryModel> GetCustomerAccountsByCountry(string country)
         {
             var customerAccounts = _dbContext.Customers
                 .Join(_dbContext.Accounts, c => c.CustomerId, a => a.AccountId, (c, a) => new { Customer = c, Account = a })
                 .Where(ca => ca.Customer.Country == country)
                 .OrderByDescending(ca => ca.Account.Balance)
                 .Take(10)
-                .Select(ca => new CountriesViewModel
+                .Select(ca => new CountryModel
                 {
                     Id = ca.Customer.CustomerId,
                     Country = ca.Customer.Country,
