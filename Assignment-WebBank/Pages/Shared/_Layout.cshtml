@@ -24,8 +24,18 @@
     <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+    @*BOOTSTRAP *@
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+
     <!-- Template Main CSS File -->
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+    <!-- FONT AWESOME CDN: CONTENT DELIVERY NETWORK -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- =======================================================
     * Template Name: Day
@@ -70,23 +80,16 @@
                         <li><a href="#">Drop Down 4</a></li>
                     </ul>
                 </li>
+                <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/CustomerView">Customers</a></li>
                 <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/Contact">Contact Us</a></li>
                 <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/About">About Us</a></li>
+                
                 <partial name="_LoginPartial" />
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
     </div>
 </header><!-- End Header -->
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
-        <h1>Welcome To Bank Of Scandinavia</h1>
-        <h2>We are here to help You with the financial parts of life</h2>
-        <a href="/" class="btn-get-started scrollto">Get Started</a>
-    </div>
-</section><!-- End Hero -->
-
 
 <main id="main">
     @RenderBody()
@@ -157,9 +160,9 @@
 <script src="vendor/swiper/swiper-bundle.min.js"></script>
 <script src="vendor/php-email-form/validate.js"></script>
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@*<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>*@
 
 <!-- Template Main JS File -->
 <script src="~/js/main.js" asp-append-version="true"></script>
