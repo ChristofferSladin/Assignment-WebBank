@@ -5,18 +5,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Assignment_WebBank.Pages.ViewModels
 {
-    public class SwedenViewModel : PageModel
+    public class FinlandViewModel : PageModel
     {
         private readonly IIndexService _indexService;
 
-        public SwedenViewModel(IIndexService indexService)
+        public FinlandViewModel(IIndexService indexService)
         {
             _indexService = indexService;
         }
-        public List<IndexModelProps> SwedenAccounts { get; set; }
-        public void OnGet()
+        public List<IndexModelProps> FinlandAccounts { get; set; }
+        public void OnGet(string country)
         {
-            SwedenAccounts = _indexService.GetCustomerAccountsByCountry("Sweden");
+            FinlandAccounts = _indexService.GetCustomerAccountsByCountry(country);
         }
     }
 }
