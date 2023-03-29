@@ -1,10 +1,6 @@
-﻿using Assignment_WebBank.BankAppData;
-using Assignment_WebBank.Model;
-using Assignment_WebBank.Pages.ViewModels;
+﻿using Assignment_WebBank.Model;
 using Assignment_WebBank.Services;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Runtime.CompilerServices;
 
 namespace Assignment_WebBank.Pages
 {
@@ -16,7 +12,6 @@ namespace Assignment_WebBank.Pages
         {
             _indexService = indexService;
         }
-
         public List<IndexModelProps>? CountriesAccounts { get; set; }
 
         public List<IndexModelProps> TotBalanceTotAccountCountry { get; set; }
