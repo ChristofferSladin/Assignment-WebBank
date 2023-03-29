@@ -1,27 +1,4 @@
-﻿
-.country-title{
-    display: flex;
-    justify-content:center;
-}
-
-.boxWithFourBoxes {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.box-of-content {
-    margin: 35px;
-}
-
-.rowWithCols{
-    display: flex;
-    justify-content: space-between;
-}
-
-.tableColumn{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+﻿.card:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
 }

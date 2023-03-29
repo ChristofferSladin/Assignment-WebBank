@@ -7,5 +7,7 @@ namespace Assignment_WebBank.Services
     public interface IIndexService
     {
         List<IndexModelProps> GetCustomerAccountsByCountry(string country);
+
+        List<IndexModelProps> CountryTotBalanceAndTotAccount();
     }
 }

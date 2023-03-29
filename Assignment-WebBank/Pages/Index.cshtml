@@ -5,13 +5,7 @@
     ViewData["Title"] = "Home page";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="~/css/index.css">
-    <link rel="stylesheet" href="~/css/style.css">
-</head>
-<body>
+
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
@@ -22,107 +16,71 @@
         </div>
     </section><!-- End Hero -->
 
-    <h1 class="country-title">Customers from Our Countrys</h1>
+    <div class="container" style="margin-bottom: 80px; margin-top: 80px;">
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <div class="card text-center" style="background: #141414; border: none;">
+                    <a href="#"><img src="~/img/flags/sweden-flag-removebg-preview.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
 
-    <div class="boxWithFourBoxes">
-        <div class="box-of-content">
-            <a href="#"><img src="~/img/flags/sweden-flag-removebg-preview.png" style="height: 150px; width: 150px;"></a>
+                    <a asp-page="/ViewModels/SwedenView"
+                       asp-route-country="Sweden"
+                       
+                       style="text-decoration:none">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </a>
 
 
-
-            <a class="nav-link" asp-area="" asp-page="/Index">Sweden</a>
-
-
-
-
-        </div>
-        <div class="box-of-content">
-            <a href="#"><img src="~/img/flags/norway-flag.png" style="height: 150px; width: 150px;"></a>
-        </div>
-        <div class="box-of-content">
-            <a href="#ml"><img src="~/img/flags/denmark-flag-org-removebg-preview.png" style="height: 150px; width: 150px;"></a>
-        </div>
-        <div class="box-of-content">
-            <a href="#"><img src="~/img/flags/finland-flag-org-removebg-preview.png" style="height: 150px; width: 150px;"></a>
+                    <div class="card-body">
+                        @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Sweden"))
+                        {
+                            <div class="card-text text-white"><i class="fas fa-globe-americas mr-2" style="margin-right: 5px;"></i>@country.Country</div>
+                            <div class="card-text text-white"><i class="fas fa-users mr-2" style="margin-right: 5px;"></i>@country.AccountCount Customers</div>
+                            <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="margin-right: 5px;"></i>@country.TotalBalance :-</div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center" style="background: #141414; border: none;">
+                    <a href="#"><img src="~/img/flags/norway-flag.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
+                    <div class="card-body">
+                        @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Norway"))
+                        {
+                            <div class="card-text text-white"><i class="fas fa-globe-americas mr-2" style="margin-right: 5px;"></i>@country.Country</div>
+                            <div class="card-text text-white"><i class="fas fa-users mr-2" style="margin-right: 5px;"></i>@country.AccountCount Customers</div>
+                            <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="margin-right: 5px;"></i>@country.TotalBalance :-</div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center" style="background: #141414; border: none;">
+                    <a href="#"><img src="~/img/flags/denmark-flag-org-removebg-preview.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
+                    <div class="card-body">
+                        @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Denmark"))
+                        {
+                            <div class="card-text text-white"><i class="fas fa-globe-americas mr-2" style="margin-right: 5px;"></i>@country.Country</div>
+                            <div class="card-text text-white"><i class="fas fa-users mr-2" style="margin-right: 5px;"></i>@country.AccountCount Customers</div>
+                            <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="margin-right: 5px;"></i>@country.TotalBalance :-</div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center" style="background: #141414; border: none;">
+                    <a href="#"><img src="~/img/flags/finland-flag-org-removebg-preview.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
+                    <div class="card-body">
+                        @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Finland"))
+                        {
+                            <div class="card-text text-white"><i class="fas fa-globe-americas mr-2" style="margin-right: 5px;"></i>@country.Country</div>
+                            <div class="card-text text-white"><i class="fas fa-users mr-2" style="margin-right: 5px;"></i>@country.AccountCount Customers</div>
+                            <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="margin-right: 5px;"></i>@country.TotalBalance :-</div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the above card 3 more times for the other countries -->
         </div>
     </div>
 
-
-    <div class="rowWithCols">
-
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th class="text-white" scope="col">Sweden</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var country in Model.CountriesAccounts.Where(c => c.Country == "Sweden"))
-                {
-                    <tr class="d-block">
-                        <td class="text-white">@country.Id</td>
-                        <td class="text-white">@country.Balance</td>
-                        <td class="text-white">@country.Country</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th class="text-white" scope="col">Norway</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var country in Model.CountriesAccounts.Where(c => c.Country == "Norway"))
-                {
-                    <tr class="d-block">
-                        <td class="text-white">@country.Id</td>
-                        <td class="text-white">@country.Balance</td>
-                        <td class="text-white">@country.Country</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th class="text-white" scope="col">Denmark</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var country in Model.CountriesAccounts.Where(c => c.Country == "Denmark"))
-                {
-                    <tr class="d-block">
-                        <td class="text-white">@country.Id</td>
-                        <td class="text-white">@country.Balance</td>
-                        <td class="text-white">@country.Country</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th class="text-white" scope="col">Finland</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var country in Model.CountriesAccounts.Where(c => c.Country == "Finland"))
-                {
-                    <tr class="d-block">
-                        <td class="text-white">@country.Id</td>
-                        <td class="text-white">@country.Balance</td>
-                        <td class="text-white">@country.Country</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
 
