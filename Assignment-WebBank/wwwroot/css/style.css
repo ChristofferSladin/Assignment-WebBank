@@ -164,6 +164,8 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   height: 70px;
+  padding-top: 40px;
+  opacity: 99%;
 }
 
 #header.fixed-top {
@@ -422,7 +424,7 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: calc(100vh - 110px);
+  height: calc(100vh - 70px);
   background: url("../img/hero-bg.jpg") top center;
   background-size: cover;
   position: relative;
@@ -1378,10 +1380,10 @@ section {
 
 #footer .footer-top .footer-newsletter form {
   margin-top: 30px;
-  background: #fff;
+  background: none;
   padding: 6px 10px;
   position: relative;
-  border-radius: 100%;
+/*  border-radius: 100%;*/
 }
 
 #footer .footer-top .footer-newsletter form input[type=email] {
@@ -1402,7 +1404,7 @@ section {
   background: #cc1616;
   color: #fff;
   transition: 0.3s;
-  border-radius: 100%;
+  /*border-radius: 100%;*/
 }
 
 #footer .footer-top .footer-newsletter form input[type=submit]:hover {

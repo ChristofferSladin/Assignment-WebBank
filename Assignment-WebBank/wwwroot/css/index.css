@@ -6,7 +6,7 @@
 
 .boxWithFourBoxes {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -17,4 +17,11 @@
 .rowWithCols{
     display: flex;
     justify-content: space-between;
+}
+
+.tableColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
