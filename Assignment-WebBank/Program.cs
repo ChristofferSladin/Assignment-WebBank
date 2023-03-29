@@ -35,7 +35,7 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
-    scope.ServiceProvider.GetService<DataInitializer>().SeedData();
+    scope.ServiceProvider.GetService<DataInitializer>()?.SeedData();
 }
 
 
