@@ -13,7 +13,7 @@ namespace Assignment_WebBank.Services
             _dbContext = dbContext;
         }
 
-        public List<Customer> GetCustomers(string sortColumn, string sortOrder)
+        public List<CustomerModel> GetCustomers(string sortColumn, string sortOrder)
         {
             var query = _dbContext.Customers.AsQueryable();
 
@@ -41,7 +41,13 @@ namespace Assignment_WebBank.Services
                 else if (sortOrder == "desc")
                     query = query.OrderByDescending(s => s.City);
 
-            return query.ToList();
+            return query.Select(c => new CustomerModel
+            {
+                Id = c.CustomerId,
+                Name = c.Givenname,
+                Country = c.Country,
+                City = c.City
+            }).ToList();
         }
     }
 }

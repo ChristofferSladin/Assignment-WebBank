@@ -1,4 +1,5 @@
 ﻿@page
+@using Assignment_WebBank.Model
 @model Assignment_WebBank.Pages.ViewModels.CustomerViewModel
 @{
     <h1 class="d-flex justify-content-center">Customers</h1>
@@ -7,80 +8,84 @@
         <thead>
             <tr>
                 <th>
+                    <a asp-page="/ViewModels/CustomerView"
+                   asp-route-sortColumn="Id"
+                   asp-route-sortOrder="asc"
+                   style="text-decoration:none">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </a>
                     ID
-                    <a asp-page="/CustomerView"
-                   asp-route-sortColumn="Id"
-                   asp-route-sortOrder="asc"
-                   style="text-decoration:none">
-                        <i class="fa-solid fa-angle-up"></i>
-                    </a>
-                    <a asp-page="/CustomerView"
+                    <a asp-page="/ViewModels/CustomerView"
                    asp-route-sortColumn="Id"
                    asp-route-sortOrder="desc"
                    style="text-decoration:none">
-                        <i class="fa-solid fa-angle-down"></i>
+                        <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
+
                 <th>
+                    <a asp-page="/ViewModels/CustomerView"
+                   asp-route-sortColumn="Name"
+                   asp-route-sortOrder="asc"
+                   style="text-decoration:none">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </a>
                     Name
-                    <a asp-page="/CustomerView"
-                   asp-route-sortColumn="Name"
-                   asp-route-sortOrder="asc"
-                   style="text-decoration:none">
-                        <i class="fa-solid fa-angle-up"></i>
-                    </a>
-                    <a asp-page="/CustomerView"
+                    <a asp-page="/ViewModels/CustomerView"
                    asp-route-sortColumn="Name"
                    asp-route-sortOrder="desc"
                    style="text-decoration:none">
-                        <i class="fa-solid fa-angle-down"></i>
+                        <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
+
                 <th>
+                    <a asp-page="/ViewModels/CustomerView"
+                   asp-route-sortColumn="Country"
+                   asp-route-sortOrder="asc"
+                   style="text-decoration:none">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </a>
                     Country
-                    <a asp-page="/CustomerView"
-                   asp-route-sortColumn="Country"
-                   asp-route-sortOrder="asc"
-                   style="text-decoration:none">
-                        <i class="fa-solid fa-angle-up"></i>
-                    </a>
-                    <a asp-page="/CustomerView"
+                    <a asp-page="/ViewModels/CustomerView"
                    asp-route-sortColumn="Country"
                    asp-route-sortOrder="desc"
                    style="text-decoration:none">
-                        <i class="fa-solid fa-angle-down"></i>
+                        <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
+
                 <th>
-                    City
-                    <a asp-page="/CustomerView"
+                    <a asp-page="/ViewModels/CustomerView"
                    asp-route-sortColumn="City"
                    asp-route-sortOrder="asc"
                    style="text-decoration:none">
-                        <i class="fa-solid fa-angle-up"></i>
+                        <i class="fa-solid fa-arrow-up"></i>
                     </a>
-                    <a asp-page="/CustomerView"
+                    City
+                    <a asp-page="/ViewModels/CustomerView"
                    asp-route-sortColumn="City"
                    asp-route-sortOrder="desc"
                    style="text-decoration:none">
-                        <i class="fa-solid fa-angle-down"></i>
+                        <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var customer in Model.Customers)
+            @if (Model.Customers != null)
             {
-                <tr>
-                    <td>@customer.Id</td>
-                    <td>@customer.Name</td>
-                    <td>@customer.Country</td>
-                    <td>@customer.City</td>
-                    <td><a asp-page="/Country" asp-route-id="@customer.Id" class="btn btn-primary">View</a></td>
-                </tr>
+                @foreach (var customer in Model.Customers)
+                {
+                    <tr>
+                        <td>@customer.Id</td>
+                        <td>@customer.Name</td>
+                        <td>@customer.Country</td>
+                        <td>@customer.City</td>
+                        <td><a asp-page="/Country" asp-route-id="@customer.Id" class="btn btn-primary">View</a></td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
-
-
 }
