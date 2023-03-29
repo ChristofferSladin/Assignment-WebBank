@@ -18,16 +18,7 @@
         <div class="row justify-content-center">
             <div class="col-md-3">
                 <div class="card text-center" style="background: #141414; border: none;">
-                    <a href="#"><img src="~/img/flags/sweden-flag-removebg-preview.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
-
-                    <a asp-page="/ViewModels/SwedenView"
-                       asp-route-country="Sweden"
-                       
-                       style="text-decoration:none">
-                        <i class="fa-solid fa-arrow-up"></i>
-                    </a>
-
-
+                    <a><img src="~/img/flags/sweden-flag-removebg-preview.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
                     <div class="card-body">
                         @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Sweden"))
                         {
@@ -35,12 +26,13 @@
                             <div class="card-text text-white"><i class="fas fa-users mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.AccountCount Customers</div>
                             <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.TotalBalance :-</div>
                         }
+                    <a asp-area="" asp-page="/ViewModels/SwedenView" asp-route-country="Sweden" style="text-decoration:none"><div>View</div></a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card text-center" style="background: #141414; border: none;">
-                    <a href="#"><img src="~/img/flags/norway-flag.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
+                    <a><img src="~/img/flags/norway-flag.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
                     <div class="card-body">
                         @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Norway"))
                         {
@@ -48,12 +40,13 @@
                             <div class="card-text text-white"><i class="fas fa-users mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.AccountCount Customers</div>
                             <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.TotalBalance :-</div>
                         }
+                    <a asp-area="" asp-page="/ViewModels/NorwayView" asp-route-country="Norway" style="text-decoration:none"><div>View</div></a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card text-center" style="background: #141414; border: none;">
-                    <a href="#"><img src="~/img/flags/denmark-flag-org-removebg-preview.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
+                    <a><img src="~/img/flags/denmark-flag-org-removebg-preview.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
                     <div class="card-body">
                         @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Denmark"))
                         {
@@ -61,12 +54,13 @@
                             <div class="card-text text-white"><i class="fas fa-users mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.AccountCount Customers</div>
                             <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.TotalBalance :-</div>
                         }
+                    <a asp-area="" asp-page="/ViewModels/DenmarkView" asp-route-country="Denmark" style="text-decoration:none"><div>View</div></a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card text-center" style="background: #141414; border: none;">
-                    <a href="#"><img src="~/img/flags/finland-flag-org-removebg-preview.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
+                    <a><img src="~/img/flags/finland-flag-org-removebg-preview.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
                     <div class="card-body">
                         @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Finland"))
                         {
@@ -74,6 +68,7 @@
                             <div class="card-text text-white"><i class="fas fa-users mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.AccountCount Customers</div>
                             <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.TotalBalance :-</div>
                         }
+                    <a asp-area="" asp-page="/ViewModels/FinlandView" asp-route-country="Finland" style="text-decoration:none"><div>View</div></a>
                     </div>
                 </div>
             </div>
