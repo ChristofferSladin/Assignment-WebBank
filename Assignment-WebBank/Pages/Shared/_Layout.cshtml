@@ -30,6 +30,7 @@
 
     <!-- Template Main CSS File -->
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
 
     <!-- FONT AWESOME CDN: CONTENT DELIVERY NETWORK -->
     <link rel="stylesheet" 
@@ -37,13 +38,6 @@
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- =======================================================
-    * Template Name: Day
-    * Updated: Mar 10 2023 with Bootstrap v5.2.3
-    * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
 </head>
 
 <header id="header" class="d-flex align-items-center" style="padding-bottom: 40px;">
@@ -51,9 +45,8 @@
 
         <h1 class="logo"><a href="/">Bank Of Scandinavia</a></h1>
 
-
         <nav id="navbar" class="navbar">
-            <ul class="d-flex flex-row-reverse">
+            <ul class="d-flex flex-row">
                 <li class="dropdown">
                     <a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
@@ -76,19 +69,17 @@
                 <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/CustomerView">Customers</a></li>
                 <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/Contact">Contact Us</a></li>
                 <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/About">About Us</a></li>
-                
-                <partial name="_LoginPartial" />
+                <li><partial name="_LoginPartial" /></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
+        </nav>
     </div>
-</header><!-- End Header -->
+</header>
 
 <main id="main">
     @RenderBody()
 </main>
 
-<!-- ======= Footer ======= -->
 <footer id="footer">
     <div class="footer-top">
         <div class="container">
@@ -138,12 +129,9 @@
             &copy; Copyright <strong><span>Bank Of Scandinavia</span></strong>. All Rights Reserved
         </div>
     </div>
-</footer><!-- End Footer -->
+</footer>
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-@*<div id="preloader"></div>*@
 
 <!-- Vendor JS Files -->
 <script src="~/vendor/aos/aos.js"></script>
@@ -153,15 +141,8 @@
 <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="~/vendor/php-email-form/validate.js"></script>
 
-@*<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>*@
-
-<!-- Template Main JS File -->
 <script src="~/js/main.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", required: false)
-
- 
 
 </html>
