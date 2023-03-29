@@ -3,6 +3,7 @@ using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Model;
 using Assignment_WebBank.Pages.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Metrics;
 
 namespace Assignment_WebBank.Services
 {
@@ -32,25 +33,33 @@ namespace Assignment_WebBank.Services
 
             return customerAccounts;
         }
-        //------------------------------------------------------------------
-        //public List<IndexModelProps> CountryTotBalanceTotAccount()
-        //{
-        //    _dbContext.Customers.
+        
+        public List<IndexModelProps> CountryTotBalanceAndTotAccount()
+        {
+            var countryList = new List<string>() { "Sweden", "Norway", "Denmark", "Finland" };
 
-        //    return 
-        //}
-        //----------------------------------------------------------------------
-        //public void OnGet()
-        //{
-        //    var norwayAccounts = GetCustomerAccountsByCountry("Norway");
-        //    var finlandAccounts = GetCustomerAccountsByCountry("Finland");
-        //    var denmarkAccounts = GetCustomerAccountsByCountry("Denmark");
-        //    var swedenAccounts = GetCustomerAccountsByCountry("Sweden");
+            var indexModelPropsList = new List<IndexModelProps>();
 
-        //    Countries.AddRange(norwayAccounts);
-        //    Countries.AddRange(finlandAccounts);
-        //    Countries.AddRange(denmarkAccounts);
-        //    Countries.AddRange(swedenAccounts);
-        //}
+            foreach (var country in countryList)
+            {
+                var indexModelProps = _dbContext.Customers
+                    .Where(c => c.Country == country)
+                    .Join(_dbContext.Accounts, c => c.CustomerId, a => a.AccountId, (c, a) => new { Customer = c, Account = a })
+                    .GroupBy(ca => ca.Customer.Country)
+                    .Select(group => new IndexModelProps
+                    {
+                        Country = group.Key,
+                        TotalBalance = group.Sum(ca => ca.Account.Balance),
+                        AccountCount = group.Count()
+                    })
+                    .FirstOrDefault();
+
+                if (indexModelProps != null)
+                {
+                    indexModelPropsList.Add(indexModelProps);
+                }
+            }
+            return indexModelPropsList;
+        }
     }
 }
