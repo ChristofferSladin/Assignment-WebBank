@@ -19,18 +19,12 @@ namespace Assignment_WebBank.Pages
 
         public List<IndexModelProps>? CountriesAccounts { get; set; }
 
+        public List<IndexModelProps> TotBalanceTotAccountCountry { get; set; }
+
         public void OnGet(string country)
         {
             CountriesAccounts = _indexService.GetCustomerAccountsByCountry(country);
-            //var norwayAccounts = GetCustomerAccountsByCountry("Norway");
-            //var finlandAccounts = GetCustomerAccountsByCountry("Finland");
-            //var denmarkAccounts = GetCustomerAccountsByCountry("Denmark");
-            //var swedenAccounts = GetCustomerAccountsByCountry("Sweden");
-
-            //CountriesAccounts.AddRange(norwayAccounts);
-            //CountriesAccounts.AddRange(finlandAccounts);
-            //CountriesAccounts.AddRange(denmarkAccounts);
-            //CountriesAccounts.AddRange(swedenAccounts);
+            TotBalanceTotAccountCountry = _indexService.CountryTotBalanceAndTotAccount();
         }
     }
 }
