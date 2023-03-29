@@ -1,4 +1,5 @@
 ﻿@page
+@using Assignment_WebBank.Model
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -7,7 +8,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Four Containers Example</title>                  @* remove?*@
     <link rel="stylesheet" href="~/css/index.css">
     <link rel="stylesheet" href="~/css/style.css">
 </head>
@@ -22,11 +22,19 @@
         </div>
     </section><!-- End Hero -->
 
-    <h1 class="country-title">Top 10 Customers In Each Country</h1>
+    <h1 class="country-title">Customers from Our Countrys</h1>
 
     <div class="boxWithFourBoxes">
         <div class="box-of-content">
             <a href="#"><img src="~/img/flags/sweden-flag-removebg-preview.png" style="height: 150px; width: 150px;"></a>
+
+
+
+            <a class="nav-link" asp-area="" asp-page="/Index">Sweden</a>
+
+
+
+
         </div>
         <div class="box-of-content">
             <a href="#"><img src="~/img/flags/norway-flag.png" style="height: 150px; width: 150px;"></a>
@@ -50,7 +58,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var country in Model.Countries.Where(c => c.Country == "Sweden"))
+                @foreach (var country in Model.CountriesAccounts.Where(c => c.Country == "Sweden"))
                 {
                     <tr class="d-block">
                         <td class="text-white">@country.Id</td>
@@ -68,7 +76,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var country in Model.Countries.Where(c => c.Country == "Norway"))
+                @foreach (var country in Model.CountriesAccounts.Where(c => c.Country == "Norway"))
                 {
                     <tr class="d-block">
                         <td class="text-white">@country.Id</td>
@@ -86,7 +94,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var country in Model.Countries.Where(c => c.Country == "Denmark"))
+                @foreach (var country in Model.CountriesAccounts.Where(c => c.Country == "Denmark"))
                 {
                     <tr class="d-block">
                         <td class="text-white">@country.Id</td>
@@ -104,7 +112,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var country in Model.Countries.Where(c => c.Country == "Finland"))
+                @foreach (var country in Model.CountriesAccounts.Where(c => c.Country == "Finland"))
                 {
                     <tr class="d-block">
                         <td class="text-white">@country.Id</td>
