@@ -6,6 +6,6 @@ namespace Assignment_WebBank.Services
 {
     public interface ICustomerService
     {
-        List<Customer> GetCustomers(string sortColumn, string sortOrder);
+        List<CustomerModel> GetCustomers(string sortColumn, string sortOrder);
     }
 }
