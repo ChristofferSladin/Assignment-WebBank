@@ -1,5 +1,7 @@
 ﻿using Assignment_WebBank.BankAppData;
+using Assignment_WebBank.Model;
 using Assignment_WebBank.Pages.ViewModels;
+using Assignment_WebBank.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Runtime.CompilerServices;
@@ -8,46 +10,27 @@ namespace Assignment_WebBank.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-        private readonly BankAppDataContext _dbContext;
+        private readonly IIndexService _indexService;
 
-        public IndexModel(ILogger<IndexModel> logger, BankAppDataContext dbContext)
+        public IndexModel(IIndexService indexService)
         {
-            _logger = logger;
-            _dbContext = dbContext;
+            _indexService = indexService;
         }
 
-        public List<CountryModel> Countries { get; set; } = new List<CountryModel>();
+        public List<IndexModelProps>? CountriesAccounts { get; set; }
 
-        public void OnGet()
+        public void OnGet(string country)
         {
-            var norwayAccounts = GetCustomerAccountsByCountry("Norway");
-            var finlandAccounts = GetCustomerAccountsByCountry("Finland");
-            var denmarkAccounts = GetCustomerAccountsByCountry("Denmark");
-            var swedenAccounts = GetCustomerAccountsByCountry("Sweden");
+            CountriesAccounts = _indexService.GetCustomerAccountsByCountry(country);
+            //var norwayAccounts = GetCustomerAccountsByCountry("Norway");
+            //var finlandAccounts = GetCustomerAccountsByCountry("Finland");
+            //var denmarkAccounts = GetCustomerAccountsByCountry("Denmark");
+            //var swedenAccounts = GetCustomerAccountsByCountry("Sweden");
 
-            Countries.AddRange(norwayAccounts);
-            Countries.AddRange(finlandAccounts);
-            Countries.AddRange(denmarkAccounts);
-            Countries.AddRange(swedenAccounts);
-        }
-
-        public List<CountryModel> GetCustomerAccountsByCountry(string country)
-        {
-            var customerAccounts = _dbContext.Customers
-                .Join(_dbContext.Accounts, c => c.CustomerId, a => a.AccountId, (c, a) => new { Customer = c, Account = a })
-                .Where(ca => ca.Customer.Country == country)
-                .OrderByDescending(ca => ca.Account.Balance)
-                .Take(10)
-                .Select(ca => new CountryModel
-                {
-                    Id = ca.Customer.CustomerId,
-                    Country = ca.Customer.Country,
-                    Balance = ca.Account.Balance
-                })
-                .ToList();
-
-            return customerAccounts;
+            //CountriesAccounts.AddRange(norwayAccounts);
+            //CountriesAccounts.AddRange(finlandAccounts);
+            //CountriesAccounts.AddRange(denmarkAccounts);
+            //CountriesAccounts.AddRange(swedenAccounts);
         }
     }
 }

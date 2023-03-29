@@ -2,9 +2,9 @@
 @using Assignment_WebBank.Model
 @model Assignment_WebBank.Pages.ViewModels.CustomerViewModel
 @{
-    <h1 class="d-flex justify-content-center">Customers</h1>
+    <h1 class="d-flex justify-content-center" style="padding-top: 30px;">Customers</h1>
 
-    <table>
+    <table class="table table-#141414" style="color: white;">
         <thead>
             <tr>
                 <th>
@@ -70,6 +70,10 @@
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
+
+                <th>
+                Show Customer
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -82,7 +86,7 @@
                         <td>@customer.Name</td>
                         <td>@customer.Country</td>
                         <td>@customer.City</td>
-                        <td><a asp-page="/Country" asp-route-id="@customer.Id" class="btn btn-primary">View</a></td>
+                        <td><a asp-page="/Country" asp-route-id="@customer.Id" class="btn btn-danger" style="background-color: #cc1616;">View</a></td>
                     </tr>
                 }
             }
