@@ -1,10 +1,10 @@
 ﻿@page
-@model Assignment_WebBank.Pages.ViewModels.SwedenViewModel
+@model Assignment_WebBank.Pages.ViewModels.DenmarkViewModel
 @{
 }
 
 <div>
-    <h1 class="text-center my-5" style="padding-top: 80px; padding-bottom: 40px;">Sweden Top 10 Customers</h1>
+    <h1 class="text-center my-5" style="padding-top: 80px; padding-bottom: 40px;">Denmark Top 10 Customers</h1>
 </div>
 
 
@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var a in Model.SwedenAccounts)
+        @foreach (var a in Model.DenmarkAccounts)
         {
             <tr>
                 <td>@a.Balance</td>
@@ -28,3 +28,4 @@
         }
     </tbody>
 </table>
+
