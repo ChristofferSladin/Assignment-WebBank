@@ -43,7 +43,7 @@ namespace Assignment_WebBank.Services
 
             return query.Select(c => new CustomerModel
             {
-                Id = c.CustomerId,
+                CustomerId = c.CustomerId,
                 Name = c.Givenname,
                 Country = c.Country,
                 City = c.City

@@ -12,18 +12,22 @@
 <table class="table" style="color: white;">
     <thead>
         <tr>
+            <th>Personal Id</th>
+            <th>Name</th>
             <th>Balance</th>
-            <th>Country</th>
             <th>City</th>
+            <th>Adress</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var a in Model.DenmarkAccounts)
         {
             <tr>
+                <td>@a.PersonalNr</td>
+                <td>@a.Name</td>
                 <td>@a.Balance</td>
-                <td>@a.Country</td>
                 <td>@a.City</td>
+                <td>@a.Adress</td>
             </tr>
         }
     </tbody>

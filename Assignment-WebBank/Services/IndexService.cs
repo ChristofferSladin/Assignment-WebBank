@@ -16,18 +16,23 @@ namespace Assignment_WebBank.Services
             _dbContext = dbContext;
         }
 
-        public List<IndexModelProps> GetCustomerAccountsByCountry(string country)
+        public List<CustomerModel> GetTopTenCustomerAccountsByCountry(string country)
         {
             var customerAccounts = _dbContext.Customers
                 .Join(_dbContext.Accounts, c => c.CustomerId, a => a.AccountId, (c, a) => new { Customer = c, Account = a })
                 .Where(ca => ca.Customer.Country == country)
                 .OrderByDescending(ca => ca.Account.Balance)
                 .Take(10)
-                .Select(ca => new IndexModelProps
+                .Select(ca => new CustomerModel
                 {
-                    Id = ca.Customer.CustomerId,
+                    CustomerId = ca.Customer.CustomerId,
                     Country = ca.Customer.Country,
-                    Balance = ca.Account.Balance
+                    Balance = ca.Account.Balance,
+                    AccountNr = ca.Account.AccountId,
+                    Name = (ca.Customer.Givenname + " " + ca.Customer.Surname),
+                    Adress = ca.Customer.Streetaddress,
+                    City = ca.Customer.City,
+                    PersonalNr = ca.Customer.NationalId
                 })
                 .ToList();
 
