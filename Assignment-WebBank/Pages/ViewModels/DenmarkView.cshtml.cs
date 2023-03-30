@@ -13,10 +13,10 @@ namespace Assignment_WebBank.Pages.ViewModels
         {
             _indexService = indexService;
         }
-        public List<IndexModelProps> DenmarkAccounts { get; set; }
+        public List<CustomerModel> DenmarkAccounts { get; set; }
         public void OnGet(string country)
         {
-            DenmarkAccounts = _indexService.GetCustomerAccountsByCountry(country);
+            DenmarkAccounts = _indexService.GetTopTenCustomerAccountsByCountry(country);
         }
     }
 }

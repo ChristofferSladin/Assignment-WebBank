@@ -2,8 +2,8 @@
 {
     public class CustomerModel
     {
-        public int Id { get; set; }
-        public int PersonalNr { get; set; }
+        public int CustomerId { get; set; }
+        public string? PersonalNr { get; set; }
         public int AccountNr { get; set; }
         public int TotalBalance { get; set; }
         public decimal Balance { get; set; }

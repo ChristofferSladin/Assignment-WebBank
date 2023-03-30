@@ -82,11 +82,11 @@
                 @foreach (var customer in Model.Customers)
                 {
                     <tr>
-                        <td>@customer.Id</td>
+                        <td>@customer.CustomerId</td>
                         <td>@customer.Name</td>
                         <td>@customer.Country</td>
                         <td>@customer.City</td>
-                        <td><a asp-page="/ViewModel/SwedenView" asp-route-id="@customer.Id" class="btn btn-danger" style="background-color: #cc1616;">View</a></td>
+                        <td><a asp-page="/ViewModel/SwedenView" asp-route-id="@customer.CustomerId" class="btn btn-danger" style="background-color: #cc1616;">View</a></td>
                     </tr>
                 }
             }

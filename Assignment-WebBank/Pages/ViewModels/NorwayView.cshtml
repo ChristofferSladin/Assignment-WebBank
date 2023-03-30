@@ -6,23 +6,25 @@
     <h1 class="text-center my-5" style="padding-top: 80px; padding-bottom: 40px;">Norway Top 10 Customers</h1>
 </div>
 
-
-
 <table class="table" style="color: white;">
     <thead>
         <tr>
+            <th>Personal Id</th>
+            <th>Name</th>
             <th>Balance</th>
-            <th>Country</th>
             <th>City</th>
+            <th>Adress</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var a in Model.NorwayAccounts)
         {
             <tr>
+                <td>@a.PersonalNr</td>
+                <td>@a.Name</td>
                 <td>@a.Balance</td>
-                <td>@a.Country</td>
                 <td>@a.City</td>
+                <td>@a.Adress</td>
             </tr>
         }
     </tbody>
