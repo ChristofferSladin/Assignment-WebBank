@@ -72,7 +72,7 @@
                 </th>
 
                 <th>
-                Show Customer
+                    Show Customer
                 </th>
             </tr>
         </thead>
@@ -89,6 +89,50 @@
                         <td><a asp-page="/ViewModel/SwedenView" asp-route-id="@customer.CustomerId" class="btn btn-danger" style="background-color: #cc1616;">View</a></td>
                     </tr>
                 }
+
+                <tr>
+                    @if (Model.CurrentPage != 0)
+                    {
+                        <td>
+
+                            <a class="btn btn-secondary"
+                               asp-page="/ViewModels/CustomerView" asp-route-CustomerId="@Model.CustomerId"
+                               asp-route-q="@Model.Q"
+                               asp-route-sortColumn="@Model.SortColumn"
+                               asp-route-sortOrder="@Model.SortOrder"
+                               asp-route-pageNo="@(Model.CurrentPage-1)">
+                                Prev
+                            </a>
+
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    @if (Model.CurrentPage >= 0)
+                    {
+                        
+                        <td>
+                            
+                            
+                            <a class="btn btn-secondary"
+                               asp-page="/ViewModels/CustomerView" asp-route-CustomerId="@Model.CustomerId"
+                               asp-route-q="@Model.Q"
+                               asp-route-sortColumn="@Model.SortColumn"
+                               asp-route-sortOrder="@Model.SortOrder"
+                               asp-route-pageNo="@(Model.CurrentPage+1)">
+                                Next
+                            </a>
+                        </td>
+                    }
+                </tr>
             }
         </tbody>
     </table>

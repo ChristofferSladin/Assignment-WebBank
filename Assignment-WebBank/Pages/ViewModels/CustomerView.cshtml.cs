@@ -13,10 +13,24 @@ namespace Assignment_WebBank.Pages.ViewModels
             _customerService = customerService;
         }
         public List<CustomerModel>? Customers { get; set; }
+        public string? SortColumn { get; set; }
+        public string? SortOrder { get; set; }
+        public string? Q { get; set; }
+        public int CurrentPage { get; set; }
+        public int CustomerId { get; set; }
 
-        public void OnGet(string sortColumn, string sortOrder)
+
+        public void OnGet(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
         {
-            Customers = _customerService.GetCustomers(sortColumn, sortOrder);  
+            SortColumn = sortColumn;
+            SortOrder = sortOrder;
+            Q = q;
+            CurrentPage = pageNo;
+            this.CustomerId = CustomerId;
+
+            Customers = _customerService.GetCustomers(sortColumn, sortOrder, q, CustomerId, pageNo);  
+
+
         }
     }
 }
