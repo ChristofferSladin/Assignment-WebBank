@@ -1,6 +1,7 @@
 ﻿using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Model;
 using Assignment_WebBank.Pages.ViewModels;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Assignment_WebBank.Services
 {
@@ -13,9 +14,24 @@ namespace Assignment_WebBank.Services
             _dbContext = dbContext;
         }
 
-        public List<CustomerModel> GetCustomers(string sortColumn, string sortOrder)
+        public List<CustomerModel> GetCustomers(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
         {
+            if (pageNo <= 0)
+                pageNo = 1;
+
+            if (string.IsNullOrEmpty(sortOrder))
+                sortOrder = "asc";
+            if (string.IsNullOrEmpty(sortColumn))
+                sortColumn = "Id";
+
             var query = _dbContext.Customers.AsQueryable();
+
+            //if (!string.IsNullOrEmpty(q))
+            //{
+            //    query = query
+            //        .Where(p => p.ProductName.Contains(q) ||
+            //        p.Supplier.CompanyName.Contains(q));
+            //}
 
             if (sortColumn == "Id")
                 if (sortOrder == "asc")
@@ -41,13 +57,20 @@ namespace Assignment_WebBank.Services
                 else if (sortOrder == "desc")
                     query = query.OrderByDescending(s => s.City);
 
+            var firstItemIndex = (pageNo - 1) * 5; // 5 är page storlek
+
+            query = query.Skip(firstItemIndex);
+            query = query.Take(5); // 5 är page storlek
+
             return query.Select(c => new CustomerModel
             {
                 CustomerId = c.CustomerId,
                 Name = c.Givenname,
                 Country = c.Country,
-                City = c.City
+                City = c.City,
             }).ToList();
+
+
         }
     }
 }
