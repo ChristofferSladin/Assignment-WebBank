@@ -16,9 +16,8 @@ namespace Assignment_WebBank.Services
 
         public List<CustomerModel> GetCustomers(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
         {
-            if (pageNo <= 0)
-                pageNo = 1;
-
+            if (pageNo == 0) {pageNo = 1;}
+                
             if (string.IsNullOrEmpty(sortOrder))
                 sortOrder = "asc";
             if (string.IsNullOrEmpty(sortColumn))
@@ -26,12 +25,10 @@ namespace Assignment_WebBank.Services
 
             var query = _dbContext.Customers.AsQueryable();
 
-            //if (!string.IsNullOrEmpty(q))
-            //{
-            //    query = query
-            //        .Where(p => p.ProductName.Contains(q) ||
-            //        p.Supplier.CompanyName.Contains(q));
-            //}
+            if (!string.IsNullOrEmpty(q))
+            {
+                query = query.Where(p => p.Givenname.Contains(q) || p.Surname.Contains(q) || p.Country.Contains(q) || p.City.Contains(q));
+            }
 
             if (sortColumn == "Id")
                 if (sortOrder == "asc")
@@ -69,8 +66,6 @@ namespace Assignment_WebBank.Services
                 Country = c.Country,
                 City = c.City,
             }).ToList();
-
-
         }
     }
 }

@@ -19,7 +19,6 @@ namespace Assignment_WebBank.Pages.ViewModels
         public int CurrentPage { get; set; }
         public int CustomerId { get; set; }
 
-
         public void OnGet(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
         {
             SortColumn = sortColumn;
@@ -29,8 +28,6 @@ namespace Assignment_WebBank.Pages.ViewModels
             this.CustomerId = CustomerId;
 
             Customers = _customerService.GetCustomers(sortColumn, sortOrder, q, CustomerId, pageNo);  
-
-
         }
     }
 }

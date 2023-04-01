@@ -4,6 +4,15 @@
 @{
     <h1 class="d-flex justify-content-center" style="padding-top: 30px;">Customers</h1>
 
+    <h3>Page @(Model.CurrentPage)</h3>
+
+    @*Search*@
+    <form method="get">
+        <input asp-for="@Model.Q" />
+        <input type="hidden" asp-for="@Model.CustomerId" />
+        <input type="submit" value="Search" />
+    </form>
+
     <table class="table table-#141414" style="color: white;">
         <thead>
             <tr>
@@ -91,10 +100,9 @@
                 }
 
                 <tr>
-                    @if (Model.CurrentPage != 0)
+                    @if (Model.CurrentPage > 1)
                     {
                         <td>
-
                             <a class="btn btn-secondary"
                                asp-page="/ViewModels/CustomerView" asp-route-CustomerId="@Model.CustomerId"
                                asp-route-q="@Model.Q"
@@ -103,25 +111,18 @@
                                asp-route-pageNo="@(Model.CurrentPage-1)">
                                 Prev
                             </a>
-
-
                         </td>
                     }
                     else
                     {
                         <td></td>
                     }
-
-
                     <td></td>
                     <td></td>
                     <td></td>
                     @if (Model.CurrentPage >= 0)
                     {
-                        
                         <td>
-                            
-                            
                             <a class="btn btn-secondary"
                                asp-page="/ViewModels/CustomerView" asp-route-CustomerId="@Model.CustomerId"
                                asp-route-q="@Model.Q"
