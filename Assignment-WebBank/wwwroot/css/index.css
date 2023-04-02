@@ -13,3 +13,15 @@
 .card:hover .card-text {
     transform: scale(1.05); /* scale text on hover */
 }
+
+.redbuttonhover {
+    background-color: #cc1616;
+    color: white;
+    border: transparent;
+}
+
+    .redbuttonhover:hover {
+        background-color: #ed1616;
+        border: white;
+    }
+

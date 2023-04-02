@@ -4,14 +4,17 @@
 @{
     <h1 class="d-flex justify-content-center" style="padding-top: 30px;">Customers</h1>
 
-    <h3>Page @(Model.CurrentPage)</h3>
+
 
     @*Search*@
-    <form method="get">
-        <input asp-for="@Model.Q" />
-        <input type="hidden" asp-for="@Model.CustomerId" />
-        <input type="submit" value="Search" />
-    </form>
+    <div class="d-flex justify-content-center" style="padding-top: 30px; padding-bottom: 30px;">
+        <form method="get">
+            <input asp-for="@Model.Q" />
+            <input type="hidden" asp-for="@Model.CustomerId" />
+            <input type="submit" value="Search" class="redbuttonhover" />
+        </form>
+    </div>
+    
 
     <table class="table table-#141414" style="color: white;">
         <thead>
@@ -137,4 +140,6 @@
             }
         </tbody>
     </table>
+
+    <h3 style="display: flex; justify-content: center;">Page @(Model.CurrentPage)</h3>
 }
