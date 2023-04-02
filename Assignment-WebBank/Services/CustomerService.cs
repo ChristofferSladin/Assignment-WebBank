@@ -28,10 +28,8 @@ namespace Assignment_WebBank.Services
                 return null;
             }
 
-
             var customerModel = new CustomerModel
             {
-
                 CustomerId = customerAccount.Customer.CustomerId,
                 Country = customerAccount.Customer.Country,
                 Balance = customerAccount.Account.Balance,
@@ -41,7 +39,10 @@ namespace Assignment_WebBank.Services
                 City = customerAccount.Customer.City,
                 PersonalNr = customerAccount.Customer.NationalId,
                 Gender = customerAccount.Customer.Gender,
-                BirthDay = (DateTime)customerAccount.Customer.Birthday
+                BirthDay = customerAccount.Customer.Birthday?.ToString("dd-MM-yyyy"),
+                PhoneNumber = customerAccount.Customer.Telephonenumber,
+                Email = customerAccount.Customer.Emailaddress
+
             };
 
             return customerModel;
