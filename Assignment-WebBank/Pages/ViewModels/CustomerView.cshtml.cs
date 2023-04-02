@@ -21,6 +21,8 @@ namespace Assignment_WebBank.Pages.ViewModels
 
         public void OnGet(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
         {
+            if (pageNo == 0) { pageNo = 1; }
+
             SortColumn = sortColumn;
             SortOrder = sortOrder;
             Q = q;

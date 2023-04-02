@@ -5,7 +5,6 @@
         public int CustomerId { get; set; }
         public string? PersonalNr { get; set; }
         public int AccountNr { get; set; }
-        public int TotalBalance { get; set; }
         public decimal Balance { get; set; }
         public string? Country { get; set; }
         public string? Name { get; set; }

@@ -1,16 +1,16 @@
 ﻿@page
 @model LoginModel
-
 @{
     ViewData["Title"] = "Log in";
 }
-<div style="margin-top: 100px;">
-    <h1 style="display: flex; justify-content: center; margin-top: 50px;">@ViewData["Title"]</h1>
+<div data-aos="fade-up" style="margin: 100px; box-shadow: 0 0 30px rgba(214, 215, 216, 0.6); width: 87%;">
+    
     <div class="row" style="display: flex; justify-content:center;">
+        <h1 style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">@ViewData["Title"]</h1>
         <div class="col-md-4">
             <section>
                 <form id="account" method="post" style="text-align: center;">
-                    <h2>Use a local account to log in.</h2>
+                    @*<h2>Use a local account to log in.</h2>*@
                     <hr />
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-floating" style="margin-bottom: 10px;">

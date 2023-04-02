@@ -4,21 +4,7 @@
     var customer = Model.OneCustomerCard;
 }
 
-@*<div class="customer-card">
-	<h1>CARD</h1>
-	<div class="customer-info">
-		<p><span>Customer ID:</span> @customer.CustomerId</p>
-		<p><span>Personal Number:</span> @customer.PersonalNr</p>
-		<p><span>Name:</span> @customer.Name</p>
-		<p><span>Account Number:</span> @customer.AccountNr</p>
-		<p><span>Account Balance:</span> @customer.Balance</p>
-		<p><span>Country:</span> @customer.Country</p>
-		<p><span>City:</span> @customer.City</p>
-		<p><span>Adress:</span> @customer.Adress</p>
-	</div>
-</div>*@
-
-<div class="wrapper-section">
+<div data-aos="fade-up" class="wrapper-section">
     <div class="card user-card">
         <div class="card-header">
             <h5>Profile</h5>
@@ -60,7 +46,6 @@
             </div>
             <p class="m-t-15 text-muted">Email: @customer.Email </p>
             <p class="m-t-15 text-muted">Phone: @customer.PhoneNumber </p>
-            
             <hr>
             <a asp-page="/ViewModels/CustomerView" class="btn btn-danger redbuttonhover">BACK</a>
         </div>

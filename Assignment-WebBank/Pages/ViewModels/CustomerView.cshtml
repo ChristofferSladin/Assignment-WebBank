@@ -1,12 +1,12 @@
 ﻿@page
 @using Assignment_WebBank.Model
 @model Assignment_WebBank.Pages.ViewModels.CustomerViewModel
-@{
-    <h1 class="d-flex justify-content-center" style="padding-top: 30px;">Customers</h1>
+@{  
+}
+<h1 class="d-flex justify-content-center" style="padding-top: 30px;">Customers</h1>
 
+<div @*data-aos="fade-up"*@>
 
-
-    @*Search*@
     <div class="d-flex justify-content-center" style="padding-top: 30px; padding-bottom: 30px;">
         <form method="get">
             <input asp-for="@Model.Q" />
@@ -14,71 +14,71 @@
             <input type="submit" value="Search" class="redbuttonhover" />
         </form>
     </div>
-    
+
 
     <table class="table table-#141414" style="color: white;">
         <thead>
             <tr>
                 <th>
                     <a asp-page="/ViewModels/CustomerView"
-                   asp-route-sortColumn="Id"
-                   asp-route-sortOrder="asc"
-                   style="text-decoration:none">
+                       asp-route-sortColumn="Id"
+                       asp-route-sortOrder="asc"
+                       style="text-decoration:none">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     ID
                     <a asp-page="/ViewModels/CustomerView"
-                   asp-route-sortColumn="Id"
-                   asp-route-sortOrder="desc"
-                   style="text-decoration:none">
+                       asp-route-sortColumn="Id"
+                       asp-route-sortOrder="desc"
+                       style="text-decoration:none">
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
 
                 <th>
                     <a asp-page="/ViewModels/CustomerView"
-                   asp-route-sortColumn="Name"
-                   asp-route-sortOrder="asc"
-                   style="text-decoration:none">
+                       asp-route-sortColumn="Name"
+                       asp-route-sortOrder="asc"
+                       style="text-decoration:none">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     Name
                     <a asp-page="/ViewModels/CustomerView"
-                   asp-route-sortColumn="Name"
-                   asp-route-sortOrder="desc"
-                   style="text-decoration:none">
+                       asp-route-sortColumn="Name"
+                       asp-route-sortOrder="desc"
+                       style="text-decoration:none">
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
 
                 <th>
                     <a asp-page="/ViewModels/CustomerView"
-                   asp-route-sortColumn="Country"
-                   asp-route-sortOrder="asc"
-                   style="text-decoration:none">
+                       asp-route-sortColumn="Country"
+                       asp-route-sortOrder="asc"
+                       style="text-decoration:none">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     Country
                     <a asp-page="/ViewModels/CustomerView"
-                   asp-route-sortColumn="Country"
-                   asp-route-sortOrder="desc"
-                   style="text-decoration:none">
+                       asp-route-sortColumn="Country"
+                       asp-route-sortOrder="desc"
+                       style="text-decoration:none">
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
 
                 <th>
                     <a asp-page="/ViewModels/CustomerView"
-                   asp-route-sortColumn="City"
-                   asp-route-sortOrder="asc"
-                   style="text-decoration:none">
+                       asp-route-sortColumn="City"
+                       asp-route-sortOrder="asc"
+                       style="text-decoration:none">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     City
                     <a asp-page="/ViewModels/CustomerView"
-                   asp-route-sortColumn="City"
-                   asp-route-sortOrder="desc"
-                   style="text-decoration:none">
+                       asp-route-sortColumn="City"
+                       asp-route-sortOrder="desc"
+                       style="text-decoration:none">
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
@@ -105,11 +105,11 @@
                     {
                         <td>
                             <a class="btn btn-secondary"
-                               asp-page="/ViewModels/CustomerView" asp-route-CustomerId="@Model.CustomerId"
-                               asp-route-q="@Model.Q"
-                               asp-route-sortColumn="@Model.SortColumn"
-                               asp-route-sortOrder="@Model.SortOrder"
-                               asp-route-pageNo="@(Model.CurrentPage-1)">
+                       asp-page="/ViewModels/CustomerView" asp-route-CustomerId="@Model.CustomerId"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="@Model.SortColumn"
+                       asp-route-sortOrder="@Model.SortOrder"
+                       asp-route-pageNo="@(Model.CurrentPage-1)">
                                 Prev
                             </a>
                         </td>
@@ -125,11 +125,11 @@
                     {
                         <td>
                             <a class="btn btn-secondary"
-                               asp-page="/ViewModels/CustomerView" asp-route-CustomerId="@Model.CustomerId"
-                               asp-route-q="@Model.Q"
-                               asp-route-sortColumn="@Model.SortColumn"
-                               asp-route-sortOrder="@Model.SortOrder"
-                               asp-route-pageNo="@(Model.CurrentPage+1)">
+                       asp-page="/ViewModels/CustomerView" asp-route-CustomerId="@Model.CustomerId"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="@Model.SortColumn"
+                       asp-route-sortOrder="@Model.SortOrder"
+                       asp-route-pageNo="@(Model.CurrentPage+1)">
                                 Next
                             </a>
                         </td>
@@ -140,4 +140,4 @@
     </table>
 
     <h3 style="display: flex; justify-content: center;">Page @(Model.CurrentPage)</h3>
-}
+</div>

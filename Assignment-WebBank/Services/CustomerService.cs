@@ -19,9 +19,9 @@ namespace Assignment_WebBank.Services
         public CustomerModel GetCustomerCard(int customerId)
         {
             var customerAccount = _dbContext.Customers
-        .Join(_dbContext.Accounts, c => c.CustomerId, a => a.AccountId, (c, a) => new { Customer = c, Account = a })
-        .Where(ca => ca.Customer.CustomerId == customerId)
-        .First();
+            .Join(_dbContext.Accounts, c => c.CustomerId, a => a.AccountId, (c, a) => new { Customer = c, Account = a })
+            .Where(ca => ca.Customer.CustomerId == customerId)
+            .First();
 
             if (customerAccount == null)
             {
@@ -44,16 +44,11 @@ namespace Assignment_WebBank.Services
                 Email = customerAccount.Customer.Emailaddress
 
             };
-
             return customerModel;
-
-            
         }
 
         public List<CustomerModel> GetCustomers(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
         {
-            if (pageNo == 0) {pageNo = 1;}
-                
             if (string.IsNullOrEmpty(sortOrder))
                 sortOrder = "asc";
             if (string.IsNullOrEmpty(sortColumn))
