@@ -11,6 +11,13 @@ body {
   background: #141414;
 }
 
+td{
+    text-align: center;
+}
+th {
+    text-align: center;
+}
+
 #main {
     color: white;
     background: #141414;

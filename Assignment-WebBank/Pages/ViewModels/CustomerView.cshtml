@@ -98,7 +98,7 @@
                         <td>@customer.Name</td>
                         <td>@customer.Country</td>
                         <td>@customer.City</td>
-                        <td><a asp-page="/ViewModel/SwedenView" asp-route-id="@customer.CustomerId" class="btn btn-danger" style="background-color: #cc1616;">View</a></td>
+                        <td><a asp-page="/ViewModels/CustomerCardView" asp-route-customerId="@customer.CustomerId" class="btn btn-danger redbuttonhover">View Details</a></td>
                     </tr>
                 }
 
