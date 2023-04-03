@@ -85,10 +85,10 @@ namespace Assignment_WebBank.Services
                 else if (sortOrder == "desc")
                     query = query.OrderByDescending(s => s.City);
 
-            var firstItemIndex = (pageNo - 1) * 5; // 5 är page storlek
+            var firstItemIndex = (pageNo - 1) * 50; // 5 är page storlek
 
             query = query.Skip(firstItemIndex);
-            query = query.Take(5); // 5 är page storlek
+            query = query.Take(50); // 5 är page storlek
 
             return query.Select(c => new CustomerModel
             {

@@ -1,9 +1,13 @@
 using Assignment_WebBank.Model;
 using Assignment_WebBank.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 
 namespace Assignment_WebBank.Pages.ViewModels
 {
+    [Authorize(Roles = "Admin")]
+
     public class CustomerViewModel : PageModel
     {
         private readonly ICustomerService _customerService;

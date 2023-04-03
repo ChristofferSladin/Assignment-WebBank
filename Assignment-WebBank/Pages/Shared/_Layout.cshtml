@@ -67,7 +67,10 @@
                         <li><a href="#">Drop Down 4</a></li>
                     </ul>
                 </li>
-                <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/CustomerView">Customers</a></li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/CustomerView">Customers</a></li>
+                }
                 <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/Contact">Contact Us</a></li>
                 <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/About">About Us</a></li>
                 <li><partial name="_LoginPartial" /></li>
