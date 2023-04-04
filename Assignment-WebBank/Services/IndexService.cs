@@ -4,6 +4,7 @@ using Assignment_WebBank.Model;
 using Assignment_WebBank.Pages.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Metrics;
+using System.Linq;
 
 namespace Assignment_WebBank.Services
 {
@@ -38,33 +39,61 @@ namespace Assignment_WebBank.Services
 
             return customerAccounts;
         }
+
         
-        public List<IndexModelProps> CountryTotBalanceAndTotAccount()
-        {
-            var countryList = new List<string>() { "Sweden", "Norway", "Denmark", "Finland" };
-
-            var indexModelPropsList = new List<IndexModelProps>();
-
-            foreach (var country in countryList)
+            public List<IndexModelProps> CountryTotBalanceAndTotAccount()
             {
-                var indexModelProps = _dbContext.Customers
-                    .Where(c => c.Country == country)
-                    .Join(_dbContext.Accounts, c => c.CustomerId, a => a.AccountId, (c, a) => new { Customer = c, Account = a })
-                    .GroupBy(ca => ca.Customer.Country)
-                    .Select(group => new IndexModelProps
-                    {
-                        Country = group.Key,
-                        TotalBalance = group.Sum(ca => ca.Account.Balance),
-                        AccountCount = group.Count()
-                    })
-                    .FirstOrDefault();
+                var listOfCountries = new List<string>() { "Sweden", "Norway", "Denmark", "Finland" };
+                var countriesList = new List<IndexModelProps>();
 
-                if (indexModelProps != null)
+                foreach (var country in listOfCountries)
                 {
-                    indexModelPropsList.Add(indexModelProps);
+                    var countries = _dbContext.Customers
+                        .Where(c => c.Country == country)
+                        .Join(_dbContext.Dispositions, c => c.CustomerId, d => d.CustomerId, (c, d) => new { Customer = c, Disposition = d })
+                        .Join(_dbContext.Accounts, cd => cd.Disposition.AccountId, a => a.AccountId, (cd, a) => new { CustomerDisposition = cd, Account = a })
+                        .GroupBy(cda => cda.CustomerDisposition.Customer.Country)
+                        .Select(group => new IndexModelProps
+                        {
+                            Country = group.Key,
+                            AccountCount = group.Select(cda => cda.CustomerDisposition.Customer.CustomerId).Distinct().Count(),
+                            CustomerCount = group.Select(cda => cda.Account.AccountId).Distinct().Count(),
+                            TotalBalance = group.Sum(cda => cda.Account.Balance),
+                        })
+                        .FirstOrDefault();
+
+                    if (countries != null)
+                    {
+                        countriesList.Add(countries);
+                    }
                 }
+                return countriesList;
             }
-            return indexModelPropsList;
-        }
+            //var countryList = new List<string>() { "Sweden", "Norway", "Denmark", "Finland" };
+
+            //var indexModelPropsList = new List<IndexModelProps>();
+
+            //foreach (var country in countryList)
+            //{
+            //    var customers = _dbContext.Customers.Where(c => c.Country == country).ToList();
+            //    var customerIds = customers.Select(c => c.CustomerId).ToList();
+
+            //    var dispositions = _dbContext.Dispositions.Where(d => customerIds.Contains(d.CustomerId)).ToList();
+
+            //    var accounts = _dbContext.Accounts.Where(a => dispositions.Any(d => d.AccountId == a.AccountId)).ToList();
+
+            //    var indexModelProps = new IndexModelProps
+            //    {
+            //        Country = country,
+            //        TotalBalance = accounts.Sum(a => a.Balance),
+            //        AccountCount = accounts.Count(),
+            //        CustomerCount = customers.Count()
+            //    };
+
+            //    indexModelPropsList.Add(indexModelProps);
+            //}
+
+            //return indexModelPropsList;
+
     }
 }
