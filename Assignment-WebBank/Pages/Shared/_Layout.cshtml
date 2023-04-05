@@ -67,7 +67,7 @@
                         <li><a href="#">Drop Down 4</a></li>
                     </ul>
                 </li>
-                @if (User.IsInRole("Admin"))
+                @if (User.IsInRole("Admin") || User.IsInRole("Cashier"))
                 {
                     <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/CustomerView">Customers</a></li>
                 }

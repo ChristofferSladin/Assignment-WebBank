@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Assignment_WebBank.Pages.ViewModels
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Cashier")]
 
     public class CustomerViewModel : PageModel
     {
