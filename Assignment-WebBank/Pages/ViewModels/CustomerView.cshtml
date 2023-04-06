@@ -84,6 +84,7 @@
                 </th>
 
                 <th></th>
+                
             </tr>
         </thead>
         <tbody>
@@ -96,7 +97,10 @@
                         <td>@customer.Name</td>
                         <td>@customer.Country</td>
                         <td>@customer.City</td>
-                        <td><a asp-page="/ViewModels/CustomerCardView" asp-route-customerId="@customer.CustomerId" class="btn-lines">View Details</a></td>
+                        <td><a asp-page="/ViewModels/CustomerCardView" asp-route-customerId="@customer.CustomerId" class="btn-lines">View Details</a>
+                            <a asp-page="/ViewModels/TransactionView" asp-route-accountId="@customer.CustomerId" class="btn-lines">Transactions</a>
+                        </td>
+                        
                     </tr>
                 }
 

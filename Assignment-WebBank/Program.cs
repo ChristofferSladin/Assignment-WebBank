@@ -29,6 +29,9 @@ builder.Services.AddTransient<IIndexService, IndexService>();
 // Lägg till min SupplierService
 builder.Services.AddTransient<ICustomerService, CustomerService>();
 
+//Lägg till min TransactionService
+builder.Services.AddTransient<ITransactionService, TransactionService>();
+
 
 
 var app = builder.Build();
