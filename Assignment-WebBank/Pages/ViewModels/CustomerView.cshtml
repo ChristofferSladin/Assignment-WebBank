@@ -9,12 +9,11 @@
 
     <div class="d-flex justify-content-center" style="padding-top: 30px; padding-bottom: 30px;">
         <form method="get">
-            <input asp-for="@Model.Q" />
+            <input placeholder="Search" asp-for="@Model.Q" />
             <input type="hidden" asp-for="@Model.CustomerId" />
             <input type="submit" value="Search" class="redbuttonhover" />
         </form>
     </div>
-
 
     <table class="table table-#141414" style="color: white;">
         <thead>
@@ -34,7 +33,6 @@
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
-
                 <th>
                     <a asp-page="/ViewModels/CustomerView"
                        asp-route-sortColumn="Name"
@@ -50,7 +48,6 @@
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
-
                 <th>
                     <a asp-page="/ViewModels/CustomerView"
                        asp-route-sortColumn="Country"
@@ -66,7 +63,6 @@
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
-
                 <th>
                     <a asp-page="/ViewModels/CustomerView"
                        asp-route-sortColumn="City"
@@ -82,34 +78,34 @@
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
-
                 <th></th>
-                
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @if (Model.Customers != null)
             {
-                @foreach (var customer in Model.Customers)
+                @foreach (var customer in Model.Customers.Results)
                 {
                     <tr>
                         <td>@customer.CustomerId</td>
                         <td>@customer.Name</td>
                         <td>@customer.Country</td>
                         <td>@customer.City</td>
-                        <td><a asp-page="/ViewModels/CustomerCardView" asp-route-customerId="@customer.CustomerId" class="btn-lines">View Details</a>
+                        <td>
+                            <a asp-page="/ViewModels/CustomerCardView" asp-route-customerId="@customer.CustomerId" class="btn-lines">View Details</a>
                             <a asp-page="/ViewModels/TransactionView" asp-route-accountId="@customer.CustomerId" class="btn-lines">Transactions</a>
                         </td>
                         
                     </tr>
                 }
-
                 <tr>
                     @if (Model.CurrentPage > 1)
                     {
                         <td>
                             <a class="btn btn-secondary"
-                       asp-page="/ViewModels/CustomerView" asp-route-CustomerId="@Model.CustomerId"
+                       asp-page="/ViewModels/CustomerView" 
+                       asp-route-CustomerId="@Model.CustomerId"
                        asp-route-q="@Model.Q"
                        asp-route-sortColumn="@Model.SortColumn"
                        asp-route-sortOrder="@Model.SortOrder"
@@ -118,18 +114,37 @@
                             </a>
                         </td>
                     }
-                    else
-                    {
-                        <td></td>
-                    }
                     <td></td>
                     <td></td>
+                    <td colspan="2">
+                        @for (int i = 1; i <= Model.PageCount; i++)
+                        {
+                            string activeLink = "btn-secondary";
+                            if (i == Model.CurrentPage)
+                            {
+                                activeLink = "redbuttonhover";
+                            }
+
+
+                            <a class="btn @activeLink"
+                       asp-page="/ViewModels/CustomerView" 
+                       asp-route-CustomerId="@Model.CustomerId"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="@Model.SortColumn"
+                       asp-route-sortOrder="@Model.SortOrder"
+                       asp-route-pageNo="@i">
+                                @i
+                            </a>
+                        }
+                    </td>
                     <td></td>
-                    @if (Model.CurrentPage >= 0)
+                    <td></td>
+                    @if (Model.CurrentPage != Model.PageCount)
                     {
                         <td>
                             <a class="btn btn-secondary"
-                       asp-page="/ViewModels/CustomerView" asp-route-CustomerId="@Model.CustomerId"
+                       asp-page="/ViewModels/CustomerView" 
+                       asp-route-CustomerId="@Model.CustomerId"
                        asp-route-q="@Model.Q"
                        asp-route-sortColumn="@Model.SortColumn"
                        asp-route-sortOrder="@Model.SortOrder"
@@ -143,5 +158,6 @@
         </tbody>
     </table>
 
-    <h3 style="display: flex; justify-content: center;">Page @(Model.CurrentPage)</h3>
+    <h3 style="text-align: center;">Page @Model.CurrentPage of @Model.PageCount   </h3>
+
 </div>

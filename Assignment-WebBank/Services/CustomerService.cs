@@ -1,4 +1,5 @@
 ﻿using Assignment_WebBank.BankAppData;
+using Assignment_WebBank.Infrastructure.Paging;
 using Assignment_WebBank.Model;
 using Assignment_WebBank.Pages.ViewModels;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -47,7 +48,7 @@ namespace Assignment_WebBank.Services
             return customerModel;
         }
 
-        public List<CustomerModel> GetCustomers(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
+        public PagedResult<CustomerModel> GetCustomers(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
         {
             if (string.IsNullOrEmpty(sortOrder))
                 sortOrder = "asc";
@@ -85,18 +86,33 @@ namespace Assignment_WebBank.Services
                 else if (sortOrder == "desc")
                     query = query.OrderByDescending(s => s.City);
 
-            var firstItemIndex = (pageNo - 1) * 50; // 5 är page storlek
+            //var firstItemIndex = (pageNo - 1) * 50; // 5 är page storlek
 
-            query = query.Skip(firstItemIndex);
-            query = query.Take(50); // 5 är page storlek
+            //query = query.Skip(firstItemIndex);
+            //query = query.Take(50); // 5 är page storlek
 
-            return query.Select(c => new CustomerModel
+            var result = query.GetPaged(pageNo, 50);
+
+            
+
+            var customerModelList = result.Results.Select(p => new CustomerModel
+           {
+               CustomerId = p.CustomerId,
+               PersonalNr = p.NationalId,
+               Name = $"{p.Givenname} {p.Surname}",
+               Adress = p.Streetaddress,
+               City = p.City,
+               Country = p.Country,
+           }).ToList();
+
+            return new PagedResult<CustomerModel>
             {
-                CustomerId = c.CustomerId,
-                Name = c.Givenname,
-                Country = c.Country,
-                City = c.City,
-            }).ToList();
+                CurrentPage = result.CurrentPage,
+                PageCount = result.PageCount,
+                PageSize = result.PageSize,
+                RowCount = result.RowCount,
+                Results = customerModelList
+            };
         }
     }
 }
