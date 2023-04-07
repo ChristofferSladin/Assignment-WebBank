@@ -30,7 +30,8 @@ namespace Assignment_WebBank.Services
                     Country = ca.Customer.Country,
                     Balance = ca.Account.Balance,
                     AccountNr = ca.Account.AccountId,
-                    Name = (ca.Customer.Givenname + " " + ca.Customer.Surname),
+                    FirstName = ca.Customer.Givenname,
+                    LastName = ca.Customer.Surname,
                     Adress = ca.Customer.Streetaddress,
                     City = ca.Customer.City,
                     PersonalNr = ca.Customer.NationalId

@@ -19,33 +19,30 @@ namespace Assignment_WebBank.Services
 
         public CustomerModel GetCustomerCard(int customerId)
         {
-            var customerAccount = _dbContext.Customers
-            .Join(_dbContext.Accounts, c => c.CustomerId, a => a.AccountId, (c, a) => new { Customer = c, Account = a })
-            .Where(ca => ca.Customer.CustomerId == customerId)
-            .First();
+            var customer = _dbContext.Customers
+                .Where(c => c.CustomerId == customerId)
+                .Join(_dbContext.Dispositions, c => c.CustomerId, d => d.CustomerId, (c, d) => new { Customer = c, Disposition = d })
+                .Join(_dbContext.Accounts, cd => cd.Disposition.AccountId, a => a.AccountId, (cd, a) => new { CustomerDisposition = cd, Account = a })
+                .GroupBy(cda => cda.CustomerDisposition.Customer.Country)
+                .Select(group => new CustomerModel
+                {
+                    Country = group.Key,
+                    CustomerId = group.Select(cda => cda.CustomerDisposition.Customer.CustomerId).First(),
+                    AccountNr = group.Select(cda => cda.Account.AccountId).First(),
+                    Balance = group.Select(cda => cda.Account.Balance).First(),
+                    FirstName = group.Select(cda => cda.CustomerDisposition.Customer.Givenname).First(),
+                    LastName = group.Select(cda => cda.CustomerDisposition.Customer.Surname).First(),
+                    Adress = group.Select(cda => cda.CustomerDisposition.Customer.Streetaddress).First(),
+                    City = group.Select(cda => cda.CustomerDisposition.Customer.City).First(),
+                    PersonalNr = group.Select(cda => cda.CustomerDisposition.Customer.NationalId).First(),
+                    Gender = group.Select(cda => cda.CustomerDisposition.Customer.Gender).First(),
+                    BirthDay = group.Select(cda => cda.CustomerDisposition.Customer.Birthday).First(),
+                    PhoneNumber = group.Select(cda => cda.CustomerDisposition.Customer.Telephonenumber).First(),
+                    Email = group.Select(cda => cda.CustomerDisposition.Customer.Emailaddress).First()
+                })
+                .FirstOrDefault();
 
-            if (customerAccount == null)
-            {
-                return null;
-            }
-
-            var customerModel = new CustomerModel
-            {
-                CustomerId = customerAccount.Customer.CustomerId,
-                Country = customerAccount.Customer.Country,
-                Balance = customerAccount.Account.Balance,
-                AccountNr = customerAccount.Account.AccountId,
-                Name = $"{customerAccount.Customer.Givenname} {customerAccount.Customer.Surname}",
-                Adress = customerAccount.Customer.Streetaddress,
-                City = customerAccount.Customer.City,
-                PersonalNr = customerAccount.Customer.NationalId,
-                Gender = customerAccount.Customer.Gender,
-                BirthDay = customerAccount.Customer.Birthday?.ToString("dd-MM-yyyy"),
-                PhoneNumber = customerAccount.Customer.Telephonenumber,
-                Email = customerAccount.Customer.Emailaddress
-
-            };
-            return customerModel;
+            return customer;
         }
 
         public PagedResult<CustomerModel> GetCustomers(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
@@ -86,20 +83,14 @@ namespace Assignment_WebBank.Services
                 else if (sortOrder == "desc")
                     query = query.OrderByDescending(s => s.City);
 
-            //var firstItemIndex = (pageNo - 1) * 50; // 5 är page storlek
-
-            //query = query.Skip(firstItemIndex);
-            //query = query.Take(50); // 5 är page storlek
-
             var result = query.GetPaged(pageNo, 50);
-
-            
 
             var customerModelList = result.Results.Select(p => new CustomerModel
            {
                CustomerId = p.CustomerId,
                PersonalNr = p.NationalId,
-               Name = $"{p.Givenname} {p.Surname}",
+               FirstName = p.Givenname,
+               LastName = p.Surname,
                Adress = p.Streetaddress,
                City = p.City,
                Country = p.Country,
