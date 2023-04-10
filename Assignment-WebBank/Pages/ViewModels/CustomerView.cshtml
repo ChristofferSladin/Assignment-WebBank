@@ -94,7 +94,6 @@
                         <td>@customer.City</td>
                         <td>
                             <a asp-page="/ViewModels/CustomerCardView" asp-route-customerId="@customer.CustomerId" class="btn-lines">View Details</a>
-                            <a asp-page="/ViewModels/TransactionView" asp-route-accountId="@customer.CustomerId" class="btn-lines">Transactions</a>
                         </td>
                     </tr>
                 }
@@ -104,7 +103,7 @@
                         <td colspan="2">
                             <a class="btn btn-secondary"
                                asp-page="/ViewModels/CustomerView" 
-                               asp-route-CustomerId="@Model.CustomerId"
+                               asp-route-customerId="@Model.CustomerId"
                                asp-route-q="@Model.Q"
                                asp-route-sortColumn="@Model.SortColumn"
                                asp-route-sortOrder="@Model.SortOrder"
@@ -130,7 +129,7 @@
 
                             <a class="btn @activeLink"
                        asp-page="/ViewModels/CustomerView"
-                       asp-route-CustomerId="@Model.CustomerId"
+                       asp-route-customerId="@Model.CustomerId"
                        asp-route-q="@Model.Q"
                        asp-route-sortColumn="@Model.SortColumn"
                        asp-route-sortOrder="@Model.SortOrder"
@@ -140,7 +139,7 @@
 
                             @if (Model.CurrentPage > 4)
                             {
-                                <span class="btn btn-secondary">...</span>
+                                <span>...</span>
                             }
 
                             @for (int i = Math.Max(Model.CurrentPage - 2, 2); i <= Math.Min(Model.CurrentPage + 2, Model.PageCount - 1); i++)
@@ -153,7 +152,7 @@
 
                                 <a class="btn @activeLink"
                        asp-page="/ViewModels/CustomerView"
-                       asp-route-CustomerId="@Model.CustomerId"
+                       asp-route-customerId="@Model.CustomerId"
                        asp-route-q="@Model.Q"
                        asp-route-sortColumn="@Model.SortColumn"
                        asp-route-sortOrder="@Model.SortOrder"
@@ -164,7 +163,7 @@
 
                             @if (Model.CurrentPage < Model.PageCount - 3)
                             {
-                                <span class="btn btn-secondary">...</span>
+                                <span>...</span>
                             }
 
                             activeLink = "btn-secondary";
@@ -175,7 +174,7 @@
 
                             <a class="btn @activeLink"
                        asp-page="/ViewModels/CustomerView"
-                       asp-route-CustomerId="@Model.CustomerId"
+                       asp-route-customerId="@Model.CustomerId"
                        asp-route-q="@Model.Q"
                        asp-route-sortColumn="@Model.SortColumn"
                        asp-route-sortOrder="@Model.SortOrder"
@@ -190,7 +189,7 @@
                         <td>
                             <a class="btn btn-secondary"
                                asp-page="/ViewModels/CustomerView" 
-                               asp-route-CustomerId="@Model.CustomerId"
+                               asp-route-customerId="@Model.CustomerId"
                                asp-route-q="@Model.Q"
                                asp-route-sortColumn="@Model.SortColumn"
                                asp-route-sortOrder="@Model.SortOrder"

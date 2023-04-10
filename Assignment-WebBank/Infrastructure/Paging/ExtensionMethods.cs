@@ -2,8 +2,7 @@
 {
     public static class ExtensionMethods
     {
-        public static PagedResult<T> GetPaged<T>(this IQueryable<T> query,
-                                         int page, int pageSize) where T : class
+        public static PagedResult<T> GetPaged<T>(this IQueryable<T> query,int page, int pageSize) where T : class
         {
             var result = new PagedResult<T>();
             result.CurrentPage = page;

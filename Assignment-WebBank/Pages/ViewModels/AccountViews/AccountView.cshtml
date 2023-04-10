@@ -1,0 +1,37 @@
+﻿@page
+@model Assignment_WebBank.Pages.ViewModels.AccountViews.AccountViewModel
+@{
+}
+
+<div class="card">
+    <div class="card-header">
+        
+        <h3 class="d-flex justify-content-center mt-5">Account</h3>
+
+        <div class="d-flex justify-content-center m-t-25">
+            <a asp-page="/ViewModels/WithdrawView" asp-route-accountId="@Model.OneAccount.AccountId"><i class="btn-lines">Withdraw</i></a>
+            <a asp-page="/ViewModels/DepositView" asp-route-accountId="@Model.OneAccount.AccountId"><i class="btn-lines">Deposit</i></a>
+        </div>
+        
+    </div>
+    <div class="card-body" data-aos="fade-up">
+        <table class="table">
+            <tr style="color: #cc1616;">
+               <th>Account ID</th>
+                <th>Balance</th>
+                <th>Date</th>
+            </tr>
+            @foreach (var acc in Model.Accounts)
+            {
+                <tr style="color: white;">
+                    <td>@acc.AccountId</td>
+                    <td>@acc.Balance</td>
+                    <td>@acc.CreatedDate</td>
+                </tr>
+            }
+        </table>
+        <div class="d-flex justify-content-center">
+            <a asp-page="/ViewModels/CustomerCardView" asp-route-customerId="@Model.AccountId" class="btn-lines">BACK</a>
+            </div>
+    </div>
+</div>

@@ -13,9 +13,11 @@ namespace Assignment_WebBank.Services
             AccountNotFound
         }
 
-        List<TransactionsModel> GetAccount(int accountId);
+        List<TransactionsModel> GetTransactions(int accountId);
         ErrorCode Withdraw(int accountId, decimal amount);
         ErrorCode Deposit(int accountId, decimal amount);
+        List<AccountModel> GetAccounts(int accountId);
+        AccountModel GetOneAccount(int accountId);
 
     }
 }

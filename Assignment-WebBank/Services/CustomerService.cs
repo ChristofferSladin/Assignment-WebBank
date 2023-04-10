@@ -17,6 +17,7 @@ namespace Assignment_WebBank.Services
             _dbContext = dbContext;
         }
 
+
         public CustomerModel GetCustomerCard(int customerId)
         {
             var customer = _dbContext.Customers
@@ -43,6 +44,22 @@ namespace Assignment_WebBank.Services
                 .FirstOrDefault();
 
             return customer;
+        }
+
+        public List<CustomerModel> GetOnlyCustomers()
+        {
+            List<CustomerModel> customerList = new List<CustomerModel>();
+
+            return customerList = _dbContext.Customers.Select(p => new CustomerModel
+            {
+                CustomerId = p.CustomerId,
+                PersonalNr = p.NationalId,
+                FirstName = p.Givenname,
+                LastName = p.Surname,
+                Adress = p.Streetaddress,
+                City = p.City,
+                Country = p.Country,
+            }).ToList();
         }
 
         public PagedResult<CustomerModel> GetCustomers(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
@@ -86,15 +103,15 @@ namespace Assignment_WebBank.Services
             var result = query.GetPaged(pageNo, 50);
 
             var customerModelList = result.Results.Select(p => new CustomerModel
-           {
-               CustomerId = p.CustomerId,
-               PersonalNr = p.NationalId,
-               FirstName = p.Givenname,
-               LastName = p.Surname,
-               Adress = p.Streetaddress,
-               City = p.City,
-               Country = p.Country,
-           }).ToList();
+            {
+                CustomerId = p.CustomerId,
+                PersonalNr = p.NationalId,
+                FirstName = p.Givenname,
+                LastName = p.Surname,
+                Adress = p.Streetaddress,
+                City = p.City,
+                Country = p.Country,
+            }).ToList();
 
             return new PagedResult<CustomerModel>
             {

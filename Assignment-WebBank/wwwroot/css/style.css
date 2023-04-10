@@ -3,6 +3,7 @@
 # General
 --------------------------------------------------------------*/
 .btn-lines {
+    text-align: center;
     background: #cc1616;
     color: black;
     border: none;
@@ -10,7 +11,7 @@
     display: inline-block;
     font-size: 15px;
     font-weight: 600;
-    width: 140px;
+    width: 150px;
     text-transform: uppercase;
     cursor: pointer;
     transform: skew(-21deg);

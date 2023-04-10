@@ -7,6 +7,7 @@ namespace Assignment_WebBank.Services
 {
     public interface ICustomerService
     {
+        List<CustomerModel> GetOnlyCustomers();
         PagedResult<CustomerModel> GetCustomers(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo);
         CustomerModel GetCustomerCard(int customerId);
     }

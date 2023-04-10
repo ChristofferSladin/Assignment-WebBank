@@ -25,7 +25,7 @@ namespace Assignment_WebBank.Pages.ViewModels
         public int CustomerId { get; set; }
         public int PageCount { get; set; }
 
-        public void OnGet(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
+        public void OnGet(string sortColumn, string sortOrder, string q, int customerId, int pageNo)
         {
             if (pageNo == 0) { pageNo = 1; }
 
@@ -35,10 +35,8 @@ namespace Assignment_WebBank.Pages.ViewModels
             SortOrder = sortOrder;
             Q = q;
             CurrentPage = pageNo;
-            this.CustomerId = CustomerId;
+            CustomerId = customerId;
             PageCount = Customers.PageCount;
-
-            
         }
     }
 }

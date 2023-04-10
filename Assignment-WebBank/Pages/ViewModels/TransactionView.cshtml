@@ -11,17 +11,26 @@
 <div class="card">
     <div class="card-header">
         <h1 class="d-flex justify-content-center">Total Transactions: @totalTrans</h1>
-        <div class="d-flex justify-content-end"><a asp-page="/ViewModels/CustomerView" class="btn-lines">BACK</a></div>
+        
+        @*<div class="d-flex justify-content-center">
+            
+            <a asp-page="/ViewModels/WithdrawView" asp-route-accountId="@Model.Transactions.First().AccountId"><i class="btn-lines">Withdraw</i></a>
+            <a asp-page="/ViewModels/DepositView" asp-route-accountId="@Model.Transactions.First().AccountId"><i class="btn-lines">Deposit</i></a>
+            <a asp-page="/ViewModels/AccountViews/AccountView" asp-route-accountId="@Model.Transactions.First().AccountId"><i class="btn-lines">Accounts</i></a>
+        </div>*@
+        <h3 class="d-flex justify-content-center m-5">History</h3>
+        
+        <div class="d-flex justify-content-center"><a asp-page="/ViewModels/CustomerCardView" asp-route-customerId="@Model.Customer.CustomerId" class="btn-lines">BACK</a></div>
+        
     </div>
-    <div class="card-body">
+    <div class="card-body" data-aos="fade-up">
         <table class="table">
-            <tr style="color: white;">
+            <tr style="color: #cc1616;">
                 <th>Date</th>
                 <th>Transaction Id</th>
                 <th>Operation</th>
                 <th>Amount</th>
                 <th>Balance</th>
-                <th>Withdraw / Deposit</th>
             </tr>
             @foreach (var acc in Model.Transactions)
             {
@@ -29,16 +38,19 @@
                     <td>@acc.Date</td>
                     <td>@acc.TransactionId</td>
                     <td>@acc.Operation</td>
-                    <td>@acc.Amount</td>
+                    @if (acc.Amount.ToString().Contains("-"))
+                    {
+                        <td style="color: red;">@acc.Amount</td>
+                    }
+                    else
+                    {
+                        <td style="color: lawngreen;">@acc.Amount</td>
+                    }
+                    
                     <td>@acc.Balance</td>
-                    <td>
-                        <a asp-page="/ViewModels/WithdrawView" asp-route-accountId="@acc.AccountId"><i class="btn-lines">Withdraw</i></a>
-                        <a asp-page="/ViewModels/DepositView" asp-route-accountId="@acc.AccountId"><i class="btn-lines">Deposit</i></a>
-                    </td>
                 </tr>
             }
         </table>
-        <div class="d-flex justify-content-end"><a asp-page="/ViewModels/CustomerView" class="btn-lines">BACK</a></div>
     </div>
 </div>
 

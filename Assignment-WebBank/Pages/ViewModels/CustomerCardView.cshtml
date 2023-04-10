@@ -44,7 +44,12 @@
             <p class="m-t-15 text-muted">Email: @customer.Email </p>
             <p class="m-t-15 text-muted">Phone: @customer.PhoneNumber </p>
             <hr>
-            <a asp-page="/ViewModels/CustomerView" class="btn-lines">BACK</a>
+            <div>
+                <a asp-page="/ViewModels/AccountViews/AccountView" asp-route-accountId="@customer.CustomerId" class="btn-lines">Account</a>
+                <a asp-page="/ViewModels/TransactionView" asp-route-customerId="@customer.CustomerId" asp-route-accountId="@customer.CustomerId" class="btn-lines">History</a>
+                <a asp-page="/ViewModels/CustomerView" asp-route-customerId="@customer.CustomerId" class="btn-lines">BACK</a>
+            </div>
+            
         </div>
     </div>
 </div>
