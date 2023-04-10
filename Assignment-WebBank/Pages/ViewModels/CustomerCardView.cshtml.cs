@@ -15,8 +15,12 @@ namespace Assignment_WebBank.Pages.ViewModels
             _customerService = customerService;
         }
         public CustomerModel OneCustomerCard { get; set; }
-        public void OnGet(int customerId)
+        public int CustomerId { get; set; }
+        public int AccountId { get; set; }
+        public void OnGet(int customerId, int accountId)
         {
+            AccountId = accountId;
+            CustomerId = customerId;
             OneCustomerCard = _customerService.GetCustomerCard(customerId);
         }
     }

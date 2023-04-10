@@ -1,7 +1,7 @@
 ﻿@page
 @model Assignment_WebBank.Pages.ViewModels.DepositViewModel
 @{
-    
+    var oneCustomerId = Model.OneCustomer.CustomerId;
 }
 <h1>Deposit</h1>
 <form method="post">
@@ -20,5 +20,5 @@
         <input class="form-control" asp-for="Comment" />
         <span class="field-validation-error" asp-validation-for="Comment"></span>
     </div>
-    <button type="submit" class="btn-lines">Deposit</button>
+    <button asp-page="/ViewModels/CustomerCardView/" asp-route-customerId=" @oneCustomerId" type="submit" class="btn-lines">Deposit</button>
 </form>

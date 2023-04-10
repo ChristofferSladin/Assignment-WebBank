@@ -21,13 +21,9 @@ namespace Assignment_WebBank.Services
 
         public ErrorCode Withdraw(int accountId, decimal amount)
         {
-            var accountDb = _dbContext.Transactions
+            var accountDb = _dbContext.Accounts
                 .Where(a => a.AccountId == accountId)
-                .Select(a => new Account
-                {
-                    Balance = a.Balance - amount
-                })
-                .FirstOrDefault();
+                .First();
 
             if (accountDb == null)
             {
@@ -60,11 +56,6 @@ namespace Assignment_WebBank.Services
             {
                 return ErrorCode.AccountNotFound;
             }
-
-            //if (accountDb.Balance < amount)
-            //{
-            //    return ErrorCode.BalanceTooLow;
-            //}
 
             if (amount < 100 || amount > 10000)
             {

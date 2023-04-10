@@ -12,10 +12,12 @@ namespace Assignment_WebBank.Pages.ViewModels
     public class DepositViewModel : PageModel
     {
         private readonly ITransactionService _transactionService;
+        private readonly ICustomerService _customerService;
 
-        public DepositViewModel(ITransactionService transactionService)
+        public DepositViewModel(ITransactionService transactionService, ICustomerService customerService)
         {
             _transactionService = transactionService;
+            _customerService = customerService;
         }
 
         [Required]
@@ -30,11 +32,12 @@ namespace Assignment_WebBank.Pages.ViewModels
         public decimal Balance { get; set; }
 
         public List<TransactionsModel> Transactions { get; set; }
-
+        public CustomerModel OneCustomer { get; set; }
         public List<AccountModel> Accounts { get; set; }
         public AccountModel OneAccount { get; set; }
-        public void OnGet(int accountId)
+        public void OnGet(int accountId, int customerId)
         {
+            OneCustomer = _customerService.GetCustomerCard(customerId);
             Accounts = _transactionService.GetAccounts(accountId);
             Transactions = _transactionService.GetTransactions(accountId);
             OneAccount = _transactionService.GetOneAccount(accountId);
@@ -45,27 +48,11 @@ namespace Assignment_WebBank.Pages.ViewModels
         {
             var status = _transactionService.Deposit(accountId, Amount);
 
-            
-                if (status == ErrorCode.OK)
-                {
-                    
-                    return RedirectToPage("../ViewModels/CustomerView");
-                }
+            if (status == ErrorCode.OK) { return RedirectToPage("../ViewModels/CustomerView/"); }
 
-                //if (status == ErrorCode.BalanceTooLow)
-                //{
-                //    ModelState.AddModelError("Amount", "You don't have that much money!");
-                //}
+            if (status == ErrorCode.IncorrectAmount) { ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!"); }
 
-                if (status == ErrorCode.IncorrectAmount)
-                {
-                    ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!");
-                }
-                if (DepositDate.AddHours(1) < DateTime.Now)
-                {
-                    ModelState.AddModelError("DepositDate", "Cannot Deposit money in the past!");
-                }
-            
+            if (DepositDate.AddHours(1) < DateTime.Now) { ModelState.AddModelError("DepositDate", "Cannot Deposit money in the past!"); }
 
             return Page();
         }
