@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Assignment_WebBank.Pages.ViewModels
+namespace Assignment_WebBank.Pages.ViewModels.AccountViews
 {
     public class TransactionViewModel : PageModel
     {

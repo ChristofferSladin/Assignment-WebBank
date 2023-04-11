@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data;
 
-namespace Assignment_WebBank.Pages.ViewModels
+namespace Assignment_WebBank.Pages.ViewModels.CustomerViews
 {
     [Authorize(Roles = "Admin, Cashier")]
 

@@ -13,7 +13,6 @@
     </div>
 
     <div data-aos="fade-up" class="container" style="margin-bottom: 150px; display: flex; justify-content: center; align-items: center; position: absolute; bottom: 0; left: 0; right: 0;">
-
         <div class="row">
             @foreach (var country in new[] { "Sweden", "Norway", "Denmark", "Finland" })
             {
@@ -28,113 +27,16 @@
                                 <div class="card-text text-white"><i class="fas fa-receipt mr-2" style="color: #cc1616; margin-right: 5px;"></i>@c.AccountCount Accounts</div>
                                 <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="color: #cc1616; margin-right: 5px;"></i>@c.TotalBalance.ToString("C") :-</div>
                             }
-                            
                         </div>
                         <div class="d-flex justify-content-center m-t-15" >
-                            <a asp-area="" asp-page="/ViewModels/@(country)View" asp-route-country="@country" class="btn-lines"><div>Show Top 10</div></a>
+                            <a asp-area="" asp-page="/ViewModels/CustomerViews/@(country)View" asp-route-country="@country" class="btn-lines"><div>Show Top 10</div></a>
                         </div>
-
-                        
                     </div>
                 </div>
             }
         </div>
     </div>
-
-
-
 </section>
-
-
-@*<section id="hero" class="d-flex align-items-center" style="height: 1300px;">
-        <div class="container position-relative" data-aos="fade-up" data-aos-delay="500" style="margin-bottom: 300px;">
-            <h1 style="color: #cc1616;">Welcome To Bank Of Scandinavia</h1>
-            <h2>We are here to help You with the financial parts of life</h2>
-            <a href="/" class="btn-get-started scrollto">Get Started</a>
-        </div>
-
-    <div data-aos="fade-up" class="container" style="margin-bottom: 150px; position: absolute; bottom: 0; right: 7%;">
-        <div class="row justify-content-center">
-            <div class="col-md-3">
-                <div class="card text-center" style="background: transparent; border: none;">
-                    <a><img src="~/img/flags/Sweden.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
-                    <div class="card-body" style="background: #141414;">
-                        @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Sweden"))
-                        {
-                            <div class="card-text text-white"><i class="fas fa-globe-americas mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.Country</div>
-                            <div class="card-text text-white"><i class="fas fa-users mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.CustomerCount Customers</div>
-                            <div class="card-text text-white"><i class="fas fa-receipt mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.AccountCount Accounts</div>
-                            <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.TotalBalance.ToString("C") :-</div>
-                        }
-
-                    </div>
-                    <a asp-area="" asp-page="/ViewModels/SwedenView" asp-route-country="Sweden" class="btn btn-danger redbuttonhover"><div>View Top 10</div></a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-center" style="background: transparent; border: none;">
-                    <a><img src="~/img/flags/Norway.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
-                    <div class="card-body" style="background: #141414;">
-                        @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Norway"))
-                        {
-                            <div class="card-text text-white"><i class="fas fa-globe-americas mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.Country</div>
-                            <div class="card-text text-white"><i class="fas fa-users mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.CustomerCount Customers</div>
-                            <div class="card-text text-white"><i class="fas fa-receipt mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.AccountCount Accounts</div>
-                            <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.TotalBalance.ToString("C") :-</div>
-
-                        }
-
-
-                    </div>
-                    <a asp-area="" asp-page="/ViewModels/NorwayView" asp-route-country="Norway" class="btn btn-danger redbuttonhover"><div>View Top 10</div></a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-center" style="background: transparent; border: none;">
-                    <a><img src="~/img/flags/Denmark.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
-                    <div class="card-body" style="background: #141414;">
-                        @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Denmark"))
-                        {
-                            <div class="card-text text-white"><i class="fas fa-globe-americas mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.Country</div>
-                            <div class="card-text text-white"><i class="fas fa-users mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.CustomerCount Customers</div>
-                            <div class="card-text text-white"><i class="fas fa-receipt mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.AccountCount Accounts</div>
-                            <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.TotalBalance.ToString("C") :-</div>
-
-                        }
-
-                    </div>
-                    <a asp-area="" asp-page="/ViewModels/DenmarkView" asp-route-country="Denmark" class="btn btn-danger redbuttonhover"><div>View Top 10</div></a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-center" style="background: transparent; border: none;">
-                    <a><img src="~/img/flags/Finland.png" class="card-img-top" style="height: 200px; width: 200px;"></a>
-                    <div class="card-body" style="background: #141414;">
-                        @foreach (var country in Model.TotBalanceTotAccountCountry.Where(c => c.Country == "Finland"))
-                        {
-                            <div class="card-text text-white"><i class="fas fa-globe-americas mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.Country</div>
-                            <div class="card-text text-white"><i class="fas fa-users mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.CustomerCount Customers</div>
-                            <div class="card-text text-white"><i class="fas fa-receipt mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.AccountCount Accounts</div>
-                            <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="color: #cc1616; margin-right: 5px;"></i>@country.TotalBalance.ToString("C") :-</div>
-
-                        }
-
-                    </div>
-                    <a asp-area="" asp-page="/ViewModels/FinlandView" asp-route-country="Finland" class="btn btn-danger redbuttonhover"><div>View Top 10</div></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-    </section>
-*@
 
 
 

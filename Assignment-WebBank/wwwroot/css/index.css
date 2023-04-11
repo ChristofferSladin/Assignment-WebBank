@@ -1,4 +1,11 @@
-﻿.card-img-top {
+﻿
+
+.header-table{
+    font-size: 25px;
+    color: #cc1616;
+}
+
+.card-img-top {
     transition: transform 0.2s ease-in-out; /* add transition effect */
 }
 

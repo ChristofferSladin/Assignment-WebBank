@@ -3,18 +3,19 @@ using Assignment_WebBank.Model;
 using Assignment_WebBank.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using static Assignment_WebBank.Services.ITransactionService;
 
-namespace Assignment_WebBank.Pages.ViewModels
+namespace Assignment_WebBank.Pages.ViewModels.AccountViews
 {
     [BindProperties]
-    public class DepositViewModel : PageModel
+    public class WithdrawViewModel : PageModel
     {
+
         private readonly ITransactionService _transactionService;
         private readonly ICustomerService _customerService;
-
-        public DepositViewModel(ITransactionService transactionService, ICustomerService customerService)
+        public WithdrawViewModel(ITransactionService transactionService, ICustomerService customerService)
         {
             _transactionService = transactionService;
             _customerService = customerService;
@@ -25,16 +26,17 @@ namespace Assignment_WebBank.Pages.ViewModels
         [MaxLength(250, ErrorMessage = "Must be atleast 5 characters and atmost 250 characters")]
         public string? Comment { get; set; }
 
-        [Required]
+
         [Range(100, 10000, ErrorMessage = "Amount must be atlest 100 and atmost 10000")]
         public decimal Amount { get; set; }
         public DateTime DepositDate { get; set; }
         public decimal Balance { get; set; }
 
-        public List<TransactionsModel> Transactions { get; set; }
         public CustomerModel OneCustomer { get; set; }
+        public List<TransactionsModel> Transactions { get; set; }
         public List<AccountModel> Accounts { get; set; }
         public AccountModel OneAccount { get; set; }
+
         public void OnGet(int accountId, int customerId)
         {
             OneCustomer = _customerService.GetCustomerCard(customerId);
@@ -44,11 +46,16 @@ namespace Assignment_WebBank.Pages.ViewModels
             DepositDate = DateTime.Now;
         }
 
-        public IActionResult OnPost(int accountId)
+        public IActionResult OnPost(int accountId, int customerId)
         {
-            var status = _transactionService.Deposit(accountId, Amount);
+            var status = _transactionService.Withdraw(accountId, Amount);
 
-            if (status == ErrorCode.OK) { return RedirectToPage("../ViewModels/CustomerView/"); }
+            if (status == ErrorCode.OK) 
+            { return RedirectToPage("/ViewModels/AccountViews/AccountView",
+                new { accountId = accountId, customerId = customerId });
+            }
+
+            if (status == ErrorCode.BalanceTooLow) { ModelState.AddModelError("Amount", "You don't have that much money!"); }
 
             if (status == ErrorCode.IncorrectAmount) { ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!"); }
 
@@ -56,5 +63,6 @@ namespace Assignment_WebBank.Pages.ViewModels
 
             return Page();
         }
+
     }
 }

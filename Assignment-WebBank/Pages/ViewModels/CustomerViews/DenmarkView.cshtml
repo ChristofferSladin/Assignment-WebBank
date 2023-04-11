@@ -1,5 +1,5 @@
 ﻿@page
-@model Assignment_WebBank.Pages.ViewModels.DenmarkViewModel
+@model Assignment_WebBank.Pages.ViewModels.CustomerViews.DenmarkViewModel
 @{
 }
 
@@ -9,37 +9,30 @@
 
 
 
-<table class="table" style="color: white;">
-    <thead>
+<table class="table">
+    <thead class="header-table">
         <tr>
             <th>Personal Id</th>
             <th>Name</th>
             <th>Balance</th>
             <th>City</th>
             <th>Adress</th>
-            <th></th>
+
         </tr>
     </thead>
     <tbody>
         @foreach (var a in Model.DenmarkAccounts)
         {
-            <tr>
+            <tr style="color: white;">
                 <td>@a.PersonalNr</td>
                 <td>@a.FirstName @a.LastName</td>
                 <td>@a.Balance</td>
                 <td>@a.City</td>
                 <td>@a.Adress</td>
-                <td></td>
             </tr>
         }
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><a asp-page="/Index" class="btn-lines">BACK</a></td>
-        </tr>
     </tbody>
 </table>
+
+<div class="d-flex justify-content-center my-5"><a asp-page="/Index" class="btn-lines">BACK</a></div>
 

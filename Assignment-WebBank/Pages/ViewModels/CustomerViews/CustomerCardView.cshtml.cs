@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Assignment_WebBank.Pages.ViewModels
+namespace Assignment_WebBank.Pages.ViewModels.CustomerViews
 {
+
     public class CustomerCardViewModel : PageModel
     {
         private readonly ICustomerService _customerService;

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Assignment_WebBank.Pages.ViewModels.AccountViews
 {
+    [BindProperties]
     public class AccountViewModel : PageModel
     {
         private readonly ITransactionService _transactionService;
