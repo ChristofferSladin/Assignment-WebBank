@@ -25,7 +25,7 @@ namespace Assignment_WebBank.Pages.ViewModels
         [MaxLength(250, ErrorMessage = "Must be atleast 5 characters and atmost 250 characters")]
         public string? Comment { get; set; }
 
-
+        [Required]
         [Range(100, 10000, ErrorMessage = "Amount must be atlest 100 and atmost 10000")]
         public decimal Amount { get; set; }
         public DateTime DepositDate { get; set; }
