@@ -19,82 +19,61 @@ namespace Assignment_WebBank.Services
 
         public List<CustomerModel> GetTopTenCustomerAccountsByCountry(string country)
         {
-            var customerAccounts = _dbContext.Customers
-                .Join(_dbContext.Accounts, c => c.CustomerId, a => a.AccountId, (c, a) => new { Customer = c, Account = a })
-                .Where(ca => ca.Customer.Country == country)
-                .OrderByDescending(ca => ca.Account.Balance)
-                .Take(10)
-                .Select(ca => new CustomerModel
+            var top10CustomerInCountryList = _dbContext.Customers
+                .Where(customer => customer.Country == country)
+                .Select(c => new
                 {
-                    CustomerId = ca.Customer.CustomerId,
-                    Country = ca.Customer.Country,
-                    Balance = ca.Account.Balance,
-                    AccountNr = ca.Account.AccountId,
-                    FirstName = ca.Customer.Givenname,
-                    LastName = ca.Customer.Surname,
-                    Adress = ca.Customer.Streetaddress,
-                    City = ca.Customer.City,
-                    PersonalNr = ca.Customer.NationalId
+                    Customer = c,
+                    TotalBalance = _dbContext.Dispositions
+                    .Where(d => d.CustomerId == c.CustomerId)
+                    .Join(_dbContext.Accounts, d => d.AccountId, a => a.AccountId, (d, a) => a.Balance)
+                    .Sum()
                 })
-                .ToList();
+                .OrderByDescending(c => c.TotalBalance)
+                .Take(10)
+                .Select(c => new CustomerModel
+                {
+                    CustomerId = c.Customer.CustomerId,
+                    FirstName = c.Customer.Givenname,
+                    LastName = c.Customer.Surname,
+                    Balance = c.TotalBalance,
+                    Country = c.Customer.Country,
+                    Adress = c.Customer.Streetaddress,
+                    City = c.Customer.City,
+                    PersonalNr = c.Customer.NationalId
 
-            return customerAccounts;
+                }).ToList();
+
+            return top10CustomerInCountryList;
         }
 
-        
-            public List<IndexModelProps> CountryTotBalanceAndTotAccount()
+        public List<IndexModelProps> CountryTotBalanceAndTotAccount()
+        {
+            var listOfCountries = new List<string>() { "Sweden", "Norway", "Denmark", "Finland" };
+            var countriesList = new List<IndexModelProps>();
+
+            foreach (var country in listOfCountries)
             {
-                var listOfCountries = new List<string>() { "Sweden", "Norway", "Denmark", "Finland" };
-                var countriesList = new List<IndexModelProps>();
-
-                foreach (var country in listOfCountries)
-                {
-                    var countries = _dbContext.Customers
-                        .Where(c => c.Country == country)
-                        .Join(_dbContext.Dispositions, c => c.CustomerId, d => d.CustomerId, (c, d) => new { Customer = c, Disposition = d })
-                        .Join(_dbContext.Accounts, cd => cd.Disposition.AccountId, a => a.AccountId, (cd, a) => new { CustomerDisposition = cd, Account = a })
-                        .GroupBy(cda => cda.CustomerDisposition.Customer.Country)
-                        .Select(group => new IndexModelProps
-                        {
-                            Country = group.Key,
-                            AccountCount = group.Select(cda => cda.CustomerDisposition.Customer.CustomerId).Distinct().Count(),
-                            CustomerCount = group.Select(cda => cda.Account.AccountId).Distinct().Count(),
-                            TotalBalance = group.Sum(cda => cda.Account.Balance),
-                        })
-                        .FirstOrDefault();
-
-                    if (countries != null)
+                var countries = _dbContext.Customers
+                    .Where(c => c.Country == country)
+                    .Join(_dbContext.Dispositions, c => c.CustomerId, d => d.CustomerId, (c, d) => new { Customer = c, Disposition = d })
+                    .Join(_dbContext.Accounts, cd => cd.Disposition.AccountId, a => a.AccountId, (cd, a) => new { CustomerDisposition = cd, Account = a })
+                    .GroupBy(cda => cda.CustomerDisposition.Customer.Country)
+                    .Select(group => new IndexModelProps
                     {
-                        countriesList.Add(countries);
-                    }
+                        Country = group.Key,
+                        AccountCount = group.Select(cda => cda.CustomerDisposition.Customer.CustomerId).Distinct().Count(),
+                        CustomerCount = group.Select(cda => cda.Account.AccountId).Distinct().Count(),
+                        TotalBalance = group.Sum(cda => cda.Account.Balance),
+                    })
+                    .FirstOrDefault();
+
+                if (countries != null)
+                {
+                    countriesList.Add(countries);
                 }
-                return countriesList;
             }
-            //var countryList = new List<string>() { "Sweden", "Norway", "Denmark", "Finland" };
-
-            //var indexModelPropsList = new List<IndexModelProps>();
-
-            //foreach (var country in countryList)
-            //{
-            //    var customers = _dbContext.Customers.Where(c => c.Country == country).ToList();
-            //    var customerIds = customers.Select(c => c.CustomerId).ToList();
-
-            //    var dispositions = _dbContext.Dispositions.Where(d => customerIds.Contains(d.CustomerId)).ToList();
-
-            //    var accounts = _dbContext.Accounts.Where(a => dispositions.Any(d => d.AccountId == a.AccountId)).ToList();
-
-            //    var indexModelProps = new IndexModelProps
-            //    {
-            //        Country = country,
-            //        TotalBalance = accounts.Sum(a => a.Balance),
-            //        AccountCount = accounts.Count(),
-            //        CustomerCount = customers.Count()
-            //    };
-
-            //    indexModelPropsList.Add(indexModelProps);
-            //}
-
-            //return indexModelPropsList;
-
+            return countriesList;
+        }
     }
 }

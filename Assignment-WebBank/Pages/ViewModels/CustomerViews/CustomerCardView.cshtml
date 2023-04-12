@@ -10,7 +10,7 @@
             
                 <img src="~/img/red_user-removebg-preview.png" class="img-radius" alt="User-Profile-Image">
 
-            <div class="d-flex justify-content-center mb-5">
+            <div class="d-flex justify-content-around mb-5">
                 <a asp-page="/ViewModels/AccountViews/AccountView" asp-route-customerId="@Model.CustomerId" asp-route-accountId="@customer.AccountNr" class="btn-lines">Account</a>
                 <a asp-page="/ViewModels/AccountViews/TransactionView" asp-route-customerId="@Model.CustomerId" asp-route-accountId="@customer.AccountNr" class="btn-lines">History</a>
             </div>

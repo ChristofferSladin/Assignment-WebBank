@@ -9,7 +9,7 @@
         
         <h3 class="d-flex justify-content-center mt-5">Account</h3>
 
-        <div class="d-flex justify-content-center m-t-25">
+        <div class="d-flex justify-content-around m-t-25">
             <a asp-page="/ViewModels/AccountViews/WithdrawView" asp-route-customerId="@oneCustomer.CustomerId" asp-route-accountId="@Model.OneAccount.AccountId"><i class="btn-lines">Withdraw</i></a>
             <a asp-page="/ViewModels/AccountViews/DepositView" asp-route-customerId="@oneCustomer.CustomerId" asp-route-accountId="@Model.OneAccount.AccountId"><i class="btn-lines">Deposit</i></a>
         </div>
