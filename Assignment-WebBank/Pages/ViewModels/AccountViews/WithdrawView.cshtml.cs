@@ -12,7 +12,6 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
     [BindProperties]
     public class WithdrawViewModel : PageModel
     {
-
         private readonly ITransactionService _transactionService;
         private readonly ICustomerService _customerService;
         public WithdrawViewModel(ITransactionService transactionService, ICustomerService customerService)
@@ -21,21 +20,26 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
             _customerService = customerService;
         }
 
+        
+        [Required]
+        [Range(100, 10000, ErrorMessage = "Amount must be atlest 100 and atmost 10000")]
+        public decimal Amount { get; set; }
+
+
+        public DateTime WithdrawDate { get; set; }
+
+
         [Required]
         [MinLength(5, ErrorMessage = "Must be atleast 5 characters and atmost 250 characters")]
         [MaxLength(250, ErrorMessage = "Must be atleast 5 characters and atmost 250 characters")]
         public string? Comment { get; set; }
 
 
-        [Range(100, 10000, ErrorMessage = "Amount must be atlest 100 and atmost 10000")]
-        public decimal Amount { get; set; }
-        public DateTime DepositDate { get; set; }
-        public decimal Balance { get; set; }
-
         public CustomerModel OneCustomer { get; set; }
         public List<TransactionsModel> Transactions { get; set; }
         public List<AccountModel> Accounts { get; set; }
         public AccountModel OneAccount { get; set; }
+
 
         public void OnGet(int accountId, int customerId)
         {
@@ -43,8 +47,9 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
             Accounts = _transactionService.GetAccounts(accountId);
             Transactions = _transactionService.GetTransactions(accountId);
             OneAccount = _transactionService.GetOneAccount(accountId);
-            DepositDate = DateTime.Now;
+            WithdrawDate = DateTime.Now;
         }
+
 
         public IActionResult OnPost(int accountId, int customerId)
         {
@@ -59,10 +64,9 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
 
             if (status == ErrorCode.IncorrectAmount) { ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!"); }
 
-            if (DepositDate.AddHours(1) < DateTime.Now) { ModelState.AddModelError("DepositDate", "Cannot Deposit money in the past!"); }
+            if (WithdrawDate.AddHours(1) < DateTime.Now) { ModelState.AddModelError("WithdrawDate", "Cannot Deposit money in the past!"); }
 
             return Page();
         }
-
     }
 }

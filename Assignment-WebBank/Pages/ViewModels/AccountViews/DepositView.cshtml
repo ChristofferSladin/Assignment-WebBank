@@ -4,22 +4,46 @@
     var oneCustomerId = Model.OneCustomer.CustomerId;
     var oneAccountId = Model.OneAccount.AccountId;
 }
-<h1>Deposit</h1>
+<div>
+    <h1 class="d-flex justify-content-center py-5">Deposit</h1>
+</div>
+
 <form method="post">
     <div class="form-group">
-        <label asp-for="Amount">Amount</label>
-        <input class="form-control" asp-for="Amount" />
-        <span class="field-validation-error" asp-validation-for="Amount"></span>
+        <div class="d-flex justify-content-center">
+            <div class="d-block" style="width: 500px;">
+                <label asp-for="Amount">Amount</label>
+                <input class="form-control" asp-for="Amount" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Amount"></span>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="form-group">
-        <label asp-for="DepositDate">Date</label>
-        <input class="form-control" asp-for="DepositDate" />
-        <span class="field-validation-error" asp-validation-for="DepositDate"></span>
+        <div class="d-flex justify-content-center">
+            <div class="d-block" style="width: 500px;">
+                <label asp-for="DepositDate">Date</label>
+                <input class="form-control" asp-for="DepositDate" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="DepositDate"></span>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="form-group">
-        <label asp-for="Comment">Comment</label>
-        <input class="form-control" asp-for="Comment" />
-        <span class="field-validation-error" asp-validation-for="Comment"></span>
+        <div class="d-flex justify-content-center">
+
+            <div class="d-block" style="width: 500px;">
+                <label asp-for="Comment">Comment</label>
+                <input class="form-control" asp-for="Comment" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Comment"></span>
+                </div>
+            </div>
+        </div>
     </div>
-    <button type="submit" class="btn-lines">Deposit</button>
+    <div class="d-flex justify-content-center my-3">
+        <button type="submit" class="btn-lines">Deposit</button>
+    </div>
 </form>

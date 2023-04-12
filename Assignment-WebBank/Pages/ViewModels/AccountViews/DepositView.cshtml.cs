@@ -20,21 +20,25 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
             _customerService = customerService;
         }
 
+
+        [Required]
+        [Range(100, 10000, ErrorMessage = "Amount must be atlest 100 and atmost 10000")]
+        public decimal Amount { get; set; }
+
+        public DateTime DepositDate { get; set; }
+
+
         [Required]
         [MinLength(5, ErrorMessage = "Must be atleast 5 characters and atmost 250 characters")]
         [MaxLength(250, ErrorMessage = "Must be atleast 5 characters and atmost 250 characters")]
         public string? Comment { get; set; }
 
-        [Required]
-        [Range(100, 10000, ErrorMessage = "Amount must be atlest 100 and atmost 10000")]
-        public decimal Amount { get; set; }
-        public DateTime DepositDate { get; set; }
-        public decimal Balance { get; set; }
 
         public List<TransactionsModel> Transactions { get; set; }
         public CustomerModel OneCustomer { get; set; }
         public List<AccountModel> Accounts { get; set; }
         public AccountModel OneAccount { get; set; }
+
         public void OnGet(int accountId, int customerId)
         {
             OneCustomer = _customerService.GetCustomerCard(customerId);
@@ -43,6 +47,7 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
             OneAccount = _transactionService.GetOneAccount(accountId);
             DepositDate = DateTime.Now;
         }
+
 
         public IActionResult OnPost(int accountId, int customerId)
         {
