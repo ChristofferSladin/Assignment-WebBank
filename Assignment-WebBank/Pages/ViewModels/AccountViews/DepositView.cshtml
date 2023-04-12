@@ -3,10 +3,26 @@
 @{
     var oneCustomerId = Model.OneCustomer.CustomerId;
     var oneAccountId = Model.OneAccount.AccountId;
+
+    var successMessage = ViewData["Message"]?.ToString();
+
 }
 <div>
     <h1 class="d-flex justify-content-center py-5">Deposit</h1>
 </div>
+
+@if (!string.IsNullOrWhiteSpace(successMessage))
+{
+    <div class="d-flex justify-content-center">
+        <div data-aos="fade-down" class="alert ok-message-holder" role="alert">
+            <div class="message-container">
+                @successMessage
+            </div>
+
+        </div>
+    </div>
+}
+
 
 <form method="post">
     <div class="form-group">
@@ -49,10 +65,8 @@
 </form>
 
 
-
-<div class="alert-modal" style="display: none;">
-    <div class="alert-box">
-        <p id="alert-message"></p>
-        <button id="alert-ok-button">OK</button>
-    </div>
+<div>
+    <a asp-page="/ViewModels/AccountViews/AccountView" asp-route-customerId="@oneCustomerId" asp-route-accountId="@oneAccountId" class="btn-lines">BACK</a>
 </div>
+
+

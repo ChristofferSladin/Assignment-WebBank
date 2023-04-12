@@ -55,9 +55,9 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
         {
             var status = _transactionService.Withdraw(accountId, Amount);
 
-            if (status == ErrorCode.OK) 
-            { return RedirectToPage("/ViewModels/AccountViews/AccountView",
-                new { accountId = accountId, customerId = customerId });
+            if (status == ErrorCode.OK)
+            {
+                ViewData["Message"] = "Successfully withdrawn money!";
             }
 
             if (status == ErrorCode.BalanceTooLow) { ModelState.AddModelError("Amount", "You don't have that much money!"); }

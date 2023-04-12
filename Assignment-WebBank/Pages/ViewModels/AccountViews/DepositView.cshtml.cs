@@ -54,9 +54,8 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
             var status = _transactionService.Deposit(accountId, Amount);
 
             if (status == ErrorCode.OK) 
-            { 
-                return RedirectToPage("/ViewModels/AccountViews/AccountView", 
-                new { accountId = accountId, customerId = customerId}); 
+            {
+                ViewData["Message"] = "Successfully deposited money!";
             }
 
             if (status == ErrorCode.IncorrectAmount) { ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!"); }
