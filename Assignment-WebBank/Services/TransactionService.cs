@@ -97,6 +97,7 @@ namespace Assignment_WebBank.Services
             return _dbContext.Transactions
                 .Where(a => a.AccountId == accountId)
                 .OrderByDescending(a => a.Date)
+                .OrderByDescending(a => a.TransactionId)
                 .Select(a => new TransactionsModel
                 {
                     AccountId = accountId,
