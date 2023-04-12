@@ -41,6 +41,18 @@ namespace Assignment_WebBank.Services
             }
 
             accountDb.Balance -= amount;
+
+            var transaction = new Transaction
+            {
+                AccountId = accountId,
+                Date = DateTime.Now,
+                Operation = "Withdraw",
+                Type = "Credit",
+                Amount = amount * -1,
+                Balance = accountDb.Balance
+            };
+
+            _dbContext.Transactions.Add(transaction);
             _dbContext.SaveChanges();
 
             return ErrorCode.OK;
@@ -63,6 +75,18 @@ namespace Assignment_WebBank.Services
             }
 
             accountDb.Balance += amount;
+
+            var transaction = new Transaction
+            {
+                AccountId = accountId,
+                Date = DateTime.Now,
+                Operation = "Deposit",
+                Type = "Credit",
+                Amount = amount,
+                Balance = accountDb.Balance
+            };
+
+            _dbContext.Transactions.Add(transaction);
             _dbContext.SaveChanges();
 
             return ErrorCode.OK;
