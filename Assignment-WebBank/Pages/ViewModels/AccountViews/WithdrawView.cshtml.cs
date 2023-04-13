@@ -53,18 +53,22 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
 
         public IActionResult OnPost(int accountId, int customerId)
         {
-            var status = _transactionService.Withdraw(accountId, Amount);
-
-            if (status == ErrorCode.OK)
+            if (ModelState.IsValid)
             {
-                ViewData["Message"] = "Successfully withdrawn money!";
+                var status = _transactionService.Withdraw(accountId, Amount);
+
+                if (status == ErrorCode.OK)
+                {
+                    ViewData["Message"] = "Successfully withdrawn money!";
+                }
+
+                if (status == ErrorCode.BalanceTooLow) { ModelState.AddModelError("Amount", "You don't have that much money!"); }
+
+                if (status == ErrorCode.IncorrectAmount) { ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!"); }
+
+                if (WithdrawDate.AddHours(1) < DateTime.Now) { ModelState.AddModelError("WithdrawDate", "Cannot Deposit money in the past!"); }
+
             }
-
-            if (status == ErrorCode.BalanceTooLow) { ModelState.AddModelError("Amount", "You don't have that much money!"); }
-
-            if (status == ErrorCode.IncorrectAmount) { ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!"); }
-
-            if (WithdrawDate.AddHours(1) < DateTime.Now) { ModelState.AddModelError("WithdrawDate", "Cannot Deposit money in the past!"); }
 
             return Page();
         }

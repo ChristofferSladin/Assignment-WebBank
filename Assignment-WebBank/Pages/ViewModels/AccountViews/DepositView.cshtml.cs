@@ -49,18 +49,74 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
         }
 
 
+        //public IActionResult OnPost(int accountId, int customerId)
+        //{
+        //    var status = _transactionService.Deposit(accountId, Amount);
+
+        //    if (status == ErrorCode.OK) 
+        //    {
+        //        ViewData["Message"] = "Successfully deposited money!";
+        //    }
+
+        //    if (status == ErrorCode.IncorrectAmount) { ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!"); }
+
+        //    if (DepositDate.AddHours(1) < DateTime.Now) { ModelState.AddModelError("DepositDate", "Cannot Deposit money in the past!"); }
+
+        //    return Page();
+        //}
+
+        //=====================================================================================================
+
+        //public IActionResult OnPost(int accountId, int customerId)
+        //{
+        //    var status = _transactionService.Deposit(accountId, Amount);
+
+        //    if (status == ErrorCode.OK)
+        //    {
+        //        ViewData["Message"] = "Successfully deposited money!";
+        //    }
+
+        //    if (status == ErrorCode.IncorrectAmount)
+        //    {
+        //        ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!");
+        //    }
+
+        //    if (DepositDate.AddHours(1) < DateTime.Now)
+        //    {
+        //        ModelState.AddModelError("DepositDate", "Cannot Deposit money in the past!");
+        //    }
+
+        //    if (ModelState.IsValid) // Check if there are no model validation errors
+        //    {
+        //        ViewData["Message"] = "Successfully deposited money!";
+        //    }
+
+        //    return Page();
+        //}
+
+
+
         public IActionResult OnPost(int accountId, int customerId)
         {
-            var status = _transactionService.Deposit(accountId, Amount);
-
-            if (status == ErrorCode.OK) 
+            if (ModelState.IsValid)
             {
-                ViewData["Message"] = "Successfully deposited money!";
+                var status = _transactionService.Deposit(accountId, Amount);
+
+                if (status == ErrorCode.OK)
+                {
+                    ViewData["Message"] = "Successfully deposited money!";
+                }
+
+                if (status == ErrorCode.IncorrectAmount)
+                {
+                    ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!");
+                }
+
+                if (DepositDate.AddHours(1) < DateTime.Now)
+                {
+                    ModelState.AddModelError("DepositDate", "Cannot Deposit money in the past!");
+                }
             }
-
-            if (status == ErrorCode.IncorrectAmount) { ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!"); }
-
-            if (DepositDate.AddHours(1) < DateTime.Now) { ModelState.AddModelError("DepositDate", "Cannot Deposit money in the past!"); }
 
             return Page();
         }
