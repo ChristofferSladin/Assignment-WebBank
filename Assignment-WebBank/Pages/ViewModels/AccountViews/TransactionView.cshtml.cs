@@ -22,12 +22,26 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
         public List<TransactionsModel> Transactions { get; set; }
         public CustomerModel Customer { get; set; }
 
-        public void OnGet(int accountId, decimal amount, int customerId)
+        public int AccountId { get; set; }
+        public decimal Amount { get; set; }
+
+        public int TransactionsPerPage { get; set; }
+
+        public void OnGet(int accountId, decimal amount, int customerId, int transactionsPerPage)
         {
+            Amount = amount;
+            AccountId = accountId;
             Customer = _customerService.GetCustomerCard(customerId);
             Transactions = _transactionService.GetTransactions(accountId);
-            ErrorCodeEnums = _transactionService.Withdraw(accountId, amount);
-            ErrorCodeEnums = _transactionService.Deposit(accountId, amount);
+
+            if (transactionsPerPage > 0)
+            {
+                TransactionsPerPage = transactionsPerPage;
+            }
+            else
+            {
+                TransactionsPerPage = int.MaxValue;
+            }
         }
     }
 }
