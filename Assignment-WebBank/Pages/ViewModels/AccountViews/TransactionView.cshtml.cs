@@ -21,17 +21,13 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
         public ITransactionService.ErrorCode ErrorCodeEnums;
         public List<TransactionsModel> Transactions { get; set; }
         public CustomerModel Customer { get; set; }
-        public List<AccountModel> Accounts { get; set; }
-        public int AccountId { get; set; }
+
         public void OnGet(int accountId, decimal amount, int customerId)
         {
             Customer = _customerService.GetCustomerCard(customerId);
-            //Accounts = _transactionService.GetAccounts(accountId);
             Transactions = _transactionService.GetTransactions(accountId);
             ErrorCodeEnums = _transactionService.Withdraw(accountId, amount);
             ErrorCodeEnums = _transactionService.Deposit(accountId, amount);
-
-
         }
     }
 }

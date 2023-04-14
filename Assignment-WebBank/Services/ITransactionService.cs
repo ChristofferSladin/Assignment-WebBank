@@ -18,7 +18,5 @@ namespace Assignment_WebBank.Services
         ErrorCode Deposit(int accountId, decimal amount);
         List<AccountModel> GetAccounts(int accountId);
         AccountModel GetOneAccount(int accountId);
-
-
     }
 }
