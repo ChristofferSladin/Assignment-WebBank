@@ -1,6 +1,6 @@
 ﻿@page
 @model Assignment_WebBank.Pages.ViewModels.AccountViews.TransactionViewModel
-@{
+@*@{
     var totalTrans = 0;
     @foreach (var tran in Model.Transactions)
     {
@@ -12,9 +12,9 @@
     <div class="card-header">
         <h1 class="d-flex justify-content-center">Total Transactions: @totalTrans</h1>
         <h3 class="d-flex justify-content-center m-5">History</h3>
-        
+
         <div class="d-flex justify-content-center"><a asp-page="/ViewModels/CustomerViews/CustomerCardView" asp-route-customerId="@Model.Customer.CustomerId" class="btn-lines">BACK</a></div>
-        
+
     </div>
     <div class="card-body" data-aos="fade-up">
         <table class="table">
@@ -39,11 +39,70 @@
                     {
                         <td style="color: lawngreen;">@acc.Amount</td>
                     }
-                    
+
                     <td>@acc.Balance</td>
                 </tr>
             }
         </table>
     </div>
+</div>*@
+
+
+<div class="card">
+    <div class="card-header">
+        @* <h1>@Model.Accounts</h1>*@
+    </div>
+    <div class="card-body">
+        <table class="table" id="posts-table">
+            <tr style="color: #cc1616; font-size: 25px;">
+                <th>Account Id</th>
+                <th>Transaction Id</th>
+                <th>balance</th>
+                <th>amount</th>
+                <th>operation</th>
+                <th>date</th>
+            </tr>
+        </table>
+        <a class="btn btn-primary" href="javascript:showMore();">Show More</a>
+    </div>
 </div>
 
+@section Scripts{
+    <script>
+        pageNo = 1;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            showMore();
+        });
+
+        function showMore() {
+            fetch("TransactionView?handler=ShowMore&pageNo=" + pageNo + " & accountId=@Model.AccountId")
+                .then((response) => response.json())
+                .then((json) => {
+                    pageNo = pageNo + 1
+                    json.cars.forEach(drawElements);
+                });
+        }
+
+        function drawElements(element) {
+            document.querySelector('#posts-table tbody').innerHTML +=
+                `<tr style="color: white;">
+                    <td>${element.accountId}</td>
+                    <td>${element.transactionId}</td>
+                    <td>${element.balance}</td>
+                    <td>${element.amount}</td>
+                    <td>${element.operation}</td>
+                    <td>${new Date(element.date).toLocaleDateString()}</td>
+                </tr>`;
+        }
+    </script>
+}
+
+@*
+                AccountId = accountId,
+                    TransactionId = c.TransactionId,
+                    Balance = c.Balance,
+                    Date = c.Date.ToShortDateString(),
+                    Bank = c.Bank,
+                    Operation = c.Operation,
+                    Amount = c.Amount,*@

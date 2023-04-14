@@ -1,9 +1,12 @@
 ﻿using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Data;
+using Assignment_WebBank.Infrastructure.Paging;
 using Assignment_WebBank.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 using static Assignment_WebBank.Services.ITransactionService;
 using static Assignment_WebBank.Services.TransactionService;
@@ -109,6 +112,29 @@ namespace Assignment_WebBank.Services
                     Amount = a.Amount,
 
                 }).ToList();
+        }
+        public List<TransactionsModel> GetTransactionsShowMore(int pageNo, int accountId)
+        {
+            if (pageNo == 0) { pageNo = 1; }
+
+            var listOfCars = _dbContext.Accounts
+                .Where(d => d.AccountId == accountId)
+                .SelectMany(t => t.Transactions)
+                .OrderByDescending(t => t.Date)
+                .OrderByDescending(t => t.TransactionId)
+                .GetPaged(pageNo, 5).Results
+                .Select(c => new TransactionsModel
+                {
+                    AccountId = accountId,
+                    TransactionId = c.TransactionId,
+                    Balance = c.Balance,
+                    Date = c.Date.ToShortDateString(),
+                    Bank = c.Bank,
+                    Operation = c.Operation,
+                    Amount = c.Amount,
+                }).ToList();
+
+            return listOfCars;
         }
 
         public List<AccountModel> GetAccounts(int accountId)

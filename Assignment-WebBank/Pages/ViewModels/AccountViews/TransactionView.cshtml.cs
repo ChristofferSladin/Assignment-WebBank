@@ -22,6 +22,7 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
         public List<TransactionsModel> Transactions { get; set; }
         public CustomerModel Customer { get; set; }
         public List<AccountModel> Accounts { get; set; }
+        public int AccountId { get; set; }
         public void OnGet(int accountId, decimal amount, int customerId)
         {
             Customer = _customerService.GetCustomerCard(customerId);
@@ -33,7 +34,16 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
 
         }
 
-       
+        public IActionResult OnGetShowMore(int pageNo, int accountId)
+        {
+            AccountId = accountId;
+            var listOfCars =_transactionService.GetTransactionsShowMore(accountId, pageNo);
+
+            return new JsonResult(new { cars = listOfCars });
+        }
+
+
+
 
     }
 }
