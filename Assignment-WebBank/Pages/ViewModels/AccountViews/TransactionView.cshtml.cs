@@ -26,24 +26,12 @@ namespace Assignment_WebBank.Pages.ViewModels.AccountViews
         public void OnGet(int accountId, decimal amount, int customerId)
         {
             Customer = _customerService.GetCustomerCard(customerId);
-            Accounts = _transactionService.GetAccounts(accountId);
+            //Accounts = _transactionService.GetAccounts(accountId);
             Transactions = _transactionService.GetTransactions(accountId);
             ErrorCodeEnums = _transactionService.Withdraw(accountId, amount);
             ErrorCodeEnums = _transactionService.Deposit(accountId, amount);
 
 
         }
-
-        public IActionResult OnGetShowMore(int pageNo, int accountId)
-        {
-            AccountId = accountId;
-            var listOfCars =_transactionService.GetTransactionsShowMore(accountId, pageNo);
-
-            return new JsonResult(new { cars = listOfCars });
-        }
-
-
-
-
     }
 }

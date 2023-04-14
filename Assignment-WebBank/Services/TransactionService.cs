@@ -113,29 +113,6 @@ namespace Assignment_WebBank.Services
 
                 }).ToList();
         }
-        public List<TransactionsModel> GetTransactionsShowMore(int pageNo, int accountId)
-        {
-            if (pageNo == 0) { pageNo = 1; }
-
-            var listOfCars = _dbContext.Accounts
-                .Where(d => d.AccountId == accountId)
-                .SelectMany(t => t.Transactions)
-                .OrderByDescending(t => t.Date)
-                .OrderByDescending(t => t.TransactionId)
-                .GetPaged(pageNo, 5).Results
-                .Select(c => new TransactionsModel
-                {
-                    AccountId = accountId,
-                    TransactionId = c.TransactionId,
-                    Balance = c.Balance,
-                    Date = c.Date.ToShortDateString(),
-                    Bank = c.Bank,
-                    Operation = c.Operation,
-                    Amount = c.Amount,
-                }).ToList();
-
-            return listOfCars;
-        }
 
         public List<AccountModel> GetAccounts(int accountId)
         {
