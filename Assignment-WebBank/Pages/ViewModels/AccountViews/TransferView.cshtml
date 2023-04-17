@@ -1,0 +1,78 @@
+﻿@page
+@model Assignment_WebBank.Pages.ViewModels.AccountViews.TransferViewModel
+@{
+    var oneCustomerId = Model.OneCustomer.CustomerId;
+    var oneAccountId = Model.OneAccount.AccountId;
+
+    var successMessage = ViewData["Message"]?.ToString();
+
+}
+<div>
+    <h1 class="d-flex justify-content-center py-5">Transfer</h1>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(successMessage))
+{
+    <div class="d-flex justify-content-center">
+        <div data-aos="fade-down" class="alert ok-message-holder" role="alert">
+            <div class="message-container">
+                @successMessage
+            </div>
+        </div>
+    </div>
+}
+
+
+<form method="post">
+    <div class="form-group">
+        <div class="d-flex justify-content-center">
+            <div class="d-block" style="width: 500px;">
+                <label asp-for="ToAccountId">Transfer to:</label>
+                <input class="form-control" asp-for="ToAccountId" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="ToAccountId"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="d-flex justify-content-center">
+            <div class="d-block" style="width: 500px;">
+                <label asp-for="Amount">Amount</label>
+                <input class="form-control" asp-for="Amount" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Amount"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="d-flex justify-content-center">
+            <div class="d-block" style="width: 500px;">
+                <label asp-for="TransferDate">Date</label>
+                <input class="form-control" asp-for="TransferDate" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="TransferDate"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="d-flex justify-content-center">
+
+            <div class="d-block" style="width: 500px;">
+                <label asp-for="Comment">Comment</label>
+                <input class="form-control" asp-for="Comment" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Comment"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-around my-3">
+        <a asp-page="/ViewModels/AccountViews/AccountView" asp-route-customerId="@oneCustomerId" asp-route-accountId="@oneAccountId" class="btn-lines">BACK</a>
+        <button type="submit" class="btn-lines">Transfer</button>
+    </div>
+</form>
+
+

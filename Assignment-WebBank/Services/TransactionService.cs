@@ -95,6 +95,56 @@ namespace Assignment_WebBank.Services
             return ErrorCode.OK;
         }
 
+        public ErrorCode Transfer(int accountId, int toAccountId, decimal amount)
+        {
+            var fromAccountDb = _dbContext.Accounts
+                .Where(a => a.AccountId == accountId)
+                .FirstOrDefault();
+
+            var toAccountDb = _dbContext.Accounts
+                .Where(a => a.AccountId == toAccountId)
+                .FirstOrDefault();
+
+            if (fromAccountDb == null || toAccountDb == null)
+            {
+                return ErrorCode.AccountNotFound;
+            }
+
+            if (amount <= 0 || amount > fromAccountDb.Balance)
+            {
+                return ErrorCode.IncorrectAmount;
+            }
+
+            fromAccountDb.Balance -= amount;
+            toAccountDb.Balance += amount;
+
+            var debitTransaction = new Transaction
+            {
+                AccountId = accountId,
+                Date = DateTime.Now,
+                Operation = "Transfer Withhdraw",
+                Type = "Credit",
+                Amount = amount * -1,
+                Balance = fromAccountDb.Balance
+            };
+
+            var creditTransaction = new Transaction
+            {
+                AccountId = toAccountId,
+                Date = DateTime.Now,
+                Operation = "Transfer Deposit",
+                Type = "Credit",
+                Amount = amount,
+                Balance = toAccountDb.Balance
+            };
+
+            _dbContext.Transactions.Add(debitTransaction);
+            _dbContext.Transactions.Add(creditTransaction);
+            _dbContext.SaveChanges();
+
+            return ErrorCode.OK;
+        }
+
         public List<TransactionsModel> GetTransactions(int accountId)
         {
             return _dbContext.Transactions
@@ -141,5 +191,7 @@ namespace Assignment_WebBank.Services
 
             return accountDb;
         }
+
+
     }
 }

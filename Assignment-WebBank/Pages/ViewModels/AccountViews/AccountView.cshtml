@@ -6,19 +6,21 @@
 
 <div class="card">
     <div class="card-header">
-        
-        <h3 class="d-flex justify-content-center mt-5">Account</h3>
+
+        <h3 class="d-flex justify-content-center my-5">@oneCustomer.FirstName @oneCustomer.LastName Account</h3>
 
         <div class="d-flex justify-content-around m-t-25">
             <a asp-page="/ViewModels/AccountViews/WithdrawView" asp-route-customerId="@oneCustomer.CustomerId" asp-route-accountId="@Model.OneAccount.AccountId"><i class="btn-lines">Withdraw</i></a>
+            <a asp-page="/ViewModels/AccountViews/TransferView" asp-route-customerId="@oneCustomer.CustomerId" asp-route-accountId="@Model.OneAccount.AccountId"><i class="btn-lines">Transfer</i></a>
             <a asp-page="/ViewModels/AccountViews/DepositView" asp-route-customerId="@oneCustomer.CustomerId" asp-route-accountId="@Model.OneAccount.AccountId"><i class="btn-lines">Deposit</i></a>
+
         </div>
-        
+
     </div>
     <div class="card-body" data-aos="fade-up">
         <table class="table">
             <tr style="color: #cc1616;">
-               <th>Account ID</th>
+                <th>Account ID</th>
                 <th>Balance</th>
                 <th>Date</th>
             </tr>
@@ -33,6 +35,6 @@
         </table>
         <div class="d-flex justify-content-center">
             <a asp-page="/ViewModels/CustomerViews/CustomerCardView" asp-route-customerId="@oneCustomer.CustomerId" asp-route-accountId="@Model.AccountId" class="btn-lines">BACK</a>
-            </div>
+        </div>
     </div>
 </div>
