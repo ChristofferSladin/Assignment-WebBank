@@ -62,8 +62,8 @@ namespace Assignment_WebBank.Services
                     .Select(group => new IndexModelProps
                     {
                         Country = group.Key,
-                        AccountCount = group.Select(cda => cda.CustomerDisposition.Customer.CustomerId).Distinct().Count(),
-                        CustomerCount = group.Select(cda => cda.Account.AccountId).Distinct().Count(),
+                        CustomerCount = group.Select(cda => cda.CustomerDisposition.Customer.CustomerId).Distinct().Count(),
+                        AccountCount = group.Select(cda => cda.Account.AccountId).Distinct().Count(),
                         TotalBalance = group.Sum(cda => cda.Account.Balance),
                     })
                     .FirstOrDefault();
