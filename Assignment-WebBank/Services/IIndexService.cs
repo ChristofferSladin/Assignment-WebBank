@@ -1,13 +1,13 @@
 ﻿using Assignment_WebBank.Areas.Identity.Pages.Account.Manage;
 using Assignment_WebBank.Model;
-using Assignment_WebBank.Pages.ViewModels;
+using Assignment_WebBank.Pages.Sections;
 
 namespace Assignment_WebBank.Services
 {
     public interface IIndexService
     {
-        List<CustomerModel> GetTopTenCustomerAccountsByCountry(string country);
+        List<CustomerVM> GetTopTenCustomerAccountsByCountry(string country);
 
-        List<IndexModelProps> CountryTotBalanceAndTotAccount();
+        List<IndexVM> CountryTotBalanceAndTotAccount();
     }
 }

@@ -145,13 +145,13 @@ namespace Assignment_WebBank.Services
             return ErrorCode.OK;
         }
 
-        public List<TransactionsModel> GetTransactions(int accountId)
+        public List<TransactionVM> GetTransactions(int accountId)
         {
             return _dbContext.Transactions
                 .Where(a => a.AccountId == accountId)
                 .OrderByDescending(a => a.Date)
                 .OrderByDescending(a => a.TransactionId)
-                .Select(a => new TransactionsModel
+                .Select(a => new TransactionVM
                 {
                     AccountId = accountId,
                     TransactionId = a.TransactionId,
@@ -164,12 +164,12 @@ namespace Assignment_WebBank.Services
                 }).ToList();
         }
 
-        public List<AccountModel> GetAccounts(int accountId)
+        public List<AccountVM> GetAccounts(int accountId)
         {
             return _dbContext.Accounts
                 .Where(a => a.AccountId == accountId)
                 .OrderByDescending(a => a.Created)
-                .Select(a => new AccountModel
+                .Select(a => new AccountVM
                 {
                     AccountId = accountId,
                     Balance = a.Balance,
@@ -177,11 +177,11 @@ namespace Assignment_WebBank.Services
                 }).ToList();
         }
 
-        public AccountModel GetOneAccount(int accountId)
+        public AccountVM GetOneAccount(int accountId)
         {
             var accountDb = _dbContext.Accounts
                 .Where(a => a.AccountId == accountId)
-                .Select(a => new AccountModel
+                .Select(a => new AccountVM
                 {
                     Balance = a.Balance,
                     CreatedDate = a.Created,

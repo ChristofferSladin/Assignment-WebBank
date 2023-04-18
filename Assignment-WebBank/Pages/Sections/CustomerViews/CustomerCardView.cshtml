@@ -1,0 +1,57 @@
+﻿@page
+@model Assignment_WebBank.Pages.Sections.CustomerViews.CustomerCardViewModel
+@{
+    var customer = Model.OneCustomerCard;
+}
+
+<div data-aos="fade-up" class="wrapper-section">
+    <div class="card user-card">
+        <div class="card-block">
+            
+                <img src="~/img/red_user-removebg-preview.png" class="img-radius" alt="User-Profile-Image">
+
+            <div class="d-flex justify-content-around mb-5">
+                <a asp-page="/Sections/AccountViews/AccountView" asp-route-customerId="@Model.CustomerId" asp-route-accountId="@customer.AccountNr" class="btn-lines">Account</a>
+                <a asp-page="/Sections/AccountViews/TransactionView" asp-route-customerId="@Model.CustomerId" asp-route-accountId="@customer.AccountNr" class="btn-lines">History</a>
+            </div>
+            
+            <h6 class="f-w-600 m-b-10">@customer.FirstName @customer.LastName</h6>
+            <p class="text-muted">Active | @customer.Gender | @customer.BirthDay</p>
+            <hr>
+            <div class="bg-c-red counter-block m-t-10 p-20">
+                <div class="row">
+                    <div class="col-4">
+                        <i class="fa fa-user"></i>
+                        <p>Customer ID: @customer.CustomerId</p>
+                    </div>
+                    <div class="col-4">
+                        <i class="fa fa-id-card"></i>
+                        <p>Personal Number: @customer.PersonalNr</p>
+                    </div>
+                    <div class="col-4">
+                        <i class="fa fa-sack-dollar"></i>
+                        <p>Account Balance: @customer.Balance</p>
+                    </div>
+                    <div class="col-4">
+                        <i class="fa fa-location-dot"></i>
+                        <p>Country: @customer.Country</p>
+                    </div>
+                    <div class="col-4">
+                        <i class="fa fa-location-dot"></i>
+                        <p>City: @customer.City</p>
+                    </div>
+                    <div class="col-4">
+                        <i class="fa fa-location-dot"></i>
+                        <p>Adress: @customer.Adress</p>
+                    </div>
+                </div>
+            </div>
+            <p class="m-t-15 text-muted">Email: @customer.Email </p>
+            <p class="m-t-15 text-muted">Phone: @customer.PhoneNumber </p>
+            <hr>
+            <div>
+                <a asp-page="/Sections/CustomerViews/CustomerView" asp-route-customerId="@customer.CustomerId" asp-route-accountId="@customer.AccountNr" class="btn-lines">BACK</a>
+            </div>
+        </div>
+    </div>
+</div>

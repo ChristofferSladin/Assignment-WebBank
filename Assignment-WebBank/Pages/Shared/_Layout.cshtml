@@ -69,10 +69,10 @@
                 </li>
                 @if (User.IsInRole("Admin") || User.IsInRole("Cashier"))
                 {
-                    <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/CustomerViews/CustomerView">Customers</a></li>
+                    <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/Sections/CustomerViews/CustomerView">Customers</a></li>
                 }
-                <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/GeneralViews/Contact">Contact Us</a></li>
-                <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/ViewModels/GeneralViews/About">About Us</a></li>
+                <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/Sections/GeneralViews/Contact">Contact Us</a></li>
+                <li class="nav-link"><a class="nav-link" asp-area="" asp-page="/Sections/GeneralViews/About">About Us</a></li>
                 <li><partial name="_LoginPartial" /></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>

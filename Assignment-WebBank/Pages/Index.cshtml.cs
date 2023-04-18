@@ -14,9 +14,9 @@ namespace Assignment_WebBank.Pages
             _indexService = indexService;
             _customerService = customerService;
         }
-        public List<CustomerModel>? CountriesAccounts { get; set; }
+        public List<CustomerVM>? CountriesAccounts { get; set; }
 
-        public List<IndexModelProps> TotBalanceTotAccountCountry { get; set; }
+        public List<IndexVM> TotBalanceTotAccountCountry { get; set; }
 
         public void OnGet(string country)
         {

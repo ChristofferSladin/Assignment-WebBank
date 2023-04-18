@@ -1,7 +1,7 @@
 ﻿using Assignment_WebBank.Areas.Identity.Pages.Account.Manage;
 using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Model;
-using Assignment_WebBank.Pages.ViewModels;
+using Assignment_WebBank.Pages.Sections;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Metrics;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace Assignment_WebBank.Services
             _dbContext = dbContext;
         }
 
-        public List<CustomerModel> GetTopTenCustomerAccountsByCountry(string country)
+        public List<CustomerVM> GetTopTenCustomerAccountsByCountry(string country)
         {
             var top10CustomerInCountryList = _dbContext.Customers
                 .Where(customer => customer.Country == country)
@@ -31,7 +31,7 @@ namespace Assignment_WebBank.Services
                 })
                 .OrderByDescending(c => c.TotalBalance)
                 .Take(10)
-                .Select(c => new CustomerModel
+                .Select(c => new CustomerVM
                 {
                     CustomerId = c.Customer.CustomerId,
                     FirstName = c.Customer.Givenname,
@@ -47,10 +47,10 @@ namespace Assignment_WebBank.Services
             return top10CustomerInCountryList;
         }
 
-        public List<IndexModelProps> CountryTotBalanceAndTotAccount()
+        public List<IndexVM> CountryTotBalanceAndTotAccount()
         {
             var listOfCountries = new List<string>() { "Sweden", "Norway", "Denmark", "Finland" };
-            var countriesList = new List<IndexModelProps>();
+            var countriesList = new List<IndexVM>();
 
             foreach (var country in listOfCountries)
             {
@@ -59,7 +59,7 @@ namespace Assignment_WebBank.Services
                     .Join(_dbContext.Dispositions, c => c.CustomerId, d => d.CustomerId, (c, d) => new { Customer = c, Disposition = d })
                     .Join(_dbContext.Accounts, cd => cd.Disposition.AccountId, a => a.AccountId, (cd, a) => new { CustomerDisposition = cd, Account = a })
                     .GroupBy(cda => cda.CustomerDisposition.Customer.Country)
-                    .Select(group => new IndexModelProps
+                    .Select(group => new IndexVM
                     {
                         Country = group.Key,
                         CustomerCount = group.Select(cda => cda.CustomerDisposition.Customer.CustomerId).Distinct().Count(),

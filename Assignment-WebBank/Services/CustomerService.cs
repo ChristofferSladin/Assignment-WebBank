@@ -1,7 +1,7 @@
 ﻿using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Infrastructure.Paging;
 using Assignment_WebBank.Model;
-using Assignment_WebBank.Pages.ViewModels;
+using Assignment_WebBank.Pages.Sections;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics.Metrics;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -18,14 +18,14 @@ namespace Assignment_WebBank.Services
         }
 
 
-        public CustomerModel GetCustomerCard(int customerId)
+        public CustomerVM GetCustomerCard(int customerId)
         {
             var customer = _dbContext.Customers
                 .Where(c => c.CustomerId == customerId)
                 .Join(_dbContext.Dispositions, c => c.CustomerId, d => d.CustomerId, (c, d) => new { Customer = c, Disposition = d })
                 .Join(_dbContext.Accounts, cd => cd.Disposition.AccountId, a => a.AccountId, (cd, a) => new { CustomerDisposition = cd, Account = a })
                 .GroupBy(cda => cda.CustomerDisposition.Customer.Country)
-                .Select(group => new CustomerModel
+                .Select(group => new CustomerVM
                 {
                     Country = group.Key,
                     CustomerId = group.Select(cda => cda.CustomerDisposition.Customer.CustomerId).First(),
@@ -46,11 +46,11 @@ namespace Assignment_WebBank.Services
             return customer;
         }
 
-        public List<CustomerModel> GetOnlyCustomers()
+        public List<CustomerVM> GetOnlyCustomers()
         {
-            List<CustomerModel> customerList = new List<CustomerModel>();
+            List<CustomerVM> customerList = new List<CustomerVM>();
 
-            return customerList = _dbContext.Customers.Select(p => new CustomerModel
+            return customerList = _dbContext.Customers.Select(p => new CustomerVM
             {
                 CustomerId = p.CustomerId,
                 PersonalNr = p.NationalId,
@@ -62,7 +62,7 @@ namespace Assignment_WebBank.Services
             }).ToList();
         }
 
-        public PagedResult<CustomerModel> GetCustomers(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
+        public PagedResult<CustomerVM> GetCustomers(string sortColumn, string sortOrder, string q, int CustomerId, int pageNo)
         {
             if (string.IsNullOrEmpty(sortOrder))
                 sortOrder = "asc";
@@ -102,7 +102,7 @@ namespace Assignment_WebBank.Services
 
             var result = query.GetPaged(pageNo, 50);
 
-            var customerModelList = result.Results.Select(p => new CustomerModel
+            var customerModelList = result.Results.Select(p => new CustomerVM
             {
                 CustomerId = p.CustomerId,
                 PersonalNr = p.NationalId,
@@ -113,7 +113,7 @@ namespace Assignment_WebBank.Services
                 Country = p.Country,
             }).ToList();
 
-            return new PagedResult<CustomerModel>
+            return new PagedResult<CustomerVM>
             {
                 CurrentPage = result.CurrentPage,
                 PageCount = result.PageCount,
