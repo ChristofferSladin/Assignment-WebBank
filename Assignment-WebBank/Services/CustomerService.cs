@@ -73,7 +73,7 @@ namespace Assignment_WebBank.Services
 
             if (!string.IsNullOrEmpty(q))
             {
-                query = query.Where(p => p.Givenname.Contains(q) || p.Surname.Contains(q) || p.Country.Contains(q) || p.City.Contains(q));
+                query = query.Where(p => p.Givenname.Contains(q) || p.Surname.Contains(q) || p.City.Contains(q));
             }
 
             if (sortColumn == "Id")

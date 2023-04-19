@@ -25,7 +25,7 @@ namespace Assignment_WebBank.Pages.Sections.AccountViews
         public int AccountId { get; set; }
         public decimal Amount { get; set; }
 
-        public int TransactionsPerPage { get; set; }
+        public int TransactionsPerPage { get; set; } = 5;
 
         public void OnGet(int accountId, decimal amount, int customerId, int transactionsPerPage)
         {

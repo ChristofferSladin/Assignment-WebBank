@@ -64,7 +64,7 @@ namespace Assignment_WebBank.Services
                         Country = group.Key,
                         CustomerCount = group.Select(cda => cda.CustomerDisposition.Customer.CustomerId).Distinct().Count(),
                         AccountCount = group.Select(cda => cda.Account.AccountId).Distinct().Count(),
-                        TotalBalance = group.Sum(cda => cda.Account.Balance),
+                        TotalBalance = group.Where(cda => cda.CustomerDisposition.Disposition.Type == "OWNER").Sum(cda => cda.Account.Balance),
                     })
                     .FirstOrDefault();
 
