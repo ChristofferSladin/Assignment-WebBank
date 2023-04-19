@@ -12,7 +12,7 @@
     <!-- Dropdown for selecting number of transactions to show per page -->
     <div class="card-header">
         <h1 class="d-flex justify-content-center my-5">Transaction History Of @Model.Customer.FirstName @Model.Customer.LastName</h1>
-        <h3 class="d-flex justify-content-center">Total Transactions: @totalTrans</h3>
+        <h3 class="d-flex justify-content-center mb-5">Total Transactions: @totalTrans</h3>
         
 
         <div class="d-flex justify-content-center">
@@ -37,7 +37,7 @@
                 <th>
                     <select style="background-color: #cc1616; font-size: 16px !important;" id="transactionsPerPage" onchange="changeTransactionsPerPage(this.value)">
                         
-                        <option value="10" selected>Select</option>
+                        <option value="10" selected>Show Less</option>
                         <option value="10">10</option>
                         <option value="20">20</option>
                         <option value="30">30</option>

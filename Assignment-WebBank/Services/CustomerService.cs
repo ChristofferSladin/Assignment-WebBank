@@ -17,7 +17,6 @@ namespace Assignment_WebBank.Services
             _dbContext = dbContext;
         }
 
-
         public CustomerVM GetCustomerCard(int customerId)
         {
             var customer = _dbContext.Customers

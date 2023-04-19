@@ -24,10 +24,12 @@ namespace Assignment_WebBank.Pages.Sections.CustomerViews
         public int CurrentPage { get; set; }
         public int CustomerId { get; set; }
         public int PageCount { get; set; }
+        public int RowCount { get; set; }
 
         public void OnGet(string sortColumn, string sortOrder, string q, int customerId, int pageNo)
         {
             if (pageNo == 0) { pageNo = 1; }
+
 
             Customers = _customerService.GetCustomers(sortColumn, sortOrder, q, CustomerId, pageNo);
 
@@ -37,6 +39,7 @@ namespace Assignment_WebBank.Pages.Sections.CustomerViews
             CurrentPage = pageNo;
             CustomerId = customerId;
             PageCount = Customers.PageCount;
+            RowCount = Customers.RowCount;
         }
     }
 }
