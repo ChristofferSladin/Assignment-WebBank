@@ -1,3 +1,5 @@
+using Assignment_WebBank.Data;
+using Assignment_WebBank.Infrastructure.Validation;
 using Assignment_WebBank.Model;
 using Assignment_WebBank.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +34,9 @@ namespace Assignment_WebBank.Pages.Sections.AccountViews
         [MaxLength(250, ErrorMessage = "Must be atleast 5 characters and atmost 250 characters")]
         public string? Comment { get; set; }
 
+
+        [Required]
+        [MinValue(1)]
         public int ToAccountId { get; set; }
 
 
