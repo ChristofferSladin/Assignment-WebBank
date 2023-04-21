@@ -1,7 +1,7 @@
 ﻿using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Infrastructure.Paging;
 using Assignment_WebBank.Model;
-using Assignment_WebBank.Pages.Sections;
+
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics.Metrics;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;

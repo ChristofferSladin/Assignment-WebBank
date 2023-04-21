@@ -1,7 +1,7 @@
-﻿using Assignment_WebBank.Areas.Identity.Pages.Account.Manage;
+﻿
 using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Model;
-using Assignment_WebBank.Pages.Sections;
+
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Metrics;
 using System.Linq;

@@ -1,15 +1,10 @@
 ﻿using Assignment_WebBank.BankAppData;
-using Assignment_WebBank.Data;
 using Assignment_WebBank.Infrastructure.Paging;
 using Assignment_WebBank.Model;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.EntityFrameworkCore;
 using System.Text;
 using static Assignment_WebBank.Services.ITransactionService;
 using static Assignment_WebBank.Services.TransactionService;
+using BankLibrary;
 
 namespace Assignment_WebBank.Services
 {
