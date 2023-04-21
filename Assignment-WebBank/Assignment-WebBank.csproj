@@ -22,4 +22,8 @@
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BankLibrary\BankLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

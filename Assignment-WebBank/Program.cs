@@ -3,6 +3,7 @@ using Assignment_WebBank.Data;
 using Assignment_WebBank.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using BankLibrary;
 
 var builder = WebApplication.CreateBuilder(args);
 
