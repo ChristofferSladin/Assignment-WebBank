@@ -17,7 +17,7 @@ else
 <div @*data-aos="fade-up"*@>
 
     <form method="get">
-        <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex align-items-center px-3">
             <div class="search-control">
                 <input type="text" asp-for="@Model.Q" autocomplete="off" required>
 
@@ -39,19 +39,19 @@ else
 
     <table class="table table-#141414" style="color: white;">
         <thead>
-            <tr>
+            <tr style="color: #cc1616; font-size: 25px;">
                 <th>
                     <a asp-page="/Sections/CustomerViews/CustomerView"
                        asp-route-sortColumn="Id"
                        asp-route-sortOrder="asc"
-                       style="text-decoration:none">
+                       style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     ID
                     <a asp-page="/Sections/CustomerViews/CustomerView"
                        asp-route-sortColumn="Id"
                        asp-route-sortOrder="desc"
-                       style="text-decoration:none">
+                       style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
@@ -59,14 +59,14 @@ else
                     <a asp-page="/Sections/CustomerViews/CustomerView"
                        asp-route-sortColumn="Name"
                        asp-route-sortOrder="asc"
-                       style="text-decoration:none">
+                       style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     Name
                     <a asp-page="/Sections/CustomerViews/CustomerView"
                        asp-route-sortColumn="Name"
                        asp-route-sortOrder="desc"
-                       style="text-decoration:none">
+                       style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
@@ -74,14 +74,14 @@ else
                     <a asp-page="/Sections/CustomerViews/CustomerView"
                        asp-route-sortColumn="Country"
                        asp-route-sortOrder="asc"
-                       style="text-decoration:none">
+                       style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     Country
                     <a asp-page="/Sections/CustomerViews/CustomerView"
                        asp-route-sortColumn="Country"
                        asp-route-sortOrder="desc"
-                       style="text-decoration:none">
+                       style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </th>
@@ -89,16 +89,21 @@ else
                     <a asp-page="/Sections/CustomerViews/CustomerView"
                        asp-route-sortColumn="City"
                        asp-route-sortOrder="asc"
-                       style="text-decoration:none">
+                       style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     City
                     <a asp-page="/Sections/CustomerViews/CustomerView"
                        asp-route-sortColumn="City"
                        asp-route-sortOrder="desc"
-                       style="text-decoration:none">
+                       style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-down"></i>
                     </a>
+                </th>
+                <th>
+                    
+                    Personal Nr
+                    
                 </th>
                 <th></th>
             </tr>
@@ -113,6 +118,7 @@ else
                         <td>@customer.FirstName @customer.LastName</td>
                         <td>@customer.Country</td>
                         <td>@customer.City</td>
+                        <td>@customer.PersonalNr</td>
                         <td>
                             <a asp-page="/Sections/CustomerViews/CustomerCardView" asp-route-customerId="@customer.CustomerId" class="btn-lines">View Details</a>
                         </td>

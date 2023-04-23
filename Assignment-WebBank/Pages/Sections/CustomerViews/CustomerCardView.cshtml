@@ -11,12 +11,12 @@
                 <img src="~/img/red_user-removebg-preview.png" class="img-radius" alt="User-Profile-Image">
 
             <div class="d-flex justify-content-around mb-5">
-                <a asp-page="/Sections/AccountViews/AccountView" asp-route-customerId="@Model.CustomerId" asp-route-accountId="@customer.AccountNr" class="btn-lines">Manage Account</a>
+                <a asp-page="/Sections/AccountViews/AccountView" asp-route-customerId="@Model.CustomerId" asp-route-accountId="@customer.AccountNr" class="btn-lines">Account Management</a>
                 <a asp-page="/Sections/AccountViews/TransactionView" asp-route-customerId="@Model.CustomerId" asp-route-accountId="@customer.AccountNr" class="btn-lines">Transaction History</a>
             </div>
             
             <h6 class="f-w-600 m-b-10">@customer.FirstName @customer.LastName</h6>
-            <p class="text-muted">Active | @customer.Gender.ToUpper() | @customer.BirthDay</p>
+            <p class="text-muted">Active | @customer.Gender.ToUpper() | @customer.BirthDay?.ToShortDateString()</p>
             <hr>
             <div class="bg-c-red counter-block m-t-10 p-20">
                 <div class="row">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-4">
                         <i class="fa fa-sack-dollar"></i>
-                        <p>Account Balance: @customer.Balance</p>
+                        <p>Account Balance: @customer.Balance.ToString("c")</p>
                     </div>
                     <div class="col-4">
                         <i class="fa fa-location-dot"></i>

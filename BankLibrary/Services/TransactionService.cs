@@ -117,7 +117,7 @@ namespace Assignment_WebBank.Services
             {
                 AccountId = accountId,
                 Date = DateTime.Now,
-                Operation = "Transfer Withhdraw",
+                Operation = $"Transfer to account nr: {toAccountDb.AccountId}",
                 Type = "Credit",
                 Amount = amount * -1,
                 Balance = fromAccountDb.Balance
@@ -127,7 +127,7 @@ namespace Assignment_WebBank.Services
             {
                 AccountId = toAccountId,
                 Date = DateTime.Now,
-                Operation = "Transfer Deposit",
+                Operation = $"Transfer from account nr: {fromAccountDb.AccountId}",
                 Type = "Credit",
                 Amount = amount,
                 Balance = toAccountDb.Balance
