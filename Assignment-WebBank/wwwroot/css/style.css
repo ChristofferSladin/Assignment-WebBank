@@ -2,49 +2,6 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-.btn-lines {
-    text-align: center;
-    background: #cc1616;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    display: inline-block;
-    font-size: 15px;
-    font-weight: 600;
-    width: 150px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transform: skew(-21deg);
-}
-
-.btn-lines span {
-    display: inline-block;
-    transform: skew(21deg);
-}
-
-    .btn-lines::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 100%;
-        left: 0;
-        background: #363636;
-        opacity: 0;
-        z-index: -1;
-        transition: all 0.5s;
-    }
-
-    .btn-lines:hover {
-        color: #fff;
-    }
-
-        .btn-lines:hover::before {
-            left: 0;
-            right: 0;
-            opacity: 1;
-        }
-
 
 body {
   font-family: "Open Sans", sans-serif;

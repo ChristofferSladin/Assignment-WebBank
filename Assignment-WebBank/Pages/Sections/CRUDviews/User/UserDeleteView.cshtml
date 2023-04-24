@@ -1,0 +1,22 @@
+﻿@page
+@model Assignment_WebBank.Pages.Sections.CRUDviews.UserDeleteViewModel
+@{
+}
+
+@foreach (var user in Model.UserList)
+{
+    <button class="btn btn-danger" onclick="confirmDelete('@user.UserId')">Delete</button>
+}
+
+<div class="d-flex justify-content-around py-5" >
+    <partial name="_readUsers" model="Model.UserList" />
+</div>
+
+<script>
+    function confirmDelete(userId) {
+        if (confirm("Are you sure you want to delete this user?")) {
+            // If user confirms deletion, redirect to delete action
+            window.location.href = "/user/delete?userId=" + userId;
+        }
+    }
+</script>

@@ -1,0 +1,38 @@
+﻿@using BankLibrary.ViewModels;
+@model List<UserVM>
+@{
+    string headerText = ViewData["HeaderText"]?.ToString() ?? "Header";
+    string buttonText = ViewData["ButtonText"]?.ToString() ?? "Button";
+    string redirectUrl = ViewData["RedirectUrl"]?.ToString() ?? "#";
+}
+<div>
+    <div class="d-flex justify-content-center py-3">
+        <h1>@headerText</h1>
+    </div>
+
+    <div class="d-flex justify-content-center py-5">
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Access Failed Count</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.UserId</td>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>
+                        <td>@user.AccessFailedCount</td>
+                        <td><a href="@redirectUrl" class="btn-lines">@buttonText</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

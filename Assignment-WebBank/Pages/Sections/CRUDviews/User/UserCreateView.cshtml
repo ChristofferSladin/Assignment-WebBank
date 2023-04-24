@@ -1,0 +1,27 @@
+﻿@page
+@model Assignment_WebBank.Pages.Sections.CRUDviews.UserCreateViewModel
+@{
+}
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="UserVM.UserName"></label>
+        <input asp-for="UserVM.UserName" class="form-control" />
+        <span asp-validation-for="UserVM.UserName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UserVM.Email"></label>
+        <input asp-for="UserVM.Email" class="form-control" />
+        <span asp-validation-for="UserVM.Email"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UserVM.PhoneNumber"></label>
+        <input asp-for="UserVM.PhoneNumber" class="form-control" />
+        <span asp-validation-for="UserVM.PhoneNumber"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create User</button>
+</form>
+

@@ -58,6 +58,10 @@ namespace Assignment_WebBank.Services
                 Adress = p.Streetaddress,
                 City = p.City,
                 Country = p.Country,
+                Gender = p.Gender,
+                BirthDay = p.Birthday,
+                PhoneNumber = p.Telephonenumber,
+                Email = p.Emailaddress,
             }).ToList();
         }
 

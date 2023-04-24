@@ -10,9 +10,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment-WebBank", "Assig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAPI", "BankAPI\BankAPI.csproj", "{39588992-D813-4F1F-9AE3-335FF702697A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankLibrary", "BankLibrary\BankLibrary.csproj", "{0EEEF69F-B5CF-40B3-9DBF-E83F8588E498}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankLibrary", "BankLibrary\BankLibrary.csproj", "{0EEEF69F-B5CF-40B3-9DBF-E83F8588E498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyLaundringBot", "MoneyLaundringBot\MoneyLaundringBot.csproj", "{EEF85CDD-7E3B-4E85-9970-6DFB5DAE0772}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyLaundringBot", "MoneyLaundringBot\MoneyLaundringBot.csproj", "{EEF85CDD-7E3B-4E85-9970-6DFB5DAE0772}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,7 @@
 using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Data;
 using Assignment_WebBank.Services;
+using BankLibrary.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,6 +33,9 @@ builder.Services.AddTransient<ICustomerService, CustomerService>();
 
 //Lägg till min TransactionService
 builder.Services.AddTransient<ITransactionService, TransactionService>();
+
+//Lägg till min CRUDService
+builder.Services.AddTransient<ICRUDservice, CRUDservice>();
 
 
 
