@@ -13,11 +13,15 @@ namespace Assignment_WebBank.Services
             AccountNotFound
         }
 
+
         List<TransactionVM> GetTransactions(int accountId);
         ErrorCode Withdraw(int accountId, decimal amount);
         ErrorCode Deposit(int accountId, decimal amount);
         ErrorCode Transfer(int accountId, int toAccountId, decimal amount);
         List<AccountVM> GetAccounts(int accountId);
         AccountVM GetOneAccount(int accountId);
+
+        void CheckForMoneyLaundering();
+        bool IsSuspiciousActivity(List<Transaction> transactions);
     }
 }

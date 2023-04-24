@@ -1,3 +1,7 @@
-﻿
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Assignment_WebBank.BankAppData;
+using Assignment_WebBank.Services;
+
+var dbContext = new BankAppDataContext();
+var transactionService = new TransactionService(dbContext);
+var app = new Application(transactionService);
+app.Run();

@@ -155,7 +155,6 @@ namespace Assignment_WebBank.Services
                     Bank = a.Bank,
                     Operation = a.Operation,
                     Amount = a.Amount,
-
                 }).ToList();
         }
 
@@ -186,6 +185,90 @@ namespace Assignment_WebBank.Services
 
             return accountDb;
         }
+
+        public bool IsSuspiciousActivity(List<Transaction> transactions)
+        {
+            var totalAmount = transactions.Where(t => t.Date >= DateTime.Now.AddHours(-72))
+                                           .Sum(t => t.Amount);
+
+            if (totalAmount > 15000)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void CheckForMoneyLaundering()
+        {
+            var suspiciousTransactions = new List<string>();
+
+            foreach (var country in _dbContext.Customers.Select(c => c.Country).Distinct())
+            {
+                Console.WriteLine($"Checking for suspicious activity in {country}...");
+                var customers = _dbContext.Customers.Where(c => c.Country == country).ToList();
+                CheckForSuspiciousActivity(customers, suspiciousTransactions);
+                Console.WriteLine($"Finished checking for suspicious activity in {country}.");
+            }
+
+            Console.WriteLine("Generating report...");
+            GenerateReport(suspiciousTransactions);
+        }
+
+        private void CheckForSuspiciousActivity(List<Customer> customers, List<string> suspiciousTransactions)
+        {
+            foreach (var customer in customers)
+            {
+                var accounts = _dbContext.Accounts.Where(a => a.AccountId == customer.CustomerId).ToList();
+                CheckForSuspiciousActivityInAccounts(customer, accounts, suspiciousTransactions);
+            }
+        }
+
+        private void CheckForSuspiciousActivityInAccounts(Customer customer, List<Account> accounts, List<string> suspiciousTransactions)
+        {
+            foreach (var account in accounts)
+            {
+                var transactions = _dbContext.Transactions.Where(t => t.AccountId == account.AccountId).ToList();
+                CheckForSuspiciousTransaction(customer, account, transactions, suspiciousTransactions);
+                CheckForSuspiciousTotalAmount(customer, account, transactions, suspiciousTransactions);
+            }
+        }
+
+        private void CheckForSuspiciousTransaction(Customer customer, Account account, List<Transaction> transactions, List<string> suspiciousTransactions)
+        {
+            foreach (var transaction in transactions)
+            {
+                if (IsSuspiciousActivity(transactions))
+                {
+                    suspiciousTransactions.Add($"Suspicious Transaction; Customer: {customer.Givenname + customer.Surname}, Account: {account.AccountId}, Transaction: {transaction.TransactionId}");
+                }
+            }
+        }
+
+        private void CheckForSuspiciousTotalAmount(Customer customer, Account account, List<Transaction> transactions, List<string> suspiciousTransactions)
+        {
+            if (IsSuspiciousActivity(transactions))
+            {
+                suspiciousTransactions.Add($"Customer: {customer.Givenname + customer.Surname}, Account: {account.AccountId}, Total Amount: {transactions.Sum(t => t.Amount)}");
+            }
+        }
+
+        private void GenerateReport(List<string> suspiciousTransactions)
+        {
+            var reportPath = $"{Directory.GetCurrentDirectory()}\\SuspiciousTransactionsReport.txt";
+
+            using (var writer = new StreamWriter(reportPath))
+            {
+                foreach (var transaction in suspiciousTransactions)
+                {
+                    writer.WriteLine(transaction);
+                }
+            }
+
+            Console.WriteLine($"Report generated: {reportPath}");
+        }
+
+
 
 
     }
