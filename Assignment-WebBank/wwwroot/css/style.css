@@ -252,6 +252,10 @@ h6 {
   padding: 0;
 }
 
+.navbar-nav{
+    flex-direction: row;
+}
+
 .navbar ul {
   margin: 0;
   padding: 0;
@@ -473,7 +477,7 @@ h6 {
 #hero {
   width: 100%;
   height: calc(100vh - 70px);
-  background: url("../img/hero-bg.jpg") top center;
+  background: url("../img/bank-black-white.jpg") top center;
   background-size: cover;
   position: relative;
 }
@@ -551,6 +555,11 @@ h6 {
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
+
+.picture-bg {
+    background: url("../img/bank-black-white.jpg") top center;
+}
+
 section {
   padding: 60px 0;
   overflow: hidden;
