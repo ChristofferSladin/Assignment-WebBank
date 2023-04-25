@@ -18,7 +18,7 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews
         public void OnGet()
         {
 
-            ViewData["HeaderText"] = "UPDATE";
+            ViewData["HeaderText"] = "Update";
             ViewData["ButtonText"] = "Update";
             ViewData["RedirectUrl"] = "/Sections/CRUDviews/User/UpdateView";
 

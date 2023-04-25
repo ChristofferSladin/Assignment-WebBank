@@ -1,4 +1,6 @@
 ﻿using BankLibrary.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,6 @@ namespace BankLibrary.Services
         public List<UserVM> GetAllUsers();
         public UserVM GetOneUser(string id);
         public void DeleteUser(string id);
-        void OnPostCreateUser(UserVM userVM);
+        Task<IdentityResult> CreateUserAsync(UserVM userVM, string password, string roleName);
     }
 }

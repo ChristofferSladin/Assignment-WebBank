@@ -7,7 +7,6 @@ using System.Data;
 
 namespace Assignment_WebBank.Pages.Sections.CustomerViews
 {
-    [Authorize(Roles = "Admin, Cashier")]
     public class NorwayViewModel : PageModel
     {
 

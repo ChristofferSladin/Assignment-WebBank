@@ -1,7 +1,9 @@
 ﻿using Assignment_WebBank.BankAppData;
 using BankLibrary.ViewModels;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,10 +17,13 @@ namespace BankLibrary.Services
     public class CRUDservice : ICRUDservice
     {
         private readonly BankAppDataContext _dbContext;
+        private readonly UserManager<IdentityUser> _userManager;
+        
 
-        public CRUDservice(BankAppDataContext dbcontext)
+        public CRUDservice(BankAppDataContext dbcontext, UserManager<IdentityUser> userManager)
         {
             _dbContext = dbcontext;
+            _userManager = userManager;
         }
 
         public List<UserVM> GetAllUsers() 
@@ -52,20 +57,23 @@ namespace BankLibrary.Services
             }
         }
 
-        public void OnPostCreateUser(UserVM user)
+        public async Task<IdentityResult> CreateUserAsync(UserVM userVM, string passsword, string roleName)
         {
-                var newUser = new AspNetUser
-                {
-                    Id = user.UserId,
-                    UserName = user.UserName,
-                    Email = user.Email,
-                    PhoneNumber= user.PhoneNumber,
-                };
+            var user = new IdentityUser
+            {
+                UserName = userVM.UserName,
+                Email = userVM.Email,
+                EmailConfirmed = true
+            };
 
-                // Add user to database
-                _dbContext.AspNetUsers.Add(newUser);
-                _dbContext.SaveChanges();
+            var result = await _userManager.CreateAsync(user, passsword);
+
+            if (result.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, roleName);
+            }
+
+            return result;
         }
-
     }
 }

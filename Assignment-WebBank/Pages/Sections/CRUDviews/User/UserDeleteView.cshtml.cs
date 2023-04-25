@@ -20,7 +20,7 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews
         public void OnGet()
         {
 
-            ViewData["HeaderText"] = "DELETE";
+            ViewData["HeaderText"] = "Delete";
             ViewData["ButtonText"] = "Delete";
             ViewData["RedirectUrl"] = "/Sections/CRUDviews/User/DeleteView";
 
