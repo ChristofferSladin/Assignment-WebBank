@@ -5,12 +5,12 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a  class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+        <li class="nav-item">
+            <a style="position: relative; top: calc(100% - 30px);" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
     </li>
-    <li class="nav-item">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" >
-                <button  class="button" type="submit">
+        <li class="nav-item">
+            <form style=" margin-left: 10px; position: relative; top: calc(100% - 25px);" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post">
+                <button class="button" type="submit" >
                     <span class="actual-text">&nbsp;Logout&nbsp;</span>
                     <span class="hover-text" aria-hidden="true">&nbsp;Logout&nbsp;</span>
                 </button>
@@ -20,7 +20,13 @@
 else
 {
     <li class="nav-item">
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+
+        <button class="button" style="position: relative; top: calc(100% - 25px);">
+            <a  asp-area="Identity" asp-page="/Account/Login">
+                <span style="color: white;" class="actual-text">&nbsp;Login&nbsp;</span>
+                <span class="hover-text" aria-hidden="true">&nbsp;Login&nbsp;</span
+            </a>
+        </button>
     </li>
 }
 </ul>
