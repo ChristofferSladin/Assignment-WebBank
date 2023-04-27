@@ -38,6 +38,7 @@ namespace BankLibrary.Services
                 PhoneNumber = u.PhoneNumber,
                 PhoneNumberConfirmed = u.PhoneNumberConfirmed,
                 AccessFailedCount = u.AccessFailedCount,
+                EmailConfirmed = u.EmailConfirmed,
 
             }).ToList();
         }
