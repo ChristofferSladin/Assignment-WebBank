@@ -4,6 +4,7 @@
     string headerText = ViewData["HeaderText"]?.ToString() ?? "Header";
     string buttonText = ViewData["ButtonText"]?.ToString() ?? "Button";
     string redirectUrl = ViewData["RedirectUrl"]?.ToString() ?? "#";
+    string action = ViewData["Action"]?.ToString() ?? "";
 }
 <div>
     <div class="d-flex justify-content-center py-3">
@@ -17,7 +18,7 @@
                     <th>User ID</th>
                     <th>User Name</th>
                     <th>Email</th>
-                    <th>Access Failed Count</th>
+                    <th>Email Confirmed</th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,8 +29,17 @@
                         <td>@user.UserId</td>
                         <td>@user.UserName</td>
                         <td>@user.Email</td>
-                        <td>@user.AccessFailedCount</td>
-                        <td><a href="@redirectUrl" class="btn-lines">@buttonText</a></td>
+                        <td>@user.EmailConfirmed</td>
+                        <td>
+                            @if(action == "Delete")
+                            {
+                                <a asp-page="/Sections/CRUDviews/User/DeleteView" asp-route-userId="@user.UserId" class="btn-lines">@buttonText</a>
+                            }
+                            @if (action == "Update")
+                            {
+                                <a asp-page="/Sections/CRUDviews/User/UpdateView" asp-route-userId="@user.UserId" class="btn-lines">@buttonText</a>
+                            }
+                        </td>
                     </tr>
                 }
             </tbody>

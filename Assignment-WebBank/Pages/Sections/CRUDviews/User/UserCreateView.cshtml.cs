@@ -21,14 +21,30 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews
         {
             _crudService = crudService;
         }
-        
+
         public UserVM UserVM { get; set; }
 
-        [Required] public string UserName { get; set; }
-        [Required] public string Password { get; set; }
-        [Required] public string Role { get; set; }
-        [Required] public string Email { get; set; }
+        [Required]
+        [MinLength(5, ErrorMessage = "Amount must be atlest 5 characters long")]
+        [MaxLength(50, ErrorMessage = "Amount must be atmost 50 characters long")]
+        public string UserName { get; set; }
+
+
+        [Required]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,20}$",
+            ErrorMessage = "Password must contain at least one uppercase letter," +
+            " one lowercase letter, one digit, and one special character (@#$%^&+=!)," +
+            " and be between 8 and 20 characters in length.")]
+         public string Password { get; set; }
+
         
+        [Required]
+        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$",
+            ErrorMessage = "Please enter a valid email address.")]
+        public string Email { get; set; }
+
+        [Required] public string Role { get; set; }
+
 
         public void OnGet()
         {
@@ -36,8 +52,8 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews
 
         [HttpPost]
         public async Task<IActionResult> OnPost(string password)
-{
-            if(!ModelState.IsValid)
+        {
+            if (!ModelState.IsValid)
             {
                 return Page();
             }

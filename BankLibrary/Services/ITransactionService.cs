@@ -10,7 +10,8 @@ namespace Assignment_WebBank.Services
             OK,
             BalanceTooLow,
             IncorrectAmount,
-            AccountNotFound
+            AccountNotFound,
+            
         }
 
 

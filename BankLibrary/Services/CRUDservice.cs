@@ -58,6 +58,20 @@ namespace BankLibrary.Services
             }
         }
 
+        public async Task<IdentityResult> UpdateUser(string userId, string newUserName, string newEmail)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "User not Found!" });
+            }
+            user.UserName = newUserName;
+            user.Email = newEmail;
+
+            var result = await _userManager.UpdateAsync(user);
+            return result;
+        }
+
         public async Task<IdentityResult> CreateUserAsync(UserVM userVM, string passsword, string roleName)
         {
             var user = new IdentityUser

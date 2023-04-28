@@ -21,6 +21,7 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews
             ViewData["HeaderText"] = "Update";
             ViewData["ButtonText"] = "Update";
             ViewData["RedirectUrl"] = "/Sections/CRUDviews/User/UpdateView";
+            ViewData["Action"] = "Update";
 
             UserList = _crudService.GetAllUsers();
         }

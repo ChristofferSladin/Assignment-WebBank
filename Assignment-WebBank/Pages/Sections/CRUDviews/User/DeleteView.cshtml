@@ -2,3 +2,22 @@
 @model Assignment_WebBank.Pages.Sections.CRUDviews.User.DeleteViewModel
 @{
 }
+<p>Are you sure you want to delete user with ID @Model.UserId?</p>
+
+<form method="post">
+    <input type="hidden" asp-for="UserId" />
+    <button type="submit">Yes, delete</button>
+    <a asp-page="/Bank/Modules/UsersCRUD/UserRead">No, cancel</a>
+</form>
+
+@if (!ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}

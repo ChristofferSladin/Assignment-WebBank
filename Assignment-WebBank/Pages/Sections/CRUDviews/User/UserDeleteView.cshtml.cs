@@ -7,8 +7,6 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews
 {
     public class UserDeleteViewModel : PageModel
     {
-
-
         private readonly ICRUDservice _crudService;
         public UserDeleteViewModel(ICRUDservice crudService)
         {
@@ -23,14 +21,11 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews
             ViewData["HeaderText"] = "Delete";
             ViewData["ButtonText"] = "Delete";
             ViewData["RedirectUrl"] = "/Sections/CRUDviews/User/DeleteView";
+            ViewData["Action"] = "Delete";
 
             UserList = _crudService.GetAllUsers();
         }
 
-        public IActionResult OnGetDelete(string userId)
-        {
-            _crudService.DeleteUser(userId);
-            return RedirectToAction(nameof(Index));
-        }
+        
     }
 }

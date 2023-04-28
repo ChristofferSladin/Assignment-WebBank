@@ -2,3 +2,32 @@
 @model Assignment_WebBank.Pages.Sections.CRUDviews.User.UpdateViewModel
 @{
 }
+
+<h1>Update User</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="UserId" />
+    <div>
+        <label for="UserVM.UserName">User Name:</label>
+        <input asp-for="UserVM.UserName" required />
+    </div>
+    <div>
+        <label for="UserVM.Email">Email:</label>
+        <input asp-for="UserVM.Email" required />
+    </div>
+    <button type="submit">Update</button>
+</form>
+
+@if (!ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+<a asp-page="/Bank/Modules/UsersCRUD/UserRead">Back to User List</a>
