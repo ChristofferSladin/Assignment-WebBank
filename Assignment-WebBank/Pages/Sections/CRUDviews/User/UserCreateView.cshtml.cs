@@ -65,7 +65,9 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews
                 return Page();
             }
 
-            return RedirectToPage("/Sections/CRUDviews/UserUpdateView");
+            ViewData["Message"] = "Successfully Updated User!";
+
+            return RedirectToPage("/Sections/CRUDviews/User/UserUpdateView");
         }
     }
 }

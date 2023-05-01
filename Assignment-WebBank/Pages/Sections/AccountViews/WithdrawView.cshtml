@@ -7,7 +7,11 @@
     var successMessage = ViewData["Message"]?.ToString();
 }
 <div>
-    <h1 class="d-flex justify-content-center py-5">Withdraw</h1>
+    <h1 class="d-flex justify-content-center py-5" style="color:#cc1616;">Withdraw</h1>
+</div>
+
+<div class="red-line">
+    <div style="background:#cc1616; height: 1px; width: 400px; justify-self: center;"></div>
 </div>
 
 @if (!string.IsNullOrWhiteSpace(successMessage))

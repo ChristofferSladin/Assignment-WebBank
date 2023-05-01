@@ -1,10 +1,13 @@
 using BankLibrary.Services;
 using BankLibrary.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 
 namespace Assignment_WebBank.Pages.Sections.CRUDviews.User
 {
+    [Authorize(Roles = "Admin")]
     [BindProperties(SupportsGet = true)]
     public class UpdateViewModel : PageModel
     {
@@ -36,10 +39,6 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews.User
                 return RedirectToPage("/Sections/CRUDviews/User/UserUpdateView");
             }
 
-            foreach(var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
             return Page();
         }
     }

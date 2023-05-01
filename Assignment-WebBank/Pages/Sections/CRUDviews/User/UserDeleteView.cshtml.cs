@@ -1,10 +1,13 @@
 using BankLibrary.Services;
 using BankLibrary.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 
 namespace Assignment_WebBank.Pages.Sections.CRUDviews
 {
+    [Authorize(Roles = "Admin")]
     public class UserDeleteViewModel : PageModel
     {
         private readonly ICRUDservice _crudService;
