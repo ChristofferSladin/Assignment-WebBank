@@ -2,13 +2,16 @@ using Assignment_WebBank.Data;
 using Assignment_WebBank.Infrastructure.Validation;
 using Assignment_WebBank.Model;
 using Assignment_WebBank.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using static Assignment_WebBank.Services.ITransactionService;
 
 namespace Assignment_WebBank.Pages.Sections.AccountViews
 {
+    [Authorize(Roles = "Cashier")]
     [BindProperties]
     public class TransferViewModel : PageModel
     {

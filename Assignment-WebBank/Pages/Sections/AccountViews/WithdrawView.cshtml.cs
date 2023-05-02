@@ -1,14 +1,17 @@
 using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Model;
 using Assignment_WebBank.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using static Assignment_WebBank.Services.ITransactionService;
 
 namespace Assignment_WebBank.Pages.Sections.AccountViews
 {
+    [Authorize(Roles = "Cashier")]
     [BindProperties]
     public class WithdrawViewModel : PageModel
     {
