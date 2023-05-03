@@ -13,8 +13,8 @@ namespace BankLibrary.ViewModels
 
 
         [Required]
-        [MinLength(5, ErrorMessage = "Amount must be atlest 5 characters long")]
-        [MaxLength(50, ErrorMessage = "Amount must be atmost 50 characters long")]
+        [MinLength(5, ErrorMessage = "Length must be atlest 5 characters")]
+        [MaxLength(50, ErrorMessage = "Length must be atmost 50 characters")]
         public string? UserName { get; set; }
 
 

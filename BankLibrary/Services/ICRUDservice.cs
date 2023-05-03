@@ -1,4 +1,5 @@
-﻿using BankLibrary.ViewModels;
+﻿using Assignment_WebBank.Model;
+using BankLibrary.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,5 +18,6 @@ namespace BankLibrary.Services
         Task<IdentityResult> CreateUserAsync(UserVM userVM, string password, string roleName);
 
         public Task<IdentityResult> UpdateUser(string userId, string newUSerName, string newEmail);
+        void CreateCustomer(CustomerVM newCustomer);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Assignment_WebBank.BankAppData;
+using Assignment_WebBank.Model;
 using BankLibrary.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -24,6 +25,42 @@ namespace BankLibrary.Services
         {
             _dbContext = dbcontext;
             _userManager = userManager;
+        }
+
+        public void CreateCustomer(CustomerVM newCustomer)
+        {
+            var customer = new Customer
+            {
+                NationalId = newCustomer.PersonalNr,
+                Country = newCustomer.Country,
+                Givenname = newCustomer.FirstName,
+                Surname = newCustomer.LastName,
+                Streetaddress = newCustomer.Adress,
+                City = newCustomer.City,
+                Gender = newCustomer.Gender,
+                Birthday = newCustomer.BirthDay,
+                Telephonenumber = newCustomer.PhoneNumber,
+                Emailaddress = newCustomer.Email,
+                CountryCode = "",
+                Zipcode = newCustomer.ZipCode,
+            };
+
+            var newAccount = new Account
+            {
+                Frequency = "Monthly",
+                Created = DateTime.Now,
+                Balance = 0
+            };
+
+            var newDisposition = new Disposition
+            {
+                Account = newAccount,
+                Customer = customer,
+                Type = "OWNER"
+            };
+
+            _dbContext.Dispositions.Add(newDisposition);
+            _dbContext.SaveChanges();
         }
 
         public List<UserVM> GetAllUsers() 

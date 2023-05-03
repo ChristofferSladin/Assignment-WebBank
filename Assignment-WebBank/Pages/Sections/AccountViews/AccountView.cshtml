@@ -7,7 +7,9 @@
 <div class="card" style="padding-bottom: 600px;">
     <div class="card-header">
 
-        <h3 class="d-flex justify-content-center my-5">Account Of @oneCustomer.FirstName @oneCustomer.LastName</h3>
+        <div class="d-flex justify-content-center">
+            <h3 class="d-flex justify-content-center my-5">Account Of: <p style="color: #cc1616; margin-left: 5px;">@oneCustomer.FirstName @oneCustomer.LastName</p></h3>
+        </div>
 
         <div class="d-flex justify-content-around m-t-25">
             <a asp-page="/Sections/AccountViews/WithdrawView" 
@@ -22,7 +24,7 @@
         </div>
 
     </div>
-    <div class="card-body" data-aos="fade-up">
+    <div class="container" data-aos="fade-up">
         <table class="table my-5">
             <tr style="color: #cc1616;">
                 <th>Account ID</th>
@@ -34,7 +36,7 @@
                 <tr style="color: white;">
                     <td>@acc.AccountId</td>
                     <td>@acc.Balance</td>
-                    <td>@acc.CreatedDate</td>
+                    <td>@acc.CreatedDate.ToShortDateString()</td>
                 </tr>
             }
         </table>
