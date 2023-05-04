@@ -35,21 +35,24 @@ namespace Assignment_WebBank.Model
         [Required]
         public string? City { get; set; }
 
+
+
         [Required(ErrorMessage = "Please select a gender.")]
         [NotEqualTo("0", ErrorMessage = "Please select a gender.")]
         public string? Gender { get; set; }
+
 
         public DateTime? BirthDay { get; set; }
 
         [Required]
         public string? PhoneNumber { get; set; }
 
+
         [Required]
         [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$",
         ErrorMessage = "Please enter a valid email address.")]
-
-
         public string? Email { get; set; }
+
 
         [Required]
         public string? ZipCode { get; set;}
