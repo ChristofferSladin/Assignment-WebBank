@@ -39,6 +39,7 @@ namespace Assignment_WebBank.Model
         [NotEqualTo("0", ErrorMessage = "Please select a gender.")]
         public string? Gender { get; set; }
 
+        [Required]
         public DateTime? BirthDay { get; set; }
 
         [Required]

@@ -5,93 +5,101 @@
 
 <h1>Create a new customer</h1>
 
-<form method="post">
-    <div>
-        <label for="givenname">Given Name:</label>
-        <input asp-for="NewCustomer.FirstName" class="form-control" id="givenname" name="NewCustomer.FirstName" />
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.FirstName"></span>
+<div class="offset-md-4 col-md-4">
+    <form method="post">
+        <div class="row">
+            <div class=" col-md-6">
+                <label for="givenname">Given Name:</label>
+                <input asp-for="NewCustomer.FirstName" class="form-control" id="givenname" name="NewCustomer.FirstName" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.FirstName"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="surname">Surname:</label>
+                <input asp-for="NewCustomer.LastName" class="form-control" id="surname" name="NewCustomer.LastName" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.LastName"></span>
+                </div>
+            </div>
         </div>
-    </div>
-    <div>
-        <label for="surname">Surname:</label>
-        <input asp-for="NewCustomer.LastName" class="form-control" id="surname" name="NewCustomer.LastName" />
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.LastName"></span>
+
+        <div class="col-md">
+            <label for="nationalid">National ID:</label>
+            <input asp-for="NewCustomer.PersonalNr" class="form-control" id="nationalid" name="NewCustomer.PersonalNr" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.PersonalNr"></span>
+            </div>
         </div>
-    </div>
-    <div>
-        <label for="nationalid">National ID:</label>
-        <input asp-for="NewCustomer.PersonalNr" class="form-control" id="nationalid" name="NewCustomer.PersonalNr" />
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.PersonalNr"></span>
+        <div>
+            <label for="emailaddress">Email Address:</label>
+            <input asp-for="NewCustomer.Email" class="form-control" id="emailaddress" name="NewCustomer.Email" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Email"></span>
+            </div>
         </div>
-    </div>
-    <div>
-        <label for="emailaddress">Email Address:</label>
-        <input asp-for="NewCustomer.Email" class="form-control" id="emailaddress" name="NewCustomer.Email" />
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Email"></span>
+        <div>
+            <label for="birthday">Birthday:</label>
+            <input asp-for="NewCustomer.BirthDay" class="form-control" id="birthday" name="NewCustomer.BirthDay" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.BirthDay"></span>
+            </div>
         </div>
-    </div>
-    <div>
-        <label for="birthday">Birthday:</label>
-        <input asp-for="NewCustomer.BirthDay" class="form-control" id="birthday" name="NewCustomer.BirthDay" />
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.BirthDay"></span>
+        <div>
+            <label for="streetaddress">Street Address:</label>
+            <input asp-for="NewCustomer.Adress" class="form-control" id="streetaddress" name="NewCustomer.Adress" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Adress"></span>
+            </div>
         </div>
-    </div>
-    <div>
-        <label for="streetaddress">Street Address:</label>
-        <input asp-for="NewCustomer.Adress" class="form-control" id="streetaddress" name="NewCustomer.Adress" />
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Adress"></span>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="city">City:</label>
+                <input asp-for="NewCustomer.City" class="form-control" id="city" name="NewCustomer.City" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.City"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="city">ZipCode:</label>
+                <input asp-for="NewCustomer.ZipCode" class="form-control" id="zipcode" name="NewCustomer.ZipCode" />
+                <div class="d-flex justify-content-center">
+                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.ZipCode"></span>
+                </div>
+            </div>
         </div>
-    </div>
-    <div>
-        <label for="city">City:</label>
-        <input asp-for="NewCustomer.City" class="form-control" id="city" name="NewCustomer.City" />
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.City"></span>
+        <div>
+            <label for="country">Country:</label>
+            <input asp-for="NewCustomer.Country" class="form-control" id="country" name="NewCustomer.Country" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Country"></span>
+            </div>
         </div>
-    </div>
-    <div>
-        <label for="city">ZipCode:</label>
-        <input asp-for="NewCustomer.ZipCode" class="form-control" id="zipcode" name="NewCustomer.ZipCode" />
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.ZipCode"></span>
+        <div>
+            <label for="telephonenumber">Telephone Number:</label>
+            <input asp-for="NewCustomer.PhoneNumber" class="form-control" id="telephonenumber" name="NewCustomer.PhoneNumber" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.PhoneNumber"></span>
+            </div>
         </div>
-    </div>
-    <div>
-        <label for="country">Country:</label>
-        <input asp-for="NewCustomer.Country" class="form-control" id="country" name="NewCustomer.Country" />
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Country"></span>
+        <div>
+            <label for="gender">Gender:</label>
+            <select asp-for="NewCustomer.Gender" class="form-control" id="gender" name="NewCustomer.Gender">
+                <option value="0">Choose</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Gender"></span>
+            </div>
         </div>
-    </div>
-    <div>
-        <label for="telephonenumber">Telephone Number:</label>
-        <input asp-for="NewCustomer.PhoneNumber" class="form-control" id="telephonenumber" name="NewCustomer.PhoneNumber" />
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.PhoneNumber"></span>
+
+        <div class="mt-3">
+            <button type="submit" class="btn-lines">Create Customer</button>
         </div>
-    </div>
-    <div>
-        <label for="gender">Gender:</label>
-        <select asp-for="NewCustomer.Gender" class="form-control" id="gender" name="NewCustomer.Gender">
-            <option value="0">Choose</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select>
-        <div class="d-flex justify-content-center">
-            <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Gender"></span>
-        </div>
-    </div>
-   
-    <div class="mt-3">
-        <button type="submit" class="btn-lines">Create Customer</button>
-    </div>
-</form>
+    </form>
+</div>
+
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
