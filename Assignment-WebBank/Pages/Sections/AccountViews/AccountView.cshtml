@@ -41,6 +41,10 @@
             }
         </table>
 
+        <div class="d-flex justify-content-center">
+            <a asp-page="/Sections/AccountViews/TransactionView" asp-route-customerId="@oneCustomer.CustomerId" asp-route-accountId="@Model.AccountId" class="btn-lines">Transaction History</a>
+        </div>
+
         <div class="red-line">
             <div style="background:#cc1616; height: 1px; width: 400px; justify-self: center;"></div>
         </div>

@@ -14,16 +14,16 @@
     <div data-aos="fade-up" style="padding-bottom: 600px; width: 400px;">
         <form method="post" >
             <input type="hidden" asp-for="UserId" />
-            <div class="form-group">
-                <label for="UserVM.UserName">User Name:</label>
-                <input asp-for="UserVM.UserName" class="form-control" />
+            <div class="textInputWrapper">
+                <label for="UserVM.UserName">New User Name:</label>
+                <input asp-for="UserVM.UserName" class="textInput" />
                 <div class="d-flex justify-content-center">
                     <span style="color: #cc1616" class="field-validation-error" asp-validation-for="UserVM.UserName"></span>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="UserVM.Email">Email:</label>
-                <input asp-for="UserVM.Email" class="form-control" />
+            <div class="textInputWrapper">
+                <label for="UserVM.Email">New Email:</label>
+                <input asp-for="UserVM.Email" class="textInput" />
                 <div class="d-flex justify-content-center">
                     <span style="color: #cc1616" class="field-validation-error" asp-validation-for="UserVM.Email"></span>
                 </div>
