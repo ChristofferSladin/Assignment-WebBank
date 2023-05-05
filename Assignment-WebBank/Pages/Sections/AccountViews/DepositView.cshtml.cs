@@ -42,6 +42,8 @@ namespace Assignment_WebBank.Pages.Sections.AccountViews
         public List<AccountVM> Accounts { get; set; }
         public AccountVM OneAccount { get; set; }
 
+        public int CustomerId { get; set; }
+
         public void OnGet(int accountId, int customerId)
         {
             OneCustomer = _customerService.GetCustomerCard(customerId);

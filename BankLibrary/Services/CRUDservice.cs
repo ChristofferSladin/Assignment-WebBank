@@ -27,7 +27,7 @@ namespace BankLibrary.Services
             _userManager = userManager;
         }
 
-        public void CreateCustomer(CustomerVM newCustomer)
+        public void CreateCustomer(CreateCustomerVM newCustomer)
         {
             var customer = new Customer
             {

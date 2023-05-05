@@ -18,6 +18,6 @@ namespace BankLibrary.Services
         Task<IdentityResult> CreateUserAsync(UserVM userVM, string password, string roleName);
 
         public Task<IdentityResult> UpdateUser(string userId, string newUSerName, string newEmail);
-        void CreateCustomer(CustomerVM newCustomer);
+        void CreateCustomer(CreateCustomerVM newCustomer);
     }
 }

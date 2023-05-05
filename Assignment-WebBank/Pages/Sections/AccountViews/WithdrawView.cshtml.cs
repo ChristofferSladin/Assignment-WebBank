@@ -53,8 +53,7 @@ namespace Assignment_WebBank.Pages.Sections.AccountViews
             WithdrawDate = DateTime.Now;
         }
 
-
-        public IActionResult OnPost(int accountId, int customerId)
+        public IActionResult OnPost(int accountId)
         {
             if (ModelState.IsValid)
             {
