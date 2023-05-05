@@ -27,62 +27,57 @@
 }
 
 
-<form method="post" style="padding-bottom: 600px;">
-    <div class="form-group">
-        <div class="d-flex justify-content-center">
-            <div class="d-block" style="width: 500px;">
-                <label asp-for="ToAccountId">Transfer to:</label>
-                <input class="form-control" asp-for="ToAccountId" />
-                <div class="d-flex justify-content-center">
-                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="ToAccountId"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="d-flex justify-content-center">
-            <div class="d-block" style="width: 500px;">
-                <label asp-for="Amount">Amount</label>
-                <input class="form-control" asp-for="Amount" />
-                <div class="d-flex justify-content-center">
-                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Amount"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="d-flex justify-content-center">
-            <div class="d-block" style="width: 500px;">
-                <label asp-for="TransferDate">Date</label>
-                <input class="form-control" asp-for="TransferDate" />
-                <div class="d-flex justify-content-center">
-                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="TransferDate"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="d-flex justify-content-center">
+<div class="offset-md-4 col-md-4">
+    <form method="post" style="padding-bottom: 600px;">
+        <div class="textInputWrapper">
 
-            <div class="d-block" style="width: 500px;">
-                <label asp-for="Comment">Comment</label>
-                <input class="form-control" asp-for="Comment" />
-                <div class="d-flex justify-content-center">
-                    <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Comment"></span>
-                </div>
+            <label asp-for="ToAccountId">Transfer to:</label>
+            <input class="textInput" asp-for="ToAccountId" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="ToAccountId"></span>
             </div>
+
         </div>
-    </div>
+        <div class="textInputWrapper">
 
-    <div class="red-line">
-        <div style="background:#cc1616; height: 1px; width: 400px; justify-self: center;"></div>
-    </div>
+                    <label asp-for="Amount">Amount</label>
+                    <input class="textInput" asp-for="Amount" />
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Amount"></span>
+                    </div>
 
-    <div class="d-flex justify-content-around my-3">
-        <a asp-page="/Sections/AccountViews/AccountView" asp-route-customerId="@oneCustomerId" asp-route-accountId="@oneAccountId" class="btn-lines">BACK</a>
-        <button type="submit" class="btn-lines">Transfer</button>
-    </div>
-</form>
+        </div>
+        <div class="textInputWrapper">
+
+                    <label asp-for="TransferDate">Date</label>
+                    <input id="birthday" class="textInput" asp-for="TransferDate" />
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="TransferDate"></span>
+                    </div>
+
+        </div>
+        <div class="textInputWrapper">
+
+                    <label asp-for="Comment">Comment</label>
+                    <input class="textInput" asp-for="Comment" />
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Comment"></span>
+                    </div>
+
+        </div>
+
+        <div class="red-line">
+            <div style="background:#cc1616; height: 1px; width: 400px; justify-self: center;"></div>
+        </div>
+
+        <div class="d-flex justify-content-around my-3">
+            <a asp-page="/Sections/AccountViews/AccountView" asp-route-customerId="@oneCustomerId" asp-route-accountId="@oneAccountId" class="btn-lines">BACK</a>
+            <button type="submit" class="btn-lines">Transfer</button>
+        </div>
+    </form>
+</div>
+
+
 
 
 @section Scripts{

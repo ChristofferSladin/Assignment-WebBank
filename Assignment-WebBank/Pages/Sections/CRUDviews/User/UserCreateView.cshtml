@@ -28,25 +28,25 @@
     <div data-aos="fade-up" style="padding-bottom: 600px; width: 400px;">
 
         <form method="post" asp-page-handler="OnPostCreateUserAsync">
-            <div class="form-group">
+            <div class="textInputWrapper">
                 <label for="UserVM.UserName">User Name</label>
-                <input asp-for="UserName" name="UserName" class="form-control" autocomplete="off" />
+                <input asp-for="UserName" name="UserName" class="textInput" autocomplete="off" />
                 <div class="d-flex justify-content-center">
                     <span style="color: #cc1616" class="field-validation-error" asp-validation-for="UserName"></span>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="textInputWrapper">
                 <label for="UserVM.Email">Email</label>
-                <input asp-for="Email" name="Email" class="form-control" autocomplete="off" />
+                <input asp-for="Email" name="Email" class="textInput" autocomplete="off" />
                 <div class="d-flex justify-content-center">
                     <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Email"></span>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="textInputWrapper">
                 <label for="Password">Password</label>
-                <input asp-for="Password" type="password" name="Password" class="form-control" autocomplete="off" />
+                <input asp-for="Password" type="password" name="Password" class="textInput" autocomplete="off" />
                 <div class="d-flex justify-content-center">
                     <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Password"></span>
                 </div>
@@ -82,9 +82,6 @@
                 <div style="background:#cc1616; height: 1px; width: 400px; justify-self: center;"></div>
             </div>
 
-            <div class="red-line">
-                <div style="background:#cc1616; height: 1px; width: 400px; justify-self: center;"></div>
-            </div>
 
             <div class="d-flex justify-content-around">
                 <a asp-page="/Index" class="btn-lines">BACK</a>
