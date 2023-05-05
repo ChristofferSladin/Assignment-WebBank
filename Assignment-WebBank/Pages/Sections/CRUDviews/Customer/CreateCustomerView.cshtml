@@ -88,28 +88,40 @@
             </div>
         </div>
         <div class="textInputWrapper">
-            <label for="country">Country</label>
-            <input asp-for="NewCustomer.Country" class="textInput" id="country" name="NewCustomer.Country" />
-            <div class="d-flex justify-content-center">
-                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Country"></span>
-            </div>
-        </div>
-        <div class="textInputWrapper">
             <label for="telephonenumber">Telephone Number</label>
             <input asp-for="NewCustomer.PhoneNumber" class="textInput" id="telephonenumber" name="NewCustomer.PhoneNumber" />
             <div class="d-flex justify-content-center">
                 <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.PhoneNumber"></span>
             </div>
         </div>
-        <div class="textInputWrapper">
-            <label for="gender">Gender</label>
-            <select asp-for="NewCustomer.Gender" style="height: 50px;" class="textInput" id="gender" name="NewCustomer.Gender">
-                <option value="0">Choose</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-            <div class="d-flex justify-content-center">
-                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Gender"></span>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="textInputWrapper">
+                    <label for="country">Country</label>
+                    <select asp-for="NewCustomer.Country" style="height: 50px;" class="textInput" id="country" name="NewCustomer.Country">
+                        <option value="0">Select a Country</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Finland">Finland</option>
+                    </select>
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Country"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="textInputWrapper">
+                    <label for="gender">Gender</label>
+                    <select asp-for="NewCustomer.Gender" style="height: 50px;" class="textInput" id="gender" name="NewCustomer.Gender">
+                        <option value="0">Choose</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Gender"></span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="d-flex justify-content-center mt-3">
