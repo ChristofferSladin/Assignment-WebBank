@@ -40,6 +40,7 @@ builder.Services.AddTransient<ICRUDservice, CRUDservice>();
 
 builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(ValidateCustomerVM)));
 
+builder.Services.AddResponseCaching();
 
 var app = builder.Build();
 
@@ -70,5 +71,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseResponseCaching();
 
 app.Run();

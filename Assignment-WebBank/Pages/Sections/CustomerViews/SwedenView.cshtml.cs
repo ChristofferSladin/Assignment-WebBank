@@ -7,6 +7,7 @@ using System.Data;
 
 namespace Assignment_WebBank.Pages.Sections.CustomerViews
 {
+    [ResponseCache(Duration = 60)]
     public class SwedenViewModel : PageModel
     {
         private readonly IIndexService _indexService;
