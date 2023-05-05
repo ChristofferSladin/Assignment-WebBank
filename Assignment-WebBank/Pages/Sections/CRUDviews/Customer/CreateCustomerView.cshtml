@@ -11,12 +11,12 @@
     <div style="background:#cc1616; height: 1px; width: 400px; justify-self: center;"></div>
 </div>
 
-<div class="offset-md-3 col-md-6">
+<div class="offset-md-3 col-md-6" data-aos="fade-up">
     <form method="post">
         <div class="row">
             <div class="col-md-6">
                 <div class=" textInputWrapper">
-                    <label for="givenname">Given Name:</label>
+                    <label for="givenname">First Name</label>
                     <input asp-for="NewCustomer.FirstName" class="textInput" id="givenname" name="NewCustomer.FirstName" />
                     <div class="d-flex justify-content-center">
                         <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.FirstName"></span>
@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-6">
                 <div class=" textInputWrapper">
-                    <label for="surname">Surname:</label>
+                    <label for="surname">Last Name</label>
                     <input asp-for="NewCustomer.LastName" class="textInput" id="surname" name="NewCustomer.LastName" />
                     <div class="d-flex justify-content-center">
                         <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.LastName"></span>
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="textInputWrapper">
-            <label for="emailaddress">Email Address:</label>
+            <label for="emailaddress">Email Address</label>
             <input asp-for="NewCustomer.Email" class="textInput" id="emailaddress" name="NewCustomer.Email" />
             <div class="d-flex justify-content-center">
                 <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Email"></span>
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="textInputWrapper">
-                    <label for="nationalid">National ID:</label>
+                    <label for="nationalid">National ID</label>
                     <input asp-for="NewCustomer.PersonalNr" class="textInput" id="nationalid" name="NewCustomer.PersonalNr" />
                     <div class="d-flex justify-content-center">
                         <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.PersonalNr"></span>
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-6">
                 <div class="textInputWrapper">
-                    <label for="birthday">Birthday:</label>
+                    <label for="birthday">Birthday</label>
                     <input asp-for="NewCustomer.BirthDay" class="textInput" id="birthday" name="NewCustomer.BirthDay" />
                     <div class="d-flex justify-content-center">
                         <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.BirthDay"></span>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="textInputWrapper">
-            <label for="streetaddress">Street Address:</label>
+            <label for="streetaddress">Street Address</label>
             <input asp-for="NewCustomer.Adress" class="textInput" id="streetaddress" name="NewCustomer.Adress" />
             <div class="d-flex justify-content-center">
                 <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Adress"></span>
@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="textInputWrapper">
-                    <label for="city">City:</label>
+                    <label for="city">City</label>
                     <input asp-for="NewCustomer.City" class="textInput" id="city" name="NewCustomer.City" />
                     <div class="d-flex justify-content-center">
                         <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.City"></span>
@@ -79,7 +79,7 @@
             </div>
             <div class="col-md-6">
                 <div class="textInputWrapper">
-                    <label for="city">ZipCode:</label>
+                    <label for="city">ZipCode</label>
                     <input asp-for="NewCustomer.ZipCode" class="textInput" id="zipcode" name="NewCustomer.ZipCode" />
                     <div class="d-flex justify-content-center">
                         <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.ZipCode"></span>
@@ -88,21 +88,21 @@
             </div>
         </div>
         <div class="textInputWrapper">
-            <label for="country">Country:</label>
+            <label for="country">Country</label>
             <input asp-for="NewCustomer.Country" class="textInput" id="country" name="NewCustomer.Country" />
             <div class="d-flex justify-content-center">
                 <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.Country"></span>
             </div>
         </div>
         <div class="textInputWrapper">
-            <label for="telephonenumber">Telephone Number:</label>
+            <label for="telephonenumber">Telephone Number</label>
             <input asp-for="NewCustomer.PhoneNumber" class="textInput" id="telephonenumber" name="NewCustomer.PhoneNumber" />
             <div class="d-flex justify-content-center">
                 <span style="color: #cc1616" class="field-validation-error" asp-validation-for="NewCustomer.PhoneNumber"></span>
             </div>
         </div>
         <div class="textInputWrapper">
-            <label for="gender">Gender:</label>
+            <label for="gender">Gender</label>
             <select asp-for="NewCustomer.Gender" style="height: 50px;" class="textInput" id="gender" name="NewCustomer.Gender">
                 <option value="0">Choose</option>
                 <option value="Male">Male</option>
