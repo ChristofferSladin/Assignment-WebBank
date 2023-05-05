@@ -2,3 +2,135 @@
 @model Assignment_WebBank.Pages.Sections.CRUDviews.Customer.UpdateCustomerViewModel
 @{
 }
+
+<div class="d-flex justify-content-center pt-5">
+    <h1 style="color: #cc1616;">Update Customer</h1>
+</div>
+
+<div class="red-line">
+    <div style="background:#cc1616; height: 1px; width: 400px; justify-self: center;"></div>
+</div>
+
+<div class="offset-md-3 col-md-6">
+    <form method="post">
+        <input type="hidden" asp-for="CustomerId"/>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class=" textInputWrapper">
+                    <label for="givenname">Given Name:</label>
+                    <input asp-for="Customer.FirstName" class="textInput" id="givenname" name="Customer.FirstName" />
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.FirstName"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class=" textInputWrapper">
+                    <label for="surname">Surname:</label>
+                    <input asp-for="Customer.LastName" class="textInput" id="surname" name="Customer.LastName" />
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.LastName"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="textInputWrapper">
+            <label for="emailaddress">Email Address:</label>
+            <input asp-for="Customer.Email" class="textInput" id="emailaddress" name="Customer.Email" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.Email"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="textInputWrapper">
+                    <label for="nationalid">National ID:</label>
+                    <input asp-for="Customer.PersonalNr" class="textInput" id="nationalid" name="Customer.PersonalNr" />
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.PersonalNr"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="textInputWrapper">
+                    <label for="birthday">Birthday:</label>
+                    <input asp-for="Customer.BirthDay" class="textInput" id="birthday" name="Customer.BirthDay" />
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.BirthDay"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="textInputWrapper">
+            <label for="streetaddress">Street Address:</label>
+            <input asp-for="Customer.Adress" class="textInput" id="streetaddress" name="Customer.Adress" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.Adress"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="textInputWrapper">
+                    <label for="city">City:</label>
+                    <input asp-for="Customer.City" class="textInput" id="city" name="Customer.City" />
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.City"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="textInputWrapper">
+                    <label for="city">ZipCode:</label>
+                    <input asp-for="Customer.ZipCode" class="textInput" id="zipcode" name="Customer.ZipCode" />
+                    <div class="d-flex justify-content-center">
+                        <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.ZipCode"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="textInputWrapper">
+            <label for="country">Country:</label>
+            <input asp-for="Customer.Country" class="textInput" id="country" name="Customer.Country" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.Country"></span>
+            </div>
+        </div>
+        <div class="textInputWrapper">
+            <label for="telephonenumber">Telephone Number:</label>
+            <input asp-for="Customer.PhoneNumber" class="textInput" id="telephonenumber" name="Customer.PhoneNumber" />
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.PhoneNumber"></span>
+            </div>
+        </div>
+        <div class="textInputWrapper">
+            <label for="gender">Gender:</label>
+            <select asp-for="Customer.Gender" style="height: 50px;" class="textInput" id="gender" name="Customer.Gender">
+                <option value="0">Choose</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <div class="d-flex justify-content-center">
+                <span style="color: #cc1616" class="field-validation-error" asp-validation-for="Customer.Gender"></span>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="button">
+                <span class="actual-text">&nbsp;Update&nbsp;</span>
+                <span class="hover-text" aria-hidden="true">&nbsp;Update&nbsp;</span>
+            </button>
+        </div>
+    </form>
+
+    <div class="red-line">
+        <div style="background:#cc1616; height: 1px; width: 400px; justify-self: center;"></div>
+    </div>
+
+    <div class="d-flex justify-content-around mb-5">
+        <a asp-page="/Index" class="btn-lines">BACK</a>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

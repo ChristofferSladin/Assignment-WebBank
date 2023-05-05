@@ -2,9 +2,10 @@ using Assignment_WebBank.BankAppData;
 using Assignment_WebBank.Data;
 using Assignment_WebBank.Services;
 using BankLibrary.Services;
+using BankLibrary.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,7 @@ builder.Services.AddTransient<ITransactionService, TransactionService>();
 //Lägg till min CRUDService
 builder.Services.AddTransient<ICRUDservice, CRUDservice>();
 
+builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(ValidateCustomerVM)));
 
 
 var app = builder.Build();

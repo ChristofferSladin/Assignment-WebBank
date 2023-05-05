@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace BankLibrary.Services
 {
@@ -19,31 +20,73 @@ namespace BankLibrary.Services
     {
         private readonly BankAppDataContext _dbContext;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IMapper _mapper;
         
 
-        public CRUDservice(BankAppDataContext dbcontext, UserManager<IdentityUser> userManager)
+        public CRUDservice(BankAppDataContext dbcontext, UserManager<IdentityUser> userManager, IMapper mapper)
         {
             _dbContext = dbcontext;
             _userManager = userManager;
+            _mapper = mapper;
         }
 
-        public void CreateCustomer(CreateCustomerVM newCustomer)
+        public async Task<IdentityResult> UpdateCustomerAsync(int customerId, ValidateCustomerVM CustomerToUpdate)
         {
-            var customer = new Customer
+            try
             {
-                NationalId = newCustomer.PersonalNr,
-                Country = newCustomer.Country,
-                Givenname = newCustomer.FirstName,
-                Surname = newCustomer.LastName,
-                Streetaddress = newCustomer.Adress,
-                City = newCustomer.City,
-                Gender = newCustomer.Gender,
-                Birthday = newCustomer.BirthDay,
-                Telephonenumber = newCustomer.PhoneNumber,
-                Emailaddress = newCustomer.Email,
-                CountryCode = "",
-                Zipcode = newCustomer.ZipCode,
-            };
+                var customer = await _dbContext.Customers.FindAsync(customerId);
+
+                if(customer == null)
+                {
+                    return IdentityResult.Failed(new IdentityError { Description = "Customer not Found" });
+                }
+
+                if (CustomerToUpdate.FirstName != null) customer.Givenname = CustomerToUpdate.FirstName;
+                if (CustomerToUpdate.LastName != null) customer.Surname = CustomerToUpdate.LastName;
+                if (CustomerToUpdate.PersonalNr != null) customer.NationalId = CustomerToUpdate.PersonalNr;
+                if (CustomerToUpdate.BirthDay != DateTime.MinValue) customer.Birthday = CustomerToUpdate.BirthDay;
+                if (CustomerToUpdate.Adress != null) customer.Streetaddress = CustomerToUpdate.Adress;
+                if (CustomerToUpdate.City != null) customer.City = CustomerToUpdate.City;
+                if (CustomerToUpdate.ZipCode != null) customer.Zipcode = CustomerToUpdate.ZipCode;
+                if (CustomerToUpdate.Country != null) customer.Country = CustomerToUpdate.Country;
+                if (CustomerToUpdate.PhoneNumber != null) customer.Telephonenumber = CustomerToUpdate.PhoneNumber;
+                if (CustomerToUpdate.Email != null) customer.Emailaddress = CustomerToUpdate.Email;
+                if (CustomerToUpdate.Gender != null) customer.Gender = CustomerToUpdate.Gender;
+
+
+                await _dbContext.SaveChangesAsync();
+
+                return IdentityResult.Success;
+
+            }
+
+            catch (Exception ex)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = $"Error Updating Customer: {ex.Message}" });
+            }
+        }
+
+        public ValidateCustomerVM GetOneCustomer(int customerId)
+        {
+            var customer = _dbContext.Customers.Find(customerId);
+
+            if (customer == null)
+            {
+                return null;
+            }
+
+            var customerVM = _mapper.Map<ValidateCustomerVM>(customer);
+
+            return customerVM;
+        }
+
+        public void CreateCustomer(ValidateCustomerVM newCustomer)
+        {
+            var customer = new Customer();
+
+            customer.CountryCode = "";
+
+            _mapper.Map(newCustomer, customer);
 
             var newAccount = new Account
             {

@@ -19,7 +19,7 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews.Customer
             _crudService = crudService;
         }
 
-        public CreateCustomerVM NewCustomer { get; set; }
+        public ValidateCustomerVM NewCustomer { get; set; }
 
         public void OnGet()
         {

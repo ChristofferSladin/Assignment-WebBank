@@ -12,12 +12,16 @@ namespace BankLibrary.Services
 {
     public interface ICRUDservice
     {
-        public List<UserVM> GetAllUsers();
-        public UserVM GetOneUser(string id);
-        public void DeleteUser(string id);
+        List<UserVM> GetAllUsers();
+        UserVM GetOneUser(string id);
+        void DeleteUser(string id);
         Task<IdentityResult> CreateUserAsync(UserVM userVM, string password, string roleName);
 
-        public Task<IdentityResult> UpdateUser(string userId, string newUSerName, string newEmail);
-        void CreateCustomer(CreateCustomerVM newCustomer);
+        Task<IdentityResult> UpdateUser(string userId, string newUSerName, string newEmail);
+        void CreateCustomer(ValidateCustomerVM newCustomer);
+        ValidateCustomerVM GetOneCustomer(int customerId);
+
+        Task<IdentityResult> UpdateCustomerAsync(int customerId, ValidateCustomerVM newCustomer);
+
     }
 }

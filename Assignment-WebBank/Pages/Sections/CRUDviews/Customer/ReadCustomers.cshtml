@@ -1,6 +1,5 @@
 ﻿@page
-@using Assignment_WebBank.Model
-@model Assignment_WebBank.Pages.Sections.CustomerViews.CustomerViewModel
+@model Assignment_WebBank.Pages.Sections.CRUDviews.Customer.ReadCustomersModel
 @{
 }
 <div>
@@ -47,14 +46,14 @@ else
         <thead>
             <tr style="color: #cc1616; font-size: 25px;">
                 <th>
-                    <a asp-page="/Sections/CustomerViews/CustomerView"
+                    <a asp-page="/Sections/CRUDviews/Customer/ReadCustomers"
                        asp-route-sortColumn="Id"
                        asp-route-sortOrder="asc"
                        style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     ID
-                    <a asp-page="/Sections/CustomerViews/CustomerView"
+                    <a asp-page="/Sections/CRUDviews/Customer/ReadCustomers"
                        asp-route-sortColumn="Id"
                        asp-route-sortOrder="desc"
                        style="text-decoration:none; font-size: 20px;">
@@ -62,14 +61,14 @@ else
                     </a>
                 </th>
                 <th>
-                    <a asp-page="/Sections/CustomerViews/CustomerView"
+                    <a asp-page="/Sections/CRUDviews/Customer/ReadCustomers"
                        asp-route-sortColumn="Name"
                        asp-route-sortOrder="asc"
                        style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     Name
-                    <a asp-page="/Sections/CustomerViews/CustomerView"
+                    <a asp-page="/Sections/CRUDviews/Customer/ReadCustomers"
                        asp-route-sortColumn="Name"
                        asp-route-sortOrder="desc"
                        style="text-decoration:none; font-size: 20px;">
@@ -77,14 +76,14 @@ else
                     </a>
                 </th>
                 <th>
-                    <a asp-page="/Sections/CustomerViews/CustomerView"
+                    <a asp-page="/Sections/CRUDviews/Customer/ReadCustomers"
                        asp-route-sortColumn="Country"
                        asp-route-sortOrder="asc"
                        style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     Country
-                    <a asp-page="/Sections/CustomerViews/CustomerView"
+                    <a asp-page="/Sections/CRUDviews/Customer/ReadCustomers"
                        asp-route-sortColumn="Country"
                        asp-route-sortOrder="desc"
                        style="text-decoration:none; font-size: 20px;">
@@ -92,14 +91,14 @@ else
                     </a>
                 </th>
                 <th>
-                    <a asp-page="/Sections/CustomerViews/CustomerView"
+                    <a asp-page="/Sections/CRUDviews/Customer/ReadCustomers"
                        asp-route-sortColumn="City"
                        asp-route-sortOrder="asc"
                        style="text-decoration:none; font-size: 20px;">
                         <i class="fa-solid fa-arrow-up"></i>
                     </a>
                     City
-                    <a asp-page="/Sections/CustomerViews/CustomerView"
+                    <a asp-page="/Sections/CRUDviews/Customer/ReadCustomers"
                        asp-route-sortColumn="City"
                        asp-route-sortOrder="desc"
                        style="text-decoration:none; font-size: 20px;">
@@ -126,7 +125,7 @@ else
                         <td>@customer.City</td>
                         <td>@customer.PersonalNr</td>
                         <td>
-                            <a asp-page="/Sections/CustomerViews/CustomerCardView" asp-route-customerId="@customer.CustomerId" class="btn-lines">View Details</a>
+                            <a asp-page="/Sections/CRUDviews/Customer/UpdateCustomerView" asp-route-customerId="@customer.CustomerId" class="btn-lines">Update</a>
                         </td>
                     </tr>
                 }
