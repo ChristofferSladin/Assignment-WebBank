@@ -21,6 +21,7 @@ th {
 #main {
     color: white;
     background: #141414;
+    padding-top: 70px;
 }
 
 a {
@@ -89,13 +90,17 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+header {
+    margin-bottom: 100px;
+}
+
 #header {
     background: rgba(25, 25, 25, 0.95);
     transition: all 0.5s;
     z-index: 997;
     height: 70px;
-    padding-top: 40px;
     opacity: 95%;
+
 }
 
     #header.fixed-top {
@@ -113,16 +118,12 @@ h6 {
     }
 
         #header .logo a {
-            color: #fff;
+            color: #cc1616;
         }
 
         #header .logo img {
             max-height: 40px;
         }
-
-.scrolled-offset {
-    margin-top: 70px;
-}
 
 /*--------------------------------------------------------------
 # Navigation Menu
