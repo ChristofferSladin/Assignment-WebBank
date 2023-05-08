@@ -5,6 +5,11 @@
     padding-bottom: 10px;
 }
 
+.form-check-input-red:checked {
+    background-color: #cc1616;
+    border-color: #cc1616;
+}
+
 .radio-input {
     display: flex;
     align-items: center;

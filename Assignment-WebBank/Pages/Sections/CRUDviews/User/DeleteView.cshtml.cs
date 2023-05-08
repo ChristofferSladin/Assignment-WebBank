@@ -25,7 +25,7 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews.User
         public IActionResult OnPostAsync()
         {
             _crudService.DeleteUser(UserId);
-            return RedirectToPage("/Sections/CRUDviews/User/UserDeleteView");
+            return RedirectToPage("/Sections/CRUDviews/User/UserDeleteSuccess");
         }
     }
 }

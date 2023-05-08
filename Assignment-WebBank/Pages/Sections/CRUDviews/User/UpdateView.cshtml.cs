@@ -36,7 +36,7 @@ namespace Assignment_WebBank.Pages.Sections.CRUDviews.User
 
             if (result.Succeeded)
             {
-                return RedirectToPage("/Sections/CRUDviews/User/UserUpdateView");
+                return RedirectToPage("/Sections/CRUDviews/User/UserUpdateSuccess");
             }
 
             return Page();

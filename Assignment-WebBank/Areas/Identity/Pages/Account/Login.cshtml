@@ -9,37 +9,44 @@
         <h1 style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">@ViewData["Title"]</h1>
         <div class="col-md-4">
             <section>
-                <form id="account" method="post" style="text-align: center;">
+                <form id="account" method="post">
                     <hr />
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-floating" style="margin-bottom: 10px;">
-                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                        <label asp-for="Input.Email" style="color: black;" class="form-label"></label>
+                    <div class="textInputWrapper" style="margin-bottom: 10px;">
+                        <label asp-for="Input.Email" style="color: #cc1616;" class="form-label"></label>
+                        <input asp-for="Input.Email" class="textInput" autocomplete="username" aria-required="true" />
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
-                    <div class="form-floating" style="margin-bottom: 10px;">
-                        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
-                        <label asp-for="Input.Password" style="color: black;" class="form-label"></label>
+                    <div class="textInputWrapper" style="margin-bottom: 10px;">
+                        <label asp-for="Input.Password" style="color: #cc1616;" class="form-label"></label>
+                        <input asp-for="Input.Password" class="textInput" autocomplete="current-password" aria-required="true" />
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                     </div>
-                    <div>
-                        <div class="checkbox">
-                            <label asp-for="Input.RememberMe" class="form-label">
-                                <input class="form-check-input" asp-for="Input.RememberMe" />
-                                @Html.DisplayNameFor(m => m.Input.RememberMe)
-                            </label>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <div class="checkbox">
+                                <label asp-for="Input.RememberMe" class="form-label">
+                                    <input class="form-check-input form-check-input-red" asp-for="Input.RememberMe" />
+                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <button id="login-submit" type="submit" class="button">
-                            <span class="actual-text">&nbsp;Login&nbsp;</span>
-                            <span class="hover-text" aria-hidden="true">&nbsp;Login&nbsp;</span>
-                        </button>
-                    </div>
-                    <div>
                         <p>
                             <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                         </p>
+                    </div>
+                    
+                    <div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <button id="login-submit" type="submit" class="button">
+                                <span class="actual-text">&nbsp;Login&nbsp;</span>
+                                <span class="hover-text" aria-hidden="true">&nbsp;Login&nbsp;</span>
+                            </button>
+                        </div>
+                        
+                    </div>
+                    <div>
+                        
                         @* <p>
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
                         </p>
