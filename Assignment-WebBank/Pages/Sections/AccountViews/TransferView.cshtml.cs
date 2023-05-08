@@ -67,10 +67,13 @@ namespace Assignment_WebBank.Pages.Sections.AccountViews
                     ViewData["Message"] = "Successfully Transfered money!";
                 }
 
+                if (status == ErrorCode.BalanceTooLow) { ModelState.AddModelError("Amount", "You don't have that much money!"); }
+
                 if (status == ErrorCode.IncorrectAmount)
                 {
                     ModelState.AddModelError("Amount", "Please enter a correct amount (100-10000)!");
                 }
+                
 
                 if (TransferDate.AddHours(1) < DateTime.Now)
                 {

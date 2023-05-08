@@ -107,7 +107,7 @@ namespace Assignment_WebBank.Services
 
             if (amount <= 0 || amount > fromAccountDb.Balance)
             {
-                return ErrorCode.IncorrectAmount;
+                return ErrorCode.BalanceTooLow;
             }
 
             fromAccountDb.Balance -= amount;

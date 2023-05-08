@@ -105,8 +105,9 @@ header {
 }
 
 #header img {
-    height: 50px;
-    width: 75px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
 }
 
     #header.fixed-top {
@@ -114,7 +115,7 @@ header {
     }
 
     #header .logo {
-        font-size: 30px;
+        font-size: 25px;
         margin: 0;
         padding: 0;
         line-height: 1;
@@ -127,9 +128,6 @@ header {
             color: #cc1616;
         }
 
-        #header .logo img {
-            max-height: 40px;
-        }
 
 /*--------------------------------------------------------------
 # Navigation Menu
