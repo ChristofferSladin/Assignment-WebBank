@@ -34,85 +34,54 @@
     <link rel="stylesheet" href="~/css/Search.css" asp-append-version="true" />
 
     <!-- FONT AWESOME CDN: CONTENT DELIVERY NETWORK -->
-    <link rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
+<!-- ======= Header ======= -->
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-
-        <h1 class="logo"><a href="/">Bank Of Scandinavia</a></h1>
-
-        @if (User.IsInRole("Admin"))
-        {
-            <nav id="navbar" class="navbar">
-                <ul class="d-flex flex-row" style="font-weight: 700; font-size: 1em !important;">
-                    <li class="dropdown" style="position: relative; top: calc(100% - 35px);">
-                        <a style="color:white;"><span>CRUD Menu</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul style="background: #141414;">
-                            <li><a asp-page="/Sections/CRUDviews/User/UserCreateView" style="color: white;">Create New User</a></li>
-                            <li><a asp-page="/Sections/CRUDviews/User/UserUpdateView" style="color: white;">Update Existing User</a></li>
-                            <li><a asp-page="/Sections/CRUDviews/User/UserDeleteView" style="color: white;">Delete User</a></li>
-
-                            <li class="dropdown">
-                                <a style="color:white;"><span>CRUD Customer</span> <i class="bi bi-chevron-right"></i></a>
-                                <ul style="background: #141414;">
-                                    <li><a asp-page="/Sections/CRUDviews/Customer/CreateCustomerView" style="color: white;">Create New Customer</a></li>
-                                    <li><a asp-page="/Sections/CRUDviews/Customer/ReadCustomers" style="color: white;">Update Existing Customer</a></li>
-                                </ul>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        }
-
-        <nav id="" class="">
-            <ul class="d-flex flex-row">
-                
+        <h1 class="logo">
+            <a asp-page="/Index">
+                <img src="~/img/red-bank-icon.png" />Bank Of Scandinavia
+            </a>
+        </h1>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link" asp-page="/Index">Home</a></li>
+                <li><a class="nav-link" asp-page="/Sections/GeneralViews/About">About</a></li>
+                <li><a class="nav-link" asp-page="/Sections/GeneralViews/Contact">Contact</a></li>
                 @if (User.IsInRole("Cashier"))
                 {
-                   <li>
-                    <button class="button" style="position: relative; top: calc(100% - 25px);">
-                        <a asp-page="/Sections/CustomerViews/CustomerView">
-                            <span style="color: white;" class="actual-text">&nbsp;Customers&nbsp;</span>
-                            <span class="hover-text" aria-hidden="true">&nbsp;Customers&nbsp;</span
-                        </a>
-                    </button>
-                    
-                </li>
-                        
-                 
+                    <li><a class="nav-link" asp-page="/Sections/CustomerViews/CustomerView">Customers</a></li>
                 }
-                <li>
-                    <button class="button" style="position: relative; top: calc(100% - 25px);">
-                        <a asp-page="/Sections/GeneralViews/About">
-                            <span style="color: white;" class="actual-text">&nbsp;About&nbsp;</span>
-                            <span class="hover-text" aria-hidden="true">&nbsp;About&nbsp;</span
-                        </a>
-                    </button>
-                    
-                </li>
-                
-
-                <li>
-                    <button class="button" style="margin-right: 30px; position: relative; top: calc(100% - 25px);">
-                        <a asp-page="/Sections/GeneralViews/Contact">
-                            <span style="color: white;" class="actual-text">&nbsp;Contact&nbsp;</span>
-                            <span class="hover-text" aria-hidden="true">&nbsp;Contact&nbsp;</span
-                        </a>
-                    </button>
-                    
-                </li>
-
-                <li><partial name="_LoginPartial" /></li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="dropdown">
+                        <a href="#"><span>Crud Menu</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <a href="#"><span>User Crud</span> <i class="bi bi-chevron-down"></i></a>
+                            <li><a asp-page="/Sections/CRUDviews/User/UserCreateView">Create User</a></li>
+                            <li><a asp-page="/Sections/CRUDviews/User/UserUpdateView">Update User</a></li>
+                            <li><a asp-page="/Sections/CRUDviews/User/UserDeleteView">Delete User</a></li>
+                            <li class="dropdown">
+                                <a href="#"><span>Customer Crud</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a asp-page="/Sections/CRUDviews/Customer/CreateCustomerView">Create New Customer</a></li>
+                                    <li><a asp-page="/Sections/CRUDviews/Customer/ReadCustomers">Update Existing Customer</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                    <partial name="_LoginPartial" />
             </ul>
-        </nav>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
     </div>
-</header>
+</header><!-- End Header -->
 
 <main id="main">
     @RenderBody()

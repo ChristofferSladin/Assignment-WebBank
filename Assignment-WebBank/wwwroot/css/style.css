@@ -94,6 +94,7 @@ header {
     margin-bottom: 100px;
 }
 
+
 #header {
     background: rgba(25, 25, 25, 0.95);
     transition: all 0.5s;
@@ -101,6 +102,11 @@ header {
     height: 70px;
     opacity: 95%;
 
+}
+
+#header img {
+    height: 50px;
+    width: 75px;
 }
 
     #header.fixed-top {
@@ -187,7 +193,8 @@ ul {
     .navbar .active,
     .navbar .active:focus,
     .navbar li:hover > a {
-        background: #cc1616;
+        background: transparent;
+        color: #cc1616;
     }
 
 .navbar .dropdown ul {
@@ -200,7 +207,7 @@ ul {
     z-index: 99;
     opacity: 0;
     visibility: hidden;
-    background: #fff;
+    background: #141414;
     box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
     transition: 0.3s;
 }
@@ -211,7 +218,7 @@ ul {
 
     .navbar .dropdown ul a {
         padding: 10px 20px;
-        color: #191919;
+        color: white;
     }
 
         .navbar .dropdown ul a i {
@@ -221,7 +228,7 @@ ul {
         .navbar .dropdown ul a:hover,
         .navbar .dropdown ul .active:hover,
         .navbar .dropdown ul li:hover > a {
-            color: #fff;
+            color: #cc1616;
         }
 
 .navbar .dropdown:hover > ul {
@@ -257,7 +264,7 @@ ul {
 * Mobile Navigation 
 */
 .mobile-nav-toggle {
-    color: #fff;
+    color: #cc1616;
     font-size: 28px;
     cursor: pointer;
     display: none;
@@ -299,13 +306,13 @@ ul {
 
     .navbar-mobile ul {
         display: block;
-        position: absolute;
-        top: 55px;
-        right: 15px;
-        bottom: 15px;
-        left: 15px;
+      position: absolute;
+      height: 100vh;
+        right: 0;
+        left: 0;
+
         padding: 10px 0;
-        background-color: #fff;
+        background-color: #141414;
         overflow-y: auto;
         transition: 0.3s;
     }
@@ -314,7 +321,7 @@ ul {
     .navbar-mobile a:focus {
         padding: 10px 20px;
         font-size: 15px;
-        color: #191919;
+        color: white;
     }
 
         .navbar-mobile a:hover,
@@ -337,7 +344,7 @@ ul {
         z-index: 99;
         opacity: 1;
         visibility: visible;
-        background: #fff;
+        background: #141414;
         box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
     }
 
