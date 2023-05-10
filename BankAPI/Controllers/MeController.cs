@@ -22,6 +22,20 @@ namespace BankAPI.Controllers
 
         }
 
+        // READ ONE CUSTOMER ///////////////////////////////////////////////////////
+        /// <summary>
+        /// Retrieve ONE Customer from the database
+        /// </summary>
+        /// <returns>
+        /// One Customer
+        /// </returns>
+        /// <remarks>
+        /// Example end point: GET /api/Account{id}
+        /// </remarks>
+        /// <response code="200">
+        /// Successfully returned ONE Customer
+        /// </response>
+
         [HttpGet]
         [Route("{id}")]
         public async Task<ActionResult<CustomerDTO>> GetOne(int id)

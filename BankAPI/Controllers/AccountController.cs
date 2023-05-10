@@ -19,6 +19,20 @@ namespace BankAPI.Controllers
 
         }
 
+        // READ ONE ACCOUNT ///////////////////////////////////////////////////////
+        /// <summary>
+        /// Retrieve ONE Account and the transactions from the database
+        /// </summary>
+        /// <returns>
+        /// One Account and the transactions
+        /// </returns>
+        /// <remarks>
+        /// Example end point: GET /api/Account{id}
+        /// </remarks>
+        /// <response code="200">
+        /// Successfully returned ONE Account with the transactions
+        /// </response>
+
         [HttpGet]
         [Route("{id}")]
         public async Task<ActionResult<AccountDTO>> GetOne(int id, int limit, int offset)
