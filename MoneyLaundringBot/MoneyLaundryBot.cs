@@ -20,13 +20,6 @@ namespace MoneyLaundringBot
 
         public List<TransactionVM> TransaactionsByCountry { get; set; }
         
-
-        
-
-
-
-        
-
         public void WriteTxtFile(string transactionDetails)
         {
             string filePath = "Results.txt";
