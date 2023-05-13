@@ -5,7 +5,7 @@
     ViewData["ActivePage"] = ManageNavPages.Email;
 }
 
-<h3>@ViewData["Title"]</h3>
+<h3 style="color: #cc1616;">@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
     <div class="col-md-6">
@@ -16,9 +16,9 @@
                 <div class="textInputWrapper">
                     <label asp-for="Email" class="form-label"></label>
 
-                    <div class="row">
+                    <div class="d-flex">
                         <input asp-for="Email" class="textInput" disabled />
-                        <span class="textInput" style="color: lawngreen;">✓</span>
+                        <span style="color: lawngreen;">✓</span>
                     </div>
                     
                     
@@ -39,10 +39,13 @@
                 
                 <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
             </div>
-            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="button">
-                <span class="actual-text">&nbsp;Change&nbsp;</span>
-                <span class="hover-text" aria-hidden="true">&nbsp;Change&nbsp;</span>
-            </button>
+            <div class="d-flex justify-content-center py-5">
+                <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="button">
+                    <span class="actual-text">&nbsp;Change&nbsp;</span>
+                    <span class="hover-text" aria-hidden="true">&nbsp;Change&nbsp;</span>
+                </button>
+            </div>
+            
         </form>
     </div>
 </div>

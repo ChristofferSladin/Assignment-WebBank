@@ -10,18 +10,14 @@
     <div class="container" data-aos="fade-up">
         <h1 style="color: #cc1616;">Welcome To Bank Of Scandinavia</h1>
         <h2>We are here to help You with the financial parts of life</h2>
-        <a asp-page="/Sections/CustomerViews/CustomerView" class="btn-lines">Get Started</a>
+        <a href="#countries" class="btn-lines">Get Started</a>
     </div>
 
-   @* <div class="red-line">
-        <div style="background:#cc1616; height: 1px; width: 900px; justify-self: center;"></div>
-    </div>*@
-
-    <div class="container" data-aos="fade-up" style="margin-top: 400px; margin-bottom: 150px;">
-        <div class="row">
+    <div class="container" data-aos="fade-up" style="padding-top: 1000px; padding-bottom: 150px;">
+        <div id="countries" class="row">
             @foreach (var country in new[] { "Sweden", "Norway", "Denmark", "Finland" })
             {
-                <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-4">
                     <div class="card text-center" style="background: transparent; border: none;">
                         <a><img src="~/img/flags/@(country).png" class="card-img-top" style="height: 200px; width: 200px;"></a>
                         <div class="card-body" style="background: #141414;">
@@ -42,7 +38,6 @@
         </div>
     </div>
 </section>
-
 
 
 
