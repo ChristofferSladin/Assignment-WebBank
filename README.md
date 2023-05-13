@@ -7,6 +7,7 @@ Project built in RazorPages with good structure. Relevant folder names, Services
 Database is hosted on Azure. You will have access to data from a dummyDB.
 
 Feel free to test the application to the fullest.
+There is an EASTER EGG located in the bank application. If found write me a message :)
 
 *Users;
 Role: Admin, Username: richard.chalk@systementor.se, Password: Hejsan123#
