@@ -659,11 +659,6 @@ section {
         font-size: 14px;
     }
 
-        .contact .php-email-form input:focus,
-        .contact .php-email-form textarea:focus {
-            background-color: #cc1616;
-        }
-
     .contact .php-email-form input {
         padding: 10px 15px;
     }
