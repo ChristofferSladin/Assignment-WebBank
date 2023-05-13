@@ -11,16 +11,24 @@
     <div class="col-md-6">
         <form id="profile-form" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Username" class="form-control" disabled />
+            <div class="textInputWrapper">
                 <label asp-for="Username" class="form-label"></label>
+                <input asp-for="Username" class="textInput" disabled />
+                
             </div>
-            <div class="form-floating">
-                <input asp-for="Input.PhoneNumber" class="form-control" />
+            <div class="textInputWrapper">
                 <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                <input asp-for="Input.PhoneNumber" class="textInput" />
+                
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
-            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+            <div class="d-flex justify-content-center py-5">
+                <button type="submit" class="button">
+                    <span class="actual-text">&nbsp;Save&nbsp;</span>
+                    <span class="hover-text" aria-hidden="true">&nbsp;Save&nbsp;</span>
+                </button>
+            </div>
+            
         </form>
     </div>
 </div>
