@@ -11,7 +11,7 @@ There is an EASTER EGG located in the bank application. If found write me a mess
 
 *Users;
 Role: Admin, Username: richard.chalk@systementor.se, Password: Hejsan123#
-Role: Cashier, Username: richard.erdos.chalk@gmail.com, Password: Hejsan123#
+Role: Cashier, Username: richard.erdos.chalk@gmail.se, Password: Hejsan123#
 
 *About 
 Web based Bank App. Used by Admins and Cashiers. 
