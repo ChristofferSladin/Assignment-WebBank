@@ -20,8 +20,8 @@ builder.Services.AddSwaggerGen(sw =>
     sw.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Version = "v1.0",
-        Title = "My Superhero API",
-        Description = @"API for retrieving Superheroes",
+        Title = "My Bank API",
+        Description = @"API for retrieving Accounts and Customers",
         Contact = new OpenApiContact
         {
             Name = "Richard Chalk",
