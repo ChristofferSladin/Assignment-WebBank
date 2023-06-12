@@ -22,6 +22,8 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<DataInitializer>();
 
+builder.Services.AddHttpClient<IRandomAPIservice, RandomAPIservice>();
+
 // Lägg till min DbContext
 builder.Services.AddDbContext<BankAppDataContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
