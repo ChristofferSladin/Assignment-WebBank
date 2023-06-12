@@ -3,34 +3,37 @@
 @{
 }
 
-<div>
-    <h1 class="text-center my-5" style="padding-top: 80px; padding-bottom: 40px;">Sweden Top 10 Customers</h1>
+<div class="container">
+    <div>
+        <h1 class="text-center my-5" style="padding-top: 80px; padding-bottom: 40px;">Sweden Top 10 Customers</h1>
+    </div>
+
+
+
+    <table class="table">
+        <thead class="header-table">
+            <tr>
+                <th>Personal Id</th>
+                <th>Name</th>
+                <th>Balance</th>
+                <th>City</th>
+                <th>Adress</th>
+            </tr>
+        </thead>
+        <tbody style="color: white;">
+            @foreach (var a in Model.SwedenAccounts)
+            {
+                <tr>
+                    <td>@a.PersonalNr</td>
+                    <td>@a.FirstName @a.LastName</td>
+                    <td>@a.Balance</td>
+                    <td>@a.City</td>
+                    <td>@a.Adress</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center my-5"><a asp-page="/Index" class="btn-lines">BACK</a></div>
 </div>
 
-
-
-<table class="table">
-    <thead class="header-table">
-        <tr>
-            <th>Personal Id</th>
-            <th>Name</th>
-            <th>Balance</th>
-            <th>City</th>
-            <th>Adress</th>
-        </tr>
-    </thead>
-    <tbody style="color: white;">
-        @foreach (var a in Model.SwedenAccounts)
-        {
-            <tr>
-                <td>@a.PersonalNr</td>
-                <td>@a.FirstName @a.LastName</td>
-                <td>@a.Balance</td>
-                <td>@a.City</td>
-                <td>@a.Adress</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<div class="d-flex justify-content-center my-5"><a asp-page="/Index" class="btn-lines">BACK</a></div>
