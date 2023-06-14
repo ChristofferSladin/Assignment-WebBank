@@ -52,7 +52,6 @@
             <ul>
                 <li><a class="nav-link" asp-page="/Index">Home</a></li>
                 <li><a class="nav-link" asp-page="/Sections/GeneralViews/About">About</a></li>
-                <li><a class="nav-link" asp-page="/Sections/GeneralViews/Contact">Contact</a></li>
                 @if (User.IsInRole("Cashier"))
                 {
                     <li><a class="nav-link" asp-page="/Sections/CustomerViews/CustomerView">Customers</a></li>

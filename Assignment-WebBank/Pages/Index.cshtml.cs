@@ -22,6 +22,7 @@ namespace Assignment_WebBank.Pages
         public List<CustomerVM>? CountriesAccounts { get; set; }
         public List<RandomApiDTO.User> Users { get; set; }
         public List<IndexVM> TotBalanceTotAccountCountry { get; set; }
+        public List<string> Countries { get; set; } = new List<string> { "Sweden", "Norway", "Denmark", "Finland"};
 
         public async Task OnGetAsync(string country)
         {
