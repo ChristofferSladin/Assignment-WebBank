@@ -3,10 +3,12 @@ using Assignment_WebBank.Model;
 using Assignment_WebBank.Services;
 using BankLibrary.DTOs;
 using BankLibrary.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Assignment_WebBank.Pages
 {
+    [ResponseCache(Duration = 300)]
     public class IndexModel : PageModel
     {
         private readonly IIndexService _indexService;
