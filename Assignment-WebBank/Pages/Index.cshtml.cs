@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Assignment_WebBank.Pages
 {
-    [ResponseCache(Duration = 300)]
     public class IndexModel : PageModel
     {
         private readonly IIndexService _indexService;
