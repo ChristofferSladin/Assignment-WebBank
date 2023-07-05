@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data;
 
-namespace Assignment_WebBank.Pages.Sections.CustomerViews
+namespace Assignment_WebBank.Pages.Sections.GeneralViews
 {
     [ResponseCache(Duration = 60)]
     public class DenmarkViewModel : PageModel

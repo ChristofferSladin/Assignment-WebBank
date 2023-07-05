@@ -5,21 +5,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data;
 
-namespace Assignment_WebBank.Pages.Sections.CustomerViews
+namespace Assignment_WebBank.Pages.Sections.GeneralViews
 {
     [ResponseCache(Duration = 60)]
-    public class FinlandViewModel : PageModel
+    public class NorwayViewModel : PageModel
     {
+
         private readonly IIndexService _indexService;
 
-        public FinlandViewModel(IIndexService indexService)
+        public NorwayViewModel(IIndexService indexService)
         {
             _indexService = indexService;
         }
-        public List<CustomerVM> FinlandAccounts { get; set; }
+        public List<CustomerVM> NorwayAccounts { get; set; }
         public void OnGet(string country)
         {
-            FinlandAccounts = _indexService.GetTopTenCustomerAccountsByCountry(country);
+            NorwayAccounts = _indexService.GetTopTenCustomerAccountsByCountry(country);
         }
+
     }
 }

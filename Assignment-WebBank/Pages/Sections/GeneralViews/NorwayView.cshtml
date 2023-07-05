@@ -1,13 +1,12 @@
 ﻿@page
-@model Assignment_WebBank.Pages.Sections.CustomerViews.FinlandViewModel
+@model Assignment_WebBank.Pages.Sections.GeneralViews.NorwayViewModel
 @{
 }
+
 <div class="container">
     <div>
-        <h1 class="text-center my-5" style="padding-top: 80px; padding-bottom: 40px;">Finland Top 10 Customers</h1>
+        <h1 class="text-center my-5" style="padding-top: 80px; padding-bottom: 40px;">Norway Top 10 Customers</h1>
     </div>
-
-
 
     <table class="table">
         <thead class="header-table">
@@ -20,9 +19,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var a in Model.FinlandAccounts)
+            @foreach (var a in Model.NorwayAccounts)
             {
-                <tr style="color:white;">
+                <tr style="color: white;">
                     <td>@a.PersonalNr</td>
                     <td>@a.FirstName @a.LastName</td>
                     <td>@a.Balance</td>
