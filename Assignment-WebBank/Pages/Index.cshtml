@@ -1,72 +1,67 @@
 ﻿@page
-@using Assignment_WebBank.Model
+@using Assignment_WebBank
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<section id="hero" class="d-block align-items-center" style="height: auto;">
 
-    <div class="container" data-aos="fade-up">
-        <h1 style="color: #cc1616;">Welcome To Bank Of Scandinavia</h1>
-        <h2>We are here to help You with the financial parts of life</h2>
-        <a href="#countries" class="btn-lines">Get Started</a>
+<h1>Transactions</h1>
+
+@if (Model.Transactions != null && Model.Transactions.Rows.Count > 0)
+{
+    <table border="1" id="transactionsTable">
+        <tr>
+            <th>TransactionId</th>
+            <th>AccountId</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Balance</th>
+        </tr>
+        @foreach (System.Data.DataRow row in Model.Transactions.Rows)
+        {
+            <tr>
+                <td>@row["TransactionId"]</td>
+                <td>@row["AccountId"]</td>
+                <td>@row["Date"]</td>
+                <td>@row["Type"]</td>
+                <td>@row["Amount"]</td>
+                <td>@row["Balance"]</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No transactions found.</p>
+}
+
+
+<div style="padding-top: 500px;">
+    <div class="container d-flex justify-content-center">
+        <h1 style="color: white;">Our CEO's</h1>
     </div>
-
-    <div class="container" data-aos="fade-up" style="padding-top: 600px; padding-bottom: 150px;">
-        <div id="countries" class="row">
-            <div class="container">
-                <h1 style="color: #cc1616; margin-bottom: 50px;">The countries we represent</h1>
+    <div class="container d-flex justify-content-between">
+        @for (int i = 0; i < Model.Users.Count; i++)
+        {
+            var user = Model.Users[i];
+            <div class="card" style="width: 14rem;">
+                <img src="@user.picture.large" class="card-img-top" alt="User Picture">
+                <div class="card-body">
+                    <h5 class="card-title">@user.name.first @user.name.last</h5>
+                    <p class="card-text">
+                        Age: @user.dob.age <br>
+                        Location: @user.location.city, @user.location.state, @user.location.country <br>
+                       
+                    </p>
+                </div>
             </div>
-            @foreach (var country in new[] { "Sweden", "Norway", "Denmark", "Finland" })
-            {
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-4">
-                    <div class="card text-center" style="background: transparent; border: none;">
-                        <a><img src="~/img/flags/@(country).png" class="card-img-top" style="height: 200px; width: 200px;"></a>
-                        <div class="card-body" style="background: #141414;">
-                            @foreach (var c in Model.TotBalanceTotAccountCountry.Where(c => c.Country == country))
-                            {
-                                <div class="card-text text-white"><i class="fas fa-globe-americas mr-2" style="color: #cc1616; margin-right: 5px;"></i>@c.Country</div>
-                                <div class="card-text text-white"><i class="fas fa-users mr-2" style="color: #cc1616; margin-right: 5px;"></i>@c.CustomerCount Customers</div>
-                                <div class="card-text text-white"><i class="fas fa-receipt mr-2" style="color: #cc1616; margin-right: 5px;"></i>@c.AccountCount Accounts</div>
-                                <div class="card-text text-white"><i class="fas fa-money-bill mr-2" style="color: #cc1616; margin-right: 5px;"></i>@c.TotalBalance.ToString("C") :-</div>
-                            }
-                        </div>
-                        <div class="d-flex justify-content-center mt-3">
-                            <a asp-area="" asp-page="/Sections/GeneralViews/@(country)View" asp-route-country="@country" class="btn-lines"><div>Show Top 10</div></a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-
-
-    <div style="padding-top: 500px;">
-        <div class="container d-flex justify-content-center">
-            <h1 style="color: white;">Our CEO's</h1>
-        </div>
-        <div class="container d-flex justify-content-between">
-            @for (int i = 0; i < Model.Users.Count; i++)
-            {
-                var user = Model.Users[i];
-                <div class="card" style="width: 14rem;">
-                    <img src="@user.picture.large" class="card-img-top" alt="User Picture">
-                    <div class="card-body">
-                        <h5 class="card-title">@user.name.first @user.name.last</h5>
-                        <p class="card-text">
-                            Age: @user.dob.age <br>
-                            Location: @user.location.city, @user.location.state, @user.location.country <br>
-                            <span style="color: #cc1616;"> CEO at Bank of @Model.Countries[i]</span>
-                        </p>
-                    </div>
-                </div>
-            }
-
-        </div>
+        }
 
     </div>
-</section>
+
+</div>
 
 <footer id="footer">
     <div class="footer-top">

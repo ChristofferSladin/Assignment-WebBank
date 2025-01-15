@@ -41,7 +41,7 @@
 </head>
 
 <!-- ======= Header ======= -->
-<header id="header" class="d-flex align-items-center">
+@* <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
         <h1 class="logo">
             <a asp-page="/Index">
@@ -52,35 +52,31 @@
             <ul>
                 <li><a class="nav-link" asp-page="/Index">Home</a></li>
                 <li><a class="nav-link" asp-page="/Sections/GeneralViews/About">About</a></li>
-                @if (User.IsInRole("Cashier"))
-                {
-                    <li><a class="nav-link" asp-page="/Sections/CustomerViews/CustomerView">Customers</a></li>
-                }
-                @if (User.IsInRole("Admin"))
-                {
-                    <li class="dropdown">
-                        <a href="#"><span>Crud Menu</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <a href="#"><span>User Crud</span> <i class="bi bi-chevron-down"></i></a>
-                            <li><a asp-page="/Sections/CRUDviews/User/UserCreateView">Create User</a></li>
-                            <li><a asp-page="/Sections/CRUDviews/User/UserUpdateView">Update User</a></li>
-                            <li><a asp-page="/Sections/CRUDviews/User/UserDeleteView">Delete User</a></li>
-                            <li class="dropdown">
-                                <a href="#"><span>Customer Crud</span> <i class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a asp-page="/Sections/CRUDviews/Customer/CreateCustomerView">Create New Customer</a></li>
-                                    <li><a asp-page="/Sections/CRUDviews/Customer/ReadCustomers">Update Existing Customer</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                }
-                    <partial name="_LoginPartial" />
+
+                <li><a class="nav-link" asp-page="/Sections/CustomerViews/CustomerView">Customers</a></li>
+
+
+                <li class="dropdown">
+                    <a href="#"><span>Crud Menu</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <a href="#"><span>User Crud</span> <i class="bi bi-chevron-down"></i></a>
+                        <li><a asp-page="/Sections/CRUDviews/User/UserCreateView">Create User</a></li>
+                        <li><a asp-page="/Sections/CRUDviews/User/UserUpdateView">Update User</a></li>
+                        <li><a asp-page="/Sections/CRUDviews/User/UserDeleteView">Delete User</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Customer Crud</span> <i class="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li><a asp-page="/Sections/CRUDviews/Customer/CreateCustomerView">Create New Customer</a></li>
+                                <li><a asp-page="/Sections/CRUDviews/Customer/ReadCustomers">Update Existing Customer</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
     </div>
-</header><!-- End Header -->
+</header><!-- End Header --> *@
 
 <main id="main">
     @RenderBody()

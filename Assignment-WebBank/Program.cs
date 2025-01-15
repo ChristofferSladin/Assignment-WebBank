@@ -1,56 +1,26 @@
-using Assignment_WebBank.BankAppData;
-using Assignment_WebBank.Data;
-using Assignment_WebBank.Services;
-using BankLibrary.Services;
-using BankLibrary.ViewModels;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+using Assignment_WebBank.SnowFlake;
+using Auth0.AspNetCore.Authentication;
+using BankLibrary;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddJsonFile("appsettings.json");
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddSingleton<SnowflakeService>();
+builder.Services.AddHttpClient<RandomAPIservice>();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddAuth0WebAppAuthentication(options =>
+{
+    options.Domain = builder.Configuration["Auth0:Domain"];
+    options.ClientId = builder.Configuration["Auth0:ClientId"];
+    options.ClientSecret = builder.Configuration["Auth0:ClientSecret"];
+});
+
 builder.Services.AddRazorPages();
-
-builder.Services.AddTransient<DataInitializer>();
-
-builder.Services.AddHttpClient<IRandomAPIservice, RandomAPIservice>();
-
-// Lägg till min DbContext
-builder.Services.AddDbContext<BankAppDataContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// Lägg till min IndexService
-builder.Services.AddTransient<IIndexService, IndexService>();
-
-// Lägg till min SupplierService
-builder.Services.AddTransient<ICustomerService, CustomerService>();
-
-//Lägg till min TransactionService
-builder.Services.AddTransient<ITransactionService, TransactionService>();
-
-//Lägg till min CRUDService
-builder.Services.AddTransient<ICRUDservice, CRUDservice>();
-
-builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(ValidateCustomerVM)));
-
 builder.Services.AddResponseCaching();
 
 var app = builder.Build();
-
-using (var scope = app.Services.CreateScope())
-{
-    scope.ServiceProvider.GetService<DataInitializer>()?.SeedData();
-}
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -64,13 +34,13 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseHttpsRedirection();
+
 
 app.MapRazorPages();
 
