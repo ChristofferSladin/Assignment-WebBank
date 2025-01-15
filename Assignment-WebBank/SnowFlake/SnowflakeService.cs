@@ -17,7 +17,8 @@ public class SnowflakeService
         {
             using (var conn = new SnowflakeDbConnection())
             {
-                conn.ConnectionString = _configuration.GetConnectionString("SnowflakeConnection");
+                conn.ConnectionString = _configuration["SnowFlakeConnectionString"];
+
                 conn.Open();
 
                 using (var cmd = conn.CreateCommand())

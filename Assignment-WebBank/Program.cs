@@ -1,9 +1,16 @@
 using Assignment_WebBank.SnowFlake;
 using Auth0.AspNetCore.Authentication;
 using BankLibrary;
+using Azure.Identity;
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Configuration.AddJsonFile("appsettings.json");
+var keyVaultName = "portfoliosecretsai.vault.azure.net";
+var keyVaultUri = new Uri($"https://{keyVaultName}");
+
+builder.Configuration
+       .AddAzureKeyVault(keyVaultUri, new DefaultAzureCredential());
+
 
 // Add services to the container.
 builder.Services.AddSingleton<SnowflakeService>();
